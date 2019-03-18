@@ -8,8 +8,8 @@ use App\Model\Review;
 class Product extends Model
 {
     //
-    public function Review(){
-        return $this->hasMany(Review::class);
+    public function reviews(){
+        return $this->hasMany('App\Model\Review');
 
     }
 
