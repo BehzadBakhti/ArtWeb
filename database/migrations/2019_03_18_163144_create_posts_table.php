@@ -16,9 +16,13 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('slug');
             $table->text('body');
             $table->integer('category_id');
             $table->string('featured');
+            $table->boolean('is_published');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,4 +36,6 @@ class CreatePostsTable extends Migration
     {
         Schema::dropIfExists('posts');
     }
+
+    protected $dates=['deleted_at'];
 }

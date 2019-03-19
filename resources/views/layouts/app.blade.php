@@ -10,7 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
+  
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -82,11 +84,14 @@
                     <a href="{{route('home')}}"> Home</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('post.create')}}"> Create New Post</a>
+                    <a href="{{route('posts')}}"> Manage Posts</a>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="{{route('category.create')}}"> Create New Category</a>
+                    <a href="{{route('category.create')}}"> Manage Categories</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{route('posts.trashed')}}"> Trashed Posts</a>
                 </li>
             </ul>
         </div>
@@ -101,5 +106,17 @@
 </div>
         
     </div>
+ <script src="{{asset('js/toastr.min.js')}}"></script>
+ <script>
+      
+ @if(Session::has('success'))
+    toastr.success("{{Session::get('success')}}")
+ @endif
+
+  @if(Session::has('info'))
+    toastr.info("{{Session::get('info')}}")
+ @endif
+ </script>
+
 </body>
 </html>

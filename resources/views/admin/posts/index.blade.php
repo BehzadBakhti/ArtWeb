@@ -1,3 +1,12 @@
+@extends('layouts.app')
+
+
+@section ('content')
+
+ @include('includes.error')
+
+
+
 
 <div class="panel panel-default">
     <div class="panel-body">
@@ -5,7 +14,10 @@
 
             <thead>
                 <th>
-                Category Name
+                Title
+                </th>
+                <th>
+                Imdage                
                 </th>
                 <th>
                 Editing
@@ -15,21 +27,25 @@
                 </th>
             </thead>
             <tbody>
-            @foreach($categories as $category)
+            @foreach($posts as $post)
             
                 <tr>
                     <td>
-                    {{$category->name}}
+                    {{$post->title}}
                     </td>
                     <td>
-                         <a href="{{route('category.edit', ['id'=>$category->id]) }}" class="btn btn-primary btn-sm">
+                         <img src="{{$post->featured}}"  width="50px" height="50px">
+                         
+                    </td>
+                    <td>
+                         <a href="{{route('post.edit', ['id'=>$post->id]) }}" class="btn btn-primary btn-sm">
                             Edit
                          </a>
                          
                     </td>
                     <td>
-                    <a href="{{route('category.delete', ['id'=>$category->id]) }}" class="btn btn-danger btn-sm">
-                            Delete
+                    <a href="{{route('post.delete', ['id'=>$post->id]) }}" class="btn btn-danger btn-sm">
+                            Trash
                          </a>
                     </td>
                 </tr>
@@ -40,3 +56,5 @@
         </table>
     </div>
 </div>
+
+@endSection 
