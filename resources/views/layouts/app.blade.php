@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -91,6 +92,9 @@
                     <a href="{{route('category.create')}}"> Manage Categories</a>
                 </li>
                 <li class="list-group-item">
+                    <a href="{{route('tag.create')}}"> Manage Tags</a>
+                </li>
+                <li class="list-group-item">
                     <a href="{{route('posts.trashed')}}"> Trashed Posts</a>
                 </li>
             </ul>
@@ -117,6 +121,7 @@
     toastr.info("{{Session::get('info')}}")
  @endif
  </script>
+ @yield('scripts')
 
 </body>
 </html>

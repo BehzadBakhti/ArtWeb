@@ -9,6 +9,11 @@
 
 
 <div class="panel panel-default">
+
+<div class="panel-heading">
+Posts <a href="{{route('post.create')}}" class="btn btn-primary btn-sm my-2 mx-auto align-center">Add+</a>
+</div>
+
     <div class="panel-body">
         <table class="table table-hover">
 

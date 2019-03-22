@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Category;
 use App\Model\Post;
+use App\Model\Tag;
 use Session;
 class PostsController extends Controller
 {
@@ -32,7 +33,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-$categories=Category::all();
+        $categories=Category::all();
 
         if($categories->count()==0){
 
@@ -40,7 +41,7 @@ $categories=Category::all();
             return redirect()->route('home');
         }
        
-        return view('admin.posts.create')->with(['categories'=>$categories, 'posts'=>Post::all()]);
+        return view('admin.posts.create')->with(['categories'=>$categories, 'posts'=>Post::all(),'tags'=>Tag::all()]);
     }
 
     /**
@@ -71,6 +72,8 @@ $categories=Category::all();
 
 
          ]);
+
+         $post->tags()->attach($request->tags);
             Session::flash('success',"Post Saved Successfully");
         return redirect()->route('post.create');
     }
@@ -95,7 +98,7 @@ $categories=Category::all();
     public function edit($id)
     {
         $categories=Category::all();
-        return view('admin.posts.edit')->with(['categories'=>$categories, 'post'=> $this->show($id)]);
+        return view('admin.posts.edit')->with(['categories'=>$categories, 'post'=> $this->show($id),'tags'=>Tag::all()]);
     }
     
     
@@ -109,7 +112,35 @@ $categories=Category::all();
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required|max:255',
+            
+            'body'=>'required' 
+        ]); 
+
+        $post= Post::find($id);
+        if($request->hasFile('featured')){
+
+            $featuredImage=$request->featured; 
+            $featuredNewName=time().$featuredImage->getClientOriginalName();
+            $featuredImage->move('uploads/posts', $featuredNewName);
+            $post->featured='uploads/posts/'.$featuredNewName;
+
+        }
+
+
+       $post->title=$request->title;
+       $post->body=$request->body;
+       $post->category_id=$request->category_id;
+       $post->slug=str_slug($request->title);
+       $post->is_published=0;
+
+        
+         
+         $post->save();
+         $post->tags()->sync($request->tags);
+            Session::flash('success',"Post Updated Successfully");
+        return redirect()->route('posts');
     }
 
     /**
@@ -124,7 +155,7 @@ $categories=Category::all();
 
         Session::flash('success', "The Post Successfully Trashed");
 
-        return redirect()->route('post.create');
+        return redirect()->route('posts');
     }
 
 
