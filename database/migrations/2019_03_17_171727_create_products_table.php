@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('dimension');
             $table->string('material');
             $table->string('product_category');
-
+            $table->bigInteger('defult_img_id');
             $table->integer('stock');
             $table->double('price');
             $table->double('discount');

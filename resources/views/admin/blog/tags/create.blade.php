@@ -7,25 +7,25 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-         Create a New Category 
+         Create a New Tag 
     </div>
     <div class="panel-body">
-        <form action="{{ route('category.store') }}" method="post"  >
+        <form action="{{ route('tag.store') }}" method="post"  >
               {{ csrf_field() }}
               <div class="form-group">
-                    <label for="name">Title</label>
-                    <input type="text" name="name" class="form-control">
+                    <label for="tag">Title</label>
+                    <input type="text" name="tag" class="form-control">
                 </div>
                
                
                 <div class="form-group">
-                   <button type="submit" class="btn btn-success"> Save Category</button>
+                   <button type="submit" class="btn btn-success"> Save Tag</button>
                 </div>
 
 
         </form>
     </div>
 </div>
-@include('admin.categories.list')
+@include('admin.blog.tags.list')
 
 @endSection 

@@ -22,7 +22,7 @@ class TagsController extends Controller
 
     {
  
-        return view('admin.tags.create')->with('tags',$this->index());
+        return view('admin.blog.tags.create')->with('tags',$this->index());
     }
 
     /**
@@ -66,7 +66,7 @@ class TagsController extends Controller
     public function edit($id)
     {
        // dd(Category::find($id)->name);
-        return view('admin.tags.edit')->with(['tags'=>$this->index(), 'toedit'=> Tag::find($id)]);
+        return view('admin.blog.tags.edit')->with(['tags'=>$this->index(), 'toedit'=> Tag::find($id)]);
     }
 
     /**

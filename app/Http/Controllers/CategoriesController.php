@@ -27,7 +27,7 @@ class CategoriesController extends Controller
 
     {
  
-        return view('admin.categories.create')->with('categories',$this->index());
+        return view('admin.blog.categories.create')->with('categories',$this->index());
     }
 
     /**
@@ -71,7 +71,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
        // dd(Category::find($id)->name);
-        return view('admin.categories.edit')->with(['categories'=>$this->index(), 'toedit'=> Category::find($id)]);
+        return view('admin.blog.categories.edit')->with(['categories'=>$this->index(), 'toedit'=> Category::find($id)]);
     }
 
     /**

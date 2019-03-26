@@ -17,14 +17,14 @@ class PostsController extends Controller
     public function index()
     {
         
-        return view('admin.posts.index')->with( 'posts',Post::all());
+        return view('admin.blog.posts.index')->with( 'posts',Post::all());
     }
 
 
     public function trashed()
     {
         $posts= Post::onlyTrashed()->get();
-        return view('admin.posts.trashed')->with( 'posts',$posts);
+        return view('admin.blog.posts.trashed')->with( 'posts',$posts);
     }
     /**
      * Show the form for creating a new resource.
@@ -41,7 +41,7 @@ class PostsController extends Controller
             return redirect()->route('home');
         }
        
-        return view('admin.posts.create')->with(['categories'=>$categories, 'posts'=>Post::all(),'tags'=>Tag::all()]);
+        return view('admin.blog.posts.create')->with(['categories'=>$categories, 'posts'=>Post::all(),'tags'=>Tag::all()]);
     }
 
     /**
@@ -98,7 +98,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $categories=Category::all();
-        return view('admin.posts.edit')->with(['categories'=>$categories, 'post'=> $this->show($id),'tags'=>Tag::all()]);
+        return view('admin.blog.posts.edit')->with(['categories'=>$categories, 'post'=> $this->show($id),'tags'=>Tag::all()]);
     }
     
     

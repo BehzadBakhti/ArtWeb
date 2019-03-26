@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin_shop')
 
 
 @section ('content')
@@ -7,25 +7,25 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-         Edit Tag 
+         Create a New Category 
     </div>
     <div class="panel-body">
-        <form action="{{ route('tag.update', ['id'=>$toedit->id]) }}" method="post"  >
+        <form action="{{ route('category.store') }}" method="post"  >
               {{ csrf_field() }}
               <div class="form-group">
-                    <label for="tag">Title</label>
-                    <input type="text" name="tag" class="form-control" value="{{$toedit->tag}}">
+                    <label for="name">Title</label>
+                    <input type="text" name="name" class="form-control">
                 </div>
                
                
                 <div class="form-group">
-                   <button type="submit" class="btn btn-success"> Update Tag</button>
+                   <button type="submit" class="btn btn-success"> Save Category</button>
                 </div>
 
 
         </form>
     </div>
 </div>
-@include('admin.tags.list')
+@include('admin.shop.categories.list')
 
 @endSection 

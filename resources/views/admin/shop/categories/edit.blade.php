@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin_shop')
 
 
 @section ('content')
@@ -26,6 +26,6 @@
         </form>
     </div>
 </div>
-@include('admin.categories.list')
+@include('admin.shop.categories.list')
 
 @endSection 
