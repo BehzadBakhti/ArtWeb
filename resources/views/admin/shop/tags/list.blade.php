@@ -22,13 +22,13 @@
                     {{$tag->tag}}
                     </td>
                     <td>
-                         <a href="{{route('tag.edit', ['id'=>$tag->id]) }}" class="btn btn-primary btn-sm">
+                         <a href="{{route('prod_tag.edit', ['id'=>$tag->id]) }}" class="btn btn-primary btn-sm">
                             Edit
                          </a>
                          
                     </td>
                     <td>
-                    <a href="{{route('tag.delete', ['id'=>$tag->id]) }}" class="btn btn-danger btn-sm">
+                    <a href="{{route('prod_tag.delete', ['id'=>$tag->id]) }}" class="btn btn-danger btn-sm">
                             Delete
                          </a>
                     </td>

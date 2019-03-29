@@ -1,11 +1,14 @@
 
-<div class="panel panel-default">
+<div class="p-3">
     <div class="panel-body">
         <table class="table table-hover">
 
             <thead>
                 <th>
                 Category Name
+                </th>
+                <th>
+                Parent
                 </th>
                 <th>
                 Editing
@@ -22,16 +25,20 @@
                     {{$category->name}}
                     </td>
                     <td>
-                         <a href="{{route('category.edit', ['id'=>$category->id]) }}" class="btn btn-primary btn-sm">
+                    {{($category->parent_id==0||$category->parent_id==null)?'-':$category->parent->name}}
+                    </td>
+
+                    <td>
+                         <a href="{{route('prod_cat.edit', ['id'=>$category->id]) }}" class="btn btn-primary btn-sm">
                             Edit
                          </a>
                          
                     </td>
                     <td>
-                    <a href="{{route('category.delete', ['id'=>$category->id]) }}" class="btn btn-danger btn-sm">
-                            Delete
-                         </a>
-                    </td>
+                        <a href="{{route('prod_cat.delete', ['id'=>$category->id]) }}" class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+                        </td>
                 </tr>
 
             @endforeach

@@ -10,7 +10,7 @@
          Edit Tag 
     </div>
     <div class="panel-body">
-        <form action="{{ route('tag.update', ['id'=>$toedit->id]) }}" method="post"  >
+        <form action="{{ route('prod_tag.update', ['id'=>$toedit->id]) }}" method="post"  >
               {{ csrf_field() }}
               <div class="form-group">
                     <label for="tag">Title</label>

@@ -72,7 +72,14 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script>
 $(document).ready(function() {
-  $('#body').summernote();
+  $('#body').summernote({
+  
+  popover: {
+      image: [],
+      link: [],
+      air: []
+      }
+  });
 });
 </script>
 @stop

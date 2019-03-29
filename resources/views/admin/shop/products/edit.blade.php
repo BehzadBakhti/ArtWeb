@@ -7,24 +7,54 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-         Create a New Post 
+         Edit Product 
     </div>
     <div class="panel-body">
-        <form action="{{ route('post.update', ['id'=>$post->id]) }}" method="post" enctype="multipart/form-data" >
+        <form action="{{ route('product.update', ['id'=>$product->id]) }}" method="post" enctype="multipart/form-data" >
               {{ csrf_field() }}
               <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" value="{{$post->title}}">
+                    <label for="name">Product Name</label>
+                    <input type="text" name="name" class="form-control" value="{{$product->name}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="dimension">Dimensions</label>
+                    <input type="text" name="dimension" class="form-control" value="{{$product->dimension}}">
                 </div>
                 <div class="form-group">
-                    <label for="featured">Featured Image</label>
+                    <label for="material">Material</label>
+                    <input type="text" name="material" class="form-control" value="{{$product->material}}">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" name="price" class="form-control" value="{{$product->price}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="text" name="stock" class="form-control" value="{{$product->stock}}">
+                </div>
+                <div class="form-group">
+                    <label for="image_1">Image 1</label>
+                    
                     <div style="position:relative;">
                         <a class='btn btn-primary btn-sm' href='javascript:;'>
                             Choose File...
-                            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="featured" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="image_1" size="40"  onchange='$("#upload-file-info_1").html($(this).val());'>
                         </a>
                         &nbsp;
-                        <span class='label label-info' id="upload-file-info"></span>
+                        <span class='label label-info' id="upload-file-info_1"></span>
+                    </div>
+
+                    <label for="image_2">Image 2</label>
+                    
+                    <div style="position:relative;">
+                        <a class='btn btn-primary btn-sm' href='javascript:;'>
+                            Choose File...
+                            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="image_2" size="40"  onchange='$("#upload-file-info_2").html($(this).val());'>
+                        </a>
+                        &nbsp;
+                        <span class='label label-info' id="upload-file-info_2"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -33,8 +63,8 @@
                         @foreach($categories as $category)
 
                             <option value="{{$category->id}}"  
-                            
-                                @if($category->id == $post->category->id)
+                            dump($product);
+                                @if( $category->id == $product->category_id)
 
                                         selected
                                 @endif
@@ -52,7 +82,7 @@
                         <div class="checkbox">
                             <label ><input class="px-2" type="checkbox" name="tags[]" value="{{ $tag->id}}"
 
-                            @foreach($post->tags as $t)
+                            @foreach($product->tags as $t)
                                 @if($tag->id==$t->id))
 
                                     checked
@@ -69,11 +99,12 @@
 
 
                 <div class="form-group">
-                    <label for="body">Body</label>
-                   <textarea name="body" class="form-control" >{{$post->body}}</textarea>
+                    <label for="detail">ِDescription</label>
+                   <textarea name="detail" id="detail" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                   <button type="submit" class="btn btn-success"> Save Post</button>
+                   <button type="submit" class="btn btn-success btn-sm"> Save Product</button>
+                   <a href="{{route('products')}}" class="btn btn-danger btn-sm"> Cancel</a> 
                 </div>
 
 
@@ -83,3 +114,23 @@
 </div>
 
 @endSection 
+
+@Section('scripts')
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+<script>
+$(document).ready(function() {
+  $('#detail').summernote({
+  
+    popover: {
+        image: [],
+        link: [],
+        air: []
+        }
+    });
+});
+</script>
+@stop
+
+@Section('styles')
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+@stop

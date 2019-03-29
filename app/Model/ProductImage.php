@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductImage extends Model
 {
-    //
+    public function post(){
+
+        return $this->belongsTo('App\Model\Product');
+    }
+
+    protected $fillable =['image_name', 'product_id'];
 }

@@ -58,17 +58,17 @@
         <div class="col-lg-4">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="{{route('home')}}"> Home</a>
+                    <a href="{{route('home')}}"> Dashboard</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('posts')}}"> Manage Posts</a>
+                    <a href="{{route('posts')}}">Posts</a>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="{{route('category.create')}}"> Manage Categories</a>
+                    <a href="{{route('category.create')}}">Post Categories</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('tag.create')}}"> Manage Tags</a>
+                    <a href="{{route('tag.create')}}">Post Tags</a>
                 </li>
                 <li class="list-group-item">
                     <a href="{{route('posts.trashed')}}"> Trashed Posts</a>
@@ -95,6 +95,11 @@
 
   @if(Session::has('info'))
     toastr.info("{{Session::get('info')}}")
+ @endif
+
+      
+ @if(Session::has('error'))
+    toastr.danger("{{Session::get('error')}}")
  @endif
  </script>
  @yield('scripts')

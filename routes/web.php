@@ -142,47 +142,47 @@ Route::group(["prefix"=>'admin/shop', 'middleware'=>'auth'], function(){
         ]);
 
          Route::get('/products', [
-            'uses'=>'ProductController@index',
+            'uses'=>'ProductsController@index',
             'as'=>'products'
         ]);
 
         Route::get('/product/create', [
-            'uses'=>'ProductController@create',
+            'uses'=>'ProductsController@create',
             'as'=>'product.create'
         ]);
        
         Route::post('/product/store', [
-            'uses'=>'ProductController@store',
+            'uses'=>'ProductsController@store',
             'as'=>'product.store'
         ]);
 
         Route::get('/product/edit/{id}', [
-            'uses'=>'ProductController@edit',
+            'uses'=>'ProductsController@edit',
             'as'=>'product.edit'
         ]);
 
         Route::post('/product/update/{id}', [
-            'uses'=>'ProductController@update',
+            'uses'=>'ProductsController@update',
             'as'=>'product.update'
         ]);
 
         Route::get('/products/delete/{id}', [
-            'uses'=>'ProductController@destroy',
+            'uses'=>'ProductsController@destroy',
             'as'=>'product.delete'
         ]);
 
 
 
         Route::get('/products/trashed', [
-            'uses'=>'ProductController@trashed',
+            'uses'=>'ProductsController@trashed',
             'as'=>'products.trashed'
         ]);
         Route::get('/products/trashed/delete/{id}', [
-            'uses'=>'ProductController@kill',
+            'uses'=>'ProductsController@kill',
             'as'=>'products.trashed.delete'
         ]);
         Route::get('/products/trashed/restore/{id}', [
-            'uses'=>'ProductController@restore',
+            'uses'=>'ProductsController@restore',
             'as'=>'products.trashed.restore'
         ]);
 
@@ -210,7 +210,7 @@ Route::group(["prefix"=>'admin/shop', 'middleware'=>'auth'], function(){
 
         Route::get('/category/delete/{id}', [
             'uses'=>'ProductCategoriesController@destroy',
-            'as'=>'prod_cat`aqq21.delete'
+            'as'=>'prod_cat.delete'
         ]);
 
 

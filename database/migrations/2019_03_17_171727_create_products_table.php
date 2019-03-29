@@ -19,11 +19,11 @@ class CreateProductsTable extends Migration
             $table->text('detail');
             $table->string('dimension');
             $table->string('material');
-            $table->string('product_category');
-            $table->bigInteger('defult_img_id');
+            $table->integer('product_category_id');
+            $table->bigInteger('defult_img_id')->nullable();
             $table->integer('stock');
             $table->double('price');
-            $table->double('discount');
+            $table->double('discount')->nullable();
             
             $table->timestamps();
         });

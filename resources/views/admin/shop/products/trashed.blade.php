@@ -7,7 +7,7 @@
  @include('includes.error')
 
 
-
+{{dd($products)}}
 
 <div class="panel panel-default">
 <div class="panel-heading">
