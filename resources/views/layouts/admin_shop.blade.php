@@ -61,7 +61,7 @@
                     <a href="{{route('shop')}}"> Dashboard</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('products')}}">Products</a>
+                    <a href="{{route('admin.products')}}">Products</a>
                 </li>
 
                 <li class="list-group-item">

@@ -50,7 +50,7 @@ Product <a href="{{route('product.create')}}" class="btn btn-primary btn-sm my-2
                     </td>
                     <td>
                     <a href="{{route('product.delete', ['id'=>$product->id]) }}" class="btn btn-danger btn-sm">
-                            Trash
+                            Delete
                          </a>
                     </td>
                 </tr>

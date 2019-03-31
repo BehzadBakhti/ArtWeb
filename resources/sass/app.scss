@@ -12,3 +12,27 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.image-container {
+
+  /*border-radius: 25px;*/
+  
+  
+  background: #A4D3EE;
+  overflow: visible;
+ 
+  position: relative;
+}
+
+.x {
+    position: absolute;
+    background: transparent;
+    color: black;
+    border-radius: 10px;
+border: none;
+    height: 25px;
+    width: 25px;
+    top: 0px;
+    right: 0px;
+    // text-align: justify;
+}

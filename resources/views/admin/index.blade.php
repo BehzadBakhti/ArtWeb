@@ -12,7 +12,7 @@
             <h3>
             Shop Management
             </h3>
-            <a href="{{route('shop')}}" class="btn btn-primary">Manage Shop Items</a>
+            <a href="{{route('admin.shop')}}" class="btn btn-primary">Manage Shop Items</a>
         </div>
     </div> 
 </div>

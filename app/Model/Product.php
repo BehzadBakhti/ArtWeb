@@ -26,6 +26,11 @@ class Product extends Model
         return $this->hasMany('App\Model\ProductImage');
     }
 
+    public function specs(){
+
+        return $this->hasMany('App\Model\Spec');
+    }
+
 
     public function tags(){
 

@@ -11,9 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses'=>'FrontEndController@index',
+    'as'=>'index'
+]);
+
+
+Route::get('/shop', [
+    'uses'=>'FrontEndController@shop',
+    'as'=>'shop'
+]);
+
+Route::get('/blog', [
+    'uses'=>'FrontEndController@blog',
+    'as'=>'blog'
+]);
+
+Route::get('/blog/{slog}', [
+    'uses'=>'FrontEndController@singlePost',
+    'as'=>'blog.post'
+]);
+
+Route::get('/shop/{id}', [
+    'uses'=>'FrontEndController@singleProduct',
+    'as'=>'shop.product'
+]);
 
 Auth::routes();
 
@@ -138,12 +160,12 @@ Route::group(["prefix"=>'admin/shop', 'middleware'=>'auth'], function(){
 
     Route::get('/dashboard', [
             'uses'=>'ShopHomeController@index',
-            'as'=>'shop'
+            'as'=>'admin.shop'
         ]);
 
          Route::get('/products', [
             'uses'=>'ProductsController@index',
-            'as'=>'products'
+            'as'=>'admin.products'
         ]);
 
         Route::get('/product/create', [
