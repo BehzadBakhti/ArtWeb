@@ -59,6 +59,7 @@ class ProductsController extends Controller
                 'material'=>'required|max:255',
                 'price'=>'required|numeric',
                 'stock'=>'required|numeric',
+                'discount'=>'required|numeric|min:0|max:100',
                 'images' => 'required|array|min:2',
                 'detail'=>'required' 
             ]); 
@@ -70,6 +71,7 @@ class ProductsController extends Controller
                 'dimension'=>$request->dimension,
                 'material'=> $request->material,
                 'price'=>$request->price,
+                'discount'=>$request->discount,
                 'stock'=> $request->stock,
 
             ]);
@@ -166,6 +168,8 @@ class ProductsController extends Controller
             'material'=>'required|max:255',
             'price'=>'required|numeric',
             'stock'=>'required|numeric',
+            'discount'=>'required|numeric|min:0|max=100',
+            
             'detail'=>'required' 
         ]); 
 
@@ -179,6 +183,7 @@ class ProductsController extends Controller
             'dimension'=>$request->dimension,
             'material'=> $request->material,
             'price'=>$request->price,
+            'discount'=>$request->discount,
             'stock'=> $request->stock,
 
         ]);

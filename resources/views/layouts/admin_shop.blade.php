@@ -71,6 +71,9 @@
                     <a href="{{route('prod_tag.create')}}">Product Tags</a>
                 </li>
                 <li class="list-group-item">
+                    <a href="{{route('admin.events')}}"> Events</a>
+                </li>
+                <li class="list-group-item">
                     <a href="{{route('posts.trashed')}}"> Trashed Products</a>
                 </li>
             </ul>

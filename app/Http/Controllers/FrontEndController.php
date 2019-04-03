@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Product;
 use App\Model\ProductCategory;
+use Cart;
 
 
 
@@ -12,7 +13,15 @@ class FrontEndController extends Controller
 {
     public function index(){
 
-        return view('frontEnd.index');
+        $categoryTree=ProductCategory::where('parent_id',0)->get();
+        $cartContent=Cart::getContent();
+        $promotedProducts=Product::all();
+        $newProducts=$promotedProducts;
+        $bestSeller=$promotedProducts;
+         //dd($promotedProducts);
+        return view('frontEnd.index')->with('categoryTree', $categoryTree)
+                                     ->with('cartContent', $cartContent)
+                                     ->with(['bestSeller'=>$bestSeller, 'newProducts'=>$newProducts, 'promotedProducts'=> $promotedProducts]);
         
     }
 
@@ -36,8 +45,26 @@ class FrontEndController extends Controller
 
 
 
-    public function singleProduct(){
+    public function singleProduct($id){
         return view('frontEnd.singleProduct');
+        
+    }
+
+
+
+    public function category($id){
+        return view('frontEnd.category')->with('id',$id);
+        
+    }
+
+
+    public function aboutUs(){
+        return view('frontEnd.aboutUs');
+        
+    }
+
+    public function contactUs(){
+        return view('frontEnd.contactUs');
         
     }
 

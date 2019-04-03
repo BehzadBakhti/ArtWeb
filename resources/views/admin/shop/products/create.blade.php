@@ -29,6 +29,10 @@
                     <label for="price">Price</label>
                     <input type="text" name="price" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label for="discount">Discount (%)</label>
+                    <input type="text" name="discount" class="form-control">
+                </div>
 
                 <div class="form-group">
                     <label for="stock">Stock</label>

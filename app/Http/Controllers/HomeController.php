@@ -18,8 +18,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+
     public function index()
     {
+        return view('admin.index');
+    }
+
+
+    public function blog()
+    {
         return view('admin.blog.home');
+    }
+
+    public function shop()
+    {
+        return view('admin.shop.shop');
     }
 }

@@ -32,27 +32,82 @@ Route::get('/blog/{slog}', [
     'as'=>'blog.post'
 ]);
 
-Route::get('/shop/{id}', [
+Route::get('/shop/product/{id}', [
     'uses'=>'FrontEndController@singleProduct',
     'as'=>'shop.product'
 ]);
 
+Route::get('/shop/category/{id}', [
+    'uses'=>'FrontEndController@category',
+    'as'=>'shop.category'
+]);
+
+Route::get('/about-us', [
+    'uses'=>'FrontEndController@aboutUs',
+    'as'=>'about_us'
+]);
+
+
+Route::get('/contact-us', [
+    'uses'=>'FrontEndController@contactUs',
+    'as'=>'contact_us'
+]);
+
+
+Route::get('/event/{category_id}', [
+    'uses'=>'FrontEndController@off-event',
+    'as'=>'event.off-event'
+]);
+
+Route::get('/cart', [
+    'uses'=>'CartController@index',
+    'as'=>'cart.index'
+]);
+
+Route::get('/cart/getContent', [
+    'uses'=>'CartController@getContent',
+    'as'=>'cart.getContent'
+]);
+
+Route::post('/cart/addToCart', [
+    'uses'=>'CartController@addToCart',
+    'as'=>'cart.addToCart'
+]);
+
+Route::post('/cart/removeFromCart', [
+    'uses'=>'CartController@removeFromCart',
+    'as'=>'cart.removeFromCart'
+]);
+
+
+
 Auth::routes();
 
-Route::get('/admin', function(){
-
-    return view('admin.index');
-
-});
 
 
+Route::group(["prefix"=>'admin', 'middleware'=>'auth'], function(){
+    Route::get('/blog/dashboard', [
+            'uses'=>'HomeController@blog',
+            'as'=>'home'
+        ]);
+
+
+        Route::get('/', [
+            'uses'=>'HomeController@index',
+            'as'=>'admin'
+        ]);
+
+        Route::get('/shop/dashboard', [
+            'uses'=>'HomeController@shop',
+            'as'=>'admin.shop'
+        ]);
+
+
+    });
 
 Route::group(["prefix"=>'admin/blog', 'middleware'=>'auth'], function(){
 
-    Route::get('/dashboard', [
-            'uses'=>'HomeController@index',
-            'as'=>'home'
-        ]);
+
 
          Route::get('/posts', [
             'uses'=>'PostsController@index',
@@ -158,10 +213,6 @@ Route::group(["prefix"=>'admin/blog', 'middleware'=>'auth'], function(){
 
 Route::group(["prefix"=>'admin/shop', 'middleware'=>'auth'], function(){
 
-    Route::get('/dashboard', [
-            'uses'=>'ShopHomeController@index',
-            'as'=>'admin.shop'
-        ]);
 
          Route::get('/products', [
             'uses'=>'ProductsController@index',
@@ -192,7 +243,41 @@ Route::group(["prefix"=>'admin/shop', 'middleware'=>'auth'], function(){
             'uses'=>'ProductsController@destroy',
             'as'=>'product.delete'
         ]);
+// EVENTS /////////////////////////////////
+        Route::get('/events', [
+            'uses'=>'EventsController@index',
+            'as'=>'admin.events'
+        ]);
 
+        Route::get('/event/create', [
+            'uses'=>'EventsController@create',
+            'as'=>'event.create'
+        ]);
+
+        Route::post('/event/store', [
+            'uses'=>'EventsController@store',
+            'as'=>'event.store'
+        ]);
+
+        Route::get('/event/edit/{id}', [
+            'uses'=>'EventsController@edit',
+            'as'=>'event.edit'
+        ]);
+
+        Route::post('/event/update/{id}', [
+            'uses'=>'EventsController@update',
+            'as'=>'event.update'
+        ]);
+
+        Route::get('/event/delete/{id}', [
+            'uses'=>'EventsController@destroy',
+            'as'=>'event.delete'
+        ]);
+
+
+
+
+//////////////////////////////////
 
 
         Route::get('/products/trashed', [

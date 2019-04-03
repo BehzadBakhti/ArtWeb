@@ -1075,7 +1075,7 @@ h2.product-title a:hover{
 	border-bottom: 0px solid #ddd;
 }
 .product-top-bar .nav-tabs li {
-	border-right: 1px solid #ccc;
+	border-right: 0px solid #ccc;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 20px;
@@ -1086,7 +1086,8 @@ h2.product-title a:hover{
 	border-right: 0px solid #ccc;
 }
 .product-top-bar .nav-tabs li a i{
-	border-right: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+
 	float: left;
 	font-size: 20px;
 	line-height: 51px;
@@ -1119,15 +1120,16 @@ h2.product-title a:hover{
 }
 .product-top-bar .nav-tabs > li > a {
 	border: 0px solid transparent;
-	border-radius: 0px 0px 0 0;
+	border-radius: 0px;
 }
 .product-top-bar .nav-tabs > li.active > a, .product-top-bar .nav-tabs > li.active > a:focus, .product-top-bar .nav-tabs > li.active > a:hover {
-	border:none;
-	background: #f4f4f4 none repeat scroll 0 0;
-	color: #404e53;
+	/* border-bottom:2 px; */
+	background: #ee00a3 none repeat scroll 0 0;
+	color: #ffffff;
 }
 .product-top-bar .nav-tabs a:hover{
-	color:#404e53;
+	background: #df0094 ;
+	color:#ffffff;
 }
 /*----------------------------------------
  7.  Single Banner Area

@@ -79,9 +79,9 @@
 						<div class="product-top-bar customize-tab-bar">
 							<!-- Tab Button -->
 							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#p-bestseller" data-toggle="tab"><i class="fa fa-pencil-square-o"></i>bestseller</a></li>
-								<li role="presentation"><a href="#p-new" data-toggle="tab"><i class="fa fa-star"></i>New Products</a></li>
-								<li role="presentation"><a href="#p-random" data-toggle="tab"><i class="fa fa-picture-o"></i>Random Products</a></li>
+								<li role="presentation" class="active"><a href="#p-bestseller" data-toggle="tab"><i class="fa fa-pencil-square-o"></i>پر فروشترین ها</a></li>
+								<li role="presentation"><a href="#p-new" data-toggle="tab"><i class="fa fa-star"></i>جدید ترین ها</a></li>
+								<li role="presentation"><a href="#p-random" data-toggle="tab"><i class="fa fa-picture-o"></i>محبوب ترین ها</a></li>
 							</ul><!-- End Tab Button -->
 						</div><!-- End Product Top Bar -->
 					</div>
@@ -96,245 +96,37 @@
 										<!-- Single Product Carousel-->
 										<div id="single-product-bestseller" class="owl-carousel">
 											<!-- Start Single Product Column-->
+
+											@foreach($bestSeller as $product)
 											<div class="col-md-3">
 												<div class="single-product">
 													<div class="single-product-img">
 														<a href="#">
-															<img class="primary-img" src="img/product/sp2.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp1.jpg" alt="product">
+															
+																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
+															
 														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
 													</div>
 													<div class="single-product-content">
 														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
+															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+															<p class="product-price">{{$product->price}}</p>
 														</div>
 														<div class="product-bottom-action">
 															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
+																<div class="action-button">																	
+																	<button  class="addItemToCart btn" type="button" product_id="$product->id" item="$product->name" price="$product->price"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
 																</div>
 																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
+																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp3.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp4.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price"><span>$205.00</span> $155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp1.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp5.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$167.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp6.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp19.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$333.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp7.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp8.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$80.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp9.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp6.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price"><span>$124.00</span> $134.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp1.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp2.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp10.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp8.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
+										@endforeach	
 										</div><!-- End Single Product Carousel-->
 									</div>
 								</div><!-- End Tab Pane One -->
@@ -344,245 +136,34 @@
 										<!-- Single Product Carousel-->
 										<div id="single-product-new" class="owl-carousel">
 											<!-- Start Single Product Column -->
-											<div class="col-md-3">
+											@foreach($newProducts as $product)
+											<div class="col-md-3" >
 												<div class="single-product">
 													<div class="single-product-img">
 														<a href="#">
-															<img class="primary-img" src="img/product/sp15.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp12.jpg" alt="product">
+																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
 														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
 													</div>
 													<div class="single-product-content">
 														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price"><span>$222.00</span> $143.00</p>
+															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+															<p class="product-price">{{$product->price}}</p>
 														</div>
 														<div class="product-bottom-action">
 															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
+																<div class="action-button">																	
+																	<button  class="addItemToCart btn" type="button" product_id="$product->id" item="$product->name" price="$product->price"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
 																</div>
 																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
+																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp13.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp7.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp17.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp16.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price"><span>$100.00</span> $70.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp11.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp12.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp16.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp17.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp18.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp18.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp1.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp2.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp19.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp20.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
+										@endforeach	
 										</div><!-- End Single Product Carousel-->
 									</div>
 								</div><!-- End Tab Pane Two -->
@@ -592,245 +173,34 @@
 										<!-- Single Product Carousel-->
 										<div id="single-product-random" class="owl-carousel">
 											<!-- Start Single Product Column -->
+											@foreach($promotedProducts as $product)
 											<div class="col-md-3">
 												<div class="single-product">
 													<div class="single-product-img">
 														<a href="#">
-															<img class="primary-img" src="img/product/sp20.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp21.jpg" alt="product">
+																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
 														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
 													</div>
 													<div class="single-product-content">
 														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
+															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+															<p class="product-price">{{$product->price}}</p>
 														</div>
 														<div class="product-bottom-action">
 															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
+																<div class="action-button">																	
+																	<button  class="addItemToCart btn" type="button" product_id="$product->id" item="$product->name" price="$product->price"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
 																</div>
 																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
+																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp17.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp11.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price"><span>$205.00</span> $155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp10.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp2.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp16.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp20.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price"><span>$80.00</span> $65.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp18.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp19.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp11.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp21.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-sale">Sale</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp1.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp2.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-											<!-- Start Single Product Column -->
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															<img class="primary-img" src="img/product/sp13.jpg" alt="product">
-															<img class="secondary-img" src="img/product/sp5.jpg" alt="product">
-														</a>
-														<div class="product-status">
-															<span class="product-new">New</span>
-														</div>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-															<p class="product-price">$155.00</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">
-																	<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
+										@endforeach	
 										</div><!-- End Single Product Carousel-->
 									</div>
 								</div><!-- End Tab Pane Three -->
