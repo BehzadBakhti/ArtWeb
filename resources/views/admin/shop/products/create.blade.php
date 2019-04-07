@@ -121,9 +121,14 @@
 
 <hr/>
                 <div class="form-group">
-                    <label for="detail">ِDescription</label>
+                    <label for="detail">Detail</label>
                    <textarea name="detail" id="detail" class="form-control"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="description">ِDescription</label>
+                   <textarea name="description" id="description" class="form-control"></textarea>
+                </div>
+<hr/>                
                 <div class="form-group">
                    <button type="submit" class="btn btn-success btn-sm"> Save Product</button>
                    <a href="{{route('admin.products')}}" class="btn btn-danger btn-sm"> Cancel</a> 

@@ -127,6 +127,7 @@
 		============================================ -->
 
 			@include('includes.javascripts.cart_manage')
+			@include('includes.javascripts.product_modal')
 		<!-- <script src="{{asset('js/cart_manage.js')}}"></script> -->
     </body>
 </html>

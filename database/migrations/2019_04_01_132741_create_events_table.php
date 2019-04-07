@@ -17,7 +17,7 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->string('event_title');
             $table->string('featured_image');
-            $table->string('link');
+            $table->bigInteger('category_id');
             $table->boolean('active');
             $table->text('detail');
             $table->timestamps();

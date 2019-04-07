@@ -10,16 +10,16 @@
 							<div class="modal-product">
 								<div class="product-images">
 									<div class="main-image images">
-										<img alt="product" src="img/product/sp2.jpg">
+										<img alt="product" id="modal_productImageLink"  src="img/product/sp2.jpg">
 									</div>
 								</div><!-- .product-images -->
 								
 								<div class="product-info">
-									<h1>Cras neque metus</h1>
+									<h1 id="modal_productName">Cras neque metus</h1>
 									<div class="price-box">
-										<p class="price"><span class="special-price"><span class="amount">$155.00</span></span></p>
+										<p class="price"><span class="special-price"><span class="amount" id="modal_productPrice">$155.00</span></span></p>
 									</div>
-									<a href="single-product.html" class="see-all">See all features</a>
+									<a id="modal_productLink" href="single-product.html" class="see-all">نمایش جزئیات کالا</a>
 									<div class="quick-add-to-cart">
 										<form method="post" class="cart">
 											<div class="add-to-box add-to-box2">
@@ -30,17 +30,18 @@
 													<input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty">
 													<input type="button" value="+" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" class="qty-increase">
 												</div>
-												<button class="btn" type="button"><span>Add to cart</span></button>
+												
+												<button id="modal_productAddToCartBtn" class="addItemToCart btn" type="button" product_id="" item="" price="" data-dismiss="modal"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
 											</div>
 										</div>
 										</form>
 									</div>
-									<div class="quick-desc">
+									<div id="modal_productDetail" class="quick-desc">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.
 									</div>
 									<div class="social-sharing">
 										<div class="widget widget_socialsharing_widget">
-											<h3 class="widget-title-modal">Share this product</h3>
+											<h3 class="widget-title-modal">به اشتراک بگذارید</h3>
 											<ul class="social-icons">
 												<li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
 												<li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>

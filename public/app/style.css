@@ -28,21 +28,6 @@
 	10. Fetured Product Area
 	11. Brand Logo Area
 	12. Footer Area
-	13. Home-2 Header Area
-		13.1. Home-2 Main Menu Area
-		13.2. Home-2 Slider Area
-		13.3. Home-2 Add Area
-		13.4. Home-2 Blog Post Area
-		13.5. Home-2 Support Area
-	14. Home-3 Header Area
-		14.1. Home-3 Main Menu Area
-		14.2. Home-3 Slider Text Area
-	15. Home-4 
-	15. Home-5 Page Header-area
-		15.1. Home-5 Main Menu Area
-		15.2. Home-5 Product Area
-		15.3. Home-5 Fotter Area
-	16. Home-6 Area
 	17. Shope Page
 		17.1. Shope Page  Breadcurb Area
 		17.2. Shope Layout
@@ -72,7 +57,14 @@
 /*----------------------------------------
   1.  Theme default CSS
 ----------------------------------------*/
-html, body {height: 100%;}
+@font-face {
+  font-family: Vazir;
+  src: url('fonts/Vazir.woff');
+}
+
+html, body {height: 100%;
+font-size: 13px;
+}
 .floatleft {float:left}
 .floatright {float:right}
 .alignleft {float:left;margin-right:15px;margin-bottom: 15px}
@@ -104,8 +96,8 @@ padding: 0
 .clear{clear:both}
 body {
 	color: #444;
-	font-family: "Montserrat",sans-serif;
-	font-size: 11px;
+	font-family: "Vazir", "Montserrat",sans-serif;
+	font-size: 13px;
 	text-align: left;
 	font-style: normal;
 	font-weight: 400;
@@ -114,7 +106,10 @@ body {
 /*----------------------------------------
   2.  Header Area CSS
 ----------------------------------------*/
-.header-area{}
+.header-area{
+
+	
+}
 .header-top-bar{}
 .header-top-inner{
 	border-bottom: 1px solid #e5e5e5;
@@ -156,10 +151,12 @@ body {
 	float: left;
 	margin-left: 35px;
 	text-align: left;
+
 }
 .header-link{
 	float:left;
 	margin-right:5px;
+	
 }
 .header-link p{
 	float:left;
@@ -174,7 +171,7 @@ body {
 }
 .header-link ul li a{
 	color: #696969;
-	font-size: 12px;
+	font-size: 13px;
 	padding-bottom: 10px;
 	padding-left: 5px;
 	display:block;
@@ -197,7 +194,7 @@ body {
 .header-link ul ul li a{
 	border-radius: 0;
 	display: block;
-	font-size: 11px;
+	font-size: 12px;
 	font-weight: normal;
 	height: inherit;
 	line-height: 11px;
@@ -231,7 +228,8 @@ body {
 }
 /* Header bottom */
 .header-bottom{
-	margin: 49px 0 40px;
+	margin: 30px 0px 0px 0px;
+
 }
 .header-search{
 	background: #f3f3f3 none repeat scroll 0 0;
@@ -276,14 +274,16 @@ body {
 .header-cart-area{
 	float: right;
 }
-.header-cart{}
+.header-cart{
+
+}
 .header-cart ul>li{
 	position:relative;
 }
 .header-cart ul>li>a{
 	color: #000;
 	display: block;
-	font-size: 11px;
+	font-size: 12px;
 	position: relative;
 }
 .header-cart ul>li>a>i{
@@ -295,7 +295,7 @@ body {
 }
 .header-cart span.my-cart{
 	color: #252525;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 12px;
 	font-weight: 700;
 	padding: 18px 15px 19px;
@@ -416,11 +416,15 @@ body {
 /*----------------------------------------
   3.  Main Menu Area
 ----------------------------------------*/
-.main-menu-area{}
+.main-menu-area{
+	direction: rtl;
+}
 .main-menu{
 	border-top: 1px solid #e5e5e5;
 	clear: both;
 	z-index: 10;
+	
+	
 }
 .main-menu nav{}
 .main-menu nav .main-ul{
@@ -434,7 +438,7 @@ body {
 .main-menu nav .main-ul>li>a{
 	color: #404e53;
 	display: inline-block;
-	font-family: Montserrat;
+	font-family: "Vazir",Montserrat;
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 30px;
@@ -451,6 +455,7 @@ body {
 	position: absolute;
 	right: -2px;
 	top: 30%;
+	
 }
 .main-menu nav .main-ul> li> a.new-arrivals:after{
 	border-right: 0px solid #e5e5e5;
@@ -510,7 +515,7 @@ body {
 	width: 182px;
 }
 .main-menu nav .main-ul .sub-menu>li>a{
-	text-align:left;
+	text-align:right;
 }
 .main-menu nav .main-ul .sub-menu>li>a{
 	display:block;
@@ -518,8 +523,11 @@ body {
 	text-transform:capitalize;
 	font-size:12px;
 }
+
 .main-menu nav .main-ul .mega-menu-ul{
 	position:absolute;
+	float: right;
+	
 	top:100%;
 	right:0px;
 	transform: scaleY(0);
@@ -529,11 +537,7 @@ body {
 .main-menu nav .main-ul .small-megamenu-li{
 	position:relative;
 }
-.main-menu nav .main-ul .mega-menu-ul-two{
-	position:absolute;
-	left:0;
-	top:100%;
-}
+
 .main-menu nav .main-ul ul{
 	background:#fff;
 	z-index:555;
@@ -545,8 +549,8 @@ body {
 	transform: scaleY(1);
 }
 .main-menu nav .main-ul .mega-menu-ul>li{
-	float:left;
-	text-align:left;
+	float:right;
+	text-align:right;
 	box-shadow: 1px 1px 3px #666;
 }
 .main-menu nav .main-ul .mega-menu-ul>li .mega-menu{
@@ -554,13 +558,10 @@ body {
 	padding:20px;
 	overflow:hidden;
 }
-.main-menu nav .main-ul  .mega-menu-ul>li .mega-menu-two{
-	width:680px;
-	overflow:hidden;
-	background:#fff;
-}
+
 .main-menu nav .main-ul .mega-menu-ul>li .mega-menu .single-mega-menu{
-	float:left;
+	float:right;
+	direction: rtl;
 	width:200px;
 	margin-right:20px;
 }
@@ -572,7 +573,7 @@ body {
 }
 .main-menu nav .main-ul .mega-menu-ul>li .mega-menu .single-mega-menu h2>a{
 	color: #404e53 !important;
-	font-family: Montserrat;
+	font-family: "Vazir", Montserrat;
 	font-size: 12px;
 	font-weight: 700;
 	line-height: 17px;
@@ -636,20 +637,25 @@ body {
 /*----------------------------------------
   4.  Main Slider Area
 ----------------------------------------*/
-.main-slider-area{}
-.main-slider{}
+
 .slide-text{
-	float: left;
+	float: right;
 	height: 100%;
 	width: 50%;
 	display:table;
-	margin-top:13%;
+
 	text-align:center;
 	margin-left:15%;
 }
 .main-slider .slide-text{
-	text-transform:uppercase;
+	/* text-transform:uppercase; */
 }
+
+.main-slider a {
+
+	z-index: 9999999;
+}
+
 .main-slider .slide-text h2{
 	background: rgba(0, 0, 0, 0) url("img/slider/tile1.png") no-repeat scroll 50% 100%;
 	display: block;
@@ -662,14 +668,14 @@ body {
 	font-size: 20px;
 	letter-spacing: 2px;
 	margin-top: 10px;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	margin-bottom: 25px;
 }
 .main-slider .slide-text h1{
 	border: 1px solid #fff;
-	font-family: inherit;
+	/* font-family: inherit; */
 	font-size: 90px;
-	letter-spacing: 10px;
+	/* letter-spacing: 10px; */
 	line-height: 90px;
 	padding: 0 15px;
 }
@@ -677,14 +683,14 @@ body {
 	background: #fff none repeat scroll 0 0;
 	color: #404e53;
 	display: inline-block;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 14px;
 	font-weight: bold;
 	overflow: hidden;
-	padding: 11px;
+	padding: 5px;
 	position: relative;
 	text-transform: uppercase;
-	top: 10px;
+	
 }
 .main-slider .slide-text a:hover{
 	background:#EEB742;
@@ -951,7 +957,7 @@ h2.product-title a{
 }
 p.product-price{
 	color: #ed4f50;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 18px;
 	margin: 10px 0 5px;
 }
@@ -982,7 +988,7 @@ p.product-price span{
 	border-radius: 25px;
 	color: #7d7d7d;
 	display: block;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 10px;
 	font-weight: 700;
 	height: 42px;
@@ -1176,8 +1182,10 @@ h2.product-title a:hover{
 }
 .brand-products .owl-buttons{
 	position: absolute;
-	right: 15px;
-	top: -82px;
+	left: 15px;
+	top: -79px;
+	float: right;
+
 }
 .brand-product-shoes{}
 .products-head{
@@ -1187,32 +1195,37 @@ h2.product-title a:hover{
 }
 .products-head-title{
 	background: #f4f4f4 none repeat scroll 0 0;
-	float: left;
+	float: right;
 	height: 50px;
 }
 .products-head .products-head-title i{
-	border-right: 1px solid #e5e5e5;
-	float: left;
+	border-left: 1px solid #e5e5e5;
+	float: right;
 	font-size: 20px;
 	line-height: 51px;
-	margin-right: 15px;
+	margin-left: 15px;
 	padding-left: 15px;
 	padding-right: 15px;
 }
 .products-head .products-head-title h2{
-	border-right: 1px solid #ccc;
+	border-left: 1px solid #e5e5e5;
 	display: inline-block;
 	font-size: 20px;
 	height: 51px;
-	padding: 15px 15px 0 0;
+	padding: 15px  0 0 15px;
 	text-transform: uppercase;
 	margin-bottom: 0px;
 }
 .product-brand-shoes{}
-#product-brand-shoes .col-md-6{
+#product-brand-new .col-md-6{
 	width:100%;
 }
-#product-brand-bag .col-md-6{
+
+#product-brand-fav .col-md-6{
+	width:100%;
+}
+
+#product-brand-seller .col-md-6{
 	width:100%;
 }
 /*----------------------------------------
@@ -1538,35 +1551,10 @@ h2.product-title a:hover{
 /*----------------------------------------
   13.  Home-2 Header Area
 ----------------------------------------*/
-.home-2-header-area .header-search input[type="text"] {
-  height: 44px;
-}
-.home-2-header-area .header-search button {
-  height: 44px;
-}
-.home-2-header-area .header-cart ul > li > a > i {
-  padding: 10px 13px;
-}
-.home-2-header-area .header-cart span.badge {
-  left: 38px;
-  top: -6px;
-}
+
 /*----------------------------------------
   13.1.  Home-2 Main Menu Area
 ----------------------------------------*/
-.home-2-main-menu-area .main-menu nav .main-ul {
-	background: #404e53;
-}
-.home-2-main-menu-area .main-menu{
-	border: medium none;
-	margin-bottom: 30px;
-}
-.home-2-main-menu-area .main-menu nav .main-ul > li > a {
-  color: #fff;
-}
-.home-2-main-menu-area .main-menu nav .main-ul > li > a::after {
-  border-right: 2px solid #536065;
-}
 /*----------------------------------------
   13.2.  Home-2 Slider Area
 ----------------------------------------*/
@@ -1582,43 +1570,9 @@ h2.product-title a:hover{
   color: #fff;
   background:#7E878C;
 }
-.home-2-main-slider-area .slide-text {
-  display: table;
-  float: left;
-  height: 100%;
-  margin-left: 6%;
-  margin-top: 17.5%;
-  text-align: center;
-  width: 58%;
-}
 .entire-home-main-slider .main-slider .slide-text a {
 	padding:18px;
 	top: 10px;
-}
-.home-2-main-slider-area .slide-text-2{
-	float: right;
-	margin-right: -8%;
-	margin-top: 25%;
-}
-.home-2-main-slider-area .main-slider .slide-text-2 h1 {
-  border: none;
-  font-size: 30px;
-  letter-spacing: 8px;
-  line-height: 40px;
-  font-weight:800;
-  color:#414141;
-}
-.home-2-main-slider-area .main-slider .slide-text-2 p {
-	color: #ae996e;
-	font-size: 14px !important;
-	letter-spacing: 0px !important;
-	margin-top: 15px;
-}
-/*----------------------------------------
-  13.3.  Home-2 Add Area
-----------------------------------------*/
-.home-2-add-area{
-	margin-bottom:20px;
 }
 .about-add-img-top{
 	margin-bottom:9.5px;
@@ -1626,7 +1580,9 @@ h2.product-title a:hover{
 /*----------------------------------------
   13.4.  Home-2 Blog Post Area
 ----------------------------------------*/
-.blog-post-item-area{}
+.blog-post-item-area{
+	
+}
 .blog-post-inner-item{}
 .blog-post-single-item{
 	overflow:hidden;
@@ -1648,7 +1604,7 @@ h2.product-title a:hover{
 }
 .blog-post-area .single-item-content h2 a{
 	color: #222;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 16px;
 	margin-top: 0;
 	display: block;
@@ -1699,9 +1655,7 @@ h2.product-title a:hover{
 /*----------------------------------------
   14.  Home-3 Header Area
 ----------------------------------------*/
-.another-home-header-bottom{
-	margin: 30px 0 30px;
-}
+
 .heder-bottom-left{}
 .heder-bottom-left .header-logo{
 	float: left;
@@ -1715,7 +1669,7 @@ h2.product-title a:hover{
 	width: 40%;
 }
 .header-search-cart-area .header-search input{
-	font-size: 11px;
+	font-size: 12px;
 	height: 35px;
 	line-height: 35px;
 	margin: 0;
@@ -1739,59 +1693,6 @@ h2.product-title a:hover{
 /*----------------------------------------
   14.1.  Home-3 Main Menu Area
 ----------------------------------------*/
-.another-home-mainmenu-area .main-menu nav .main-ul > li > a {
-  padding: 20px 28px;
-}
-.another-home-mainmenu-area .main-menu {
-  margin-top:30px;
-}
-.another-home-mainmenu-area .main-menu nav .main-ul {
-  text-align: left;
-}
-.another-home-mainmenu-area .main-menu nav .main-ul .mega-menu-ul > li .mega-menu {
-  width: 840px;
-}
-.another-home-mainmenu-area .main-menu nav .main-ul .mega-menu-ul > li .mega-menu .single-mega-menu {
-  width: 185px;
-}
-.another-home-mainmenu-area .main-menu nav .main-ul .mega-menu-ul {
-  right: 7px;
-}
-.another-home-mainmenu-area .main-menu nav .main-ul .mega-menu-ul > li .mega-menu-two {
-  width: 635px;
-}
-.another-home-mainmenu-area .main-menu nav .main-ul .mega-menu-ul-two {
-	left: -100px;
-}
-/*----------------------------------------
-  14.2.  Home-3 Slider Text Area
-----------------------------------------*/
-.home-3-main-slaider-area .slide-text {
-  display: table;
-  float: left;
-  height: 100%;
-  margin-left: 0;
-  margin-top: 18%;
-  text-align: center;
-  width: 100%;
-}
-.home-3-main-slaider-area .main-slider .slide-text h1 {
-  font-size: 60px;
-  display:inline-block;
-  letter-spacing: 20px;
-  font-weight:600;
-  line-height: 80px;
-}
-.home-3-main-slaider-area .main-slider .slide-text p{
-  font-size: 16px;
-  letter-spacing: 4px;
-}
-.home-3-main-slaider-area .main-slider-bottom-banner{
-	margin-top:30px;
-}
-.home-3-main-slaider-area .right-slider-bottom-banner{
-	margin-top:31px;
-}
 /*----------------------------------------
   15. Home-4 
 ----------------------------------------*/
@@ -1837,25 +1738,32 @@ h2.product-title a:hover{
 .home-4-blog-post-area{
 	margin-top:60px;
 }
+
+.strokeme {
+
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 .home-4-main-slaider-area .slide-text {
   display: table;
   float: left;
   height: 100%;
-  margin-left: 0;
-  margin-top: 12%;
+	margin-left: 0;
+	
+  margin-top: 15%;
   text-align: center;
   width: 100%;
 }
 .home-4-main-slaider-area .main-slider .slide-text h1 {
   font-size: 60px;
   display:inline-block;
-  letter-spacing: 20px;
-  font-weight:600;
+  /* letter-spacing: 20px; */
+  font-weight:700;
   line-height: 80px;
 }
 .home-4-main-slaider-area .main-slider .slide-text p{
   font-size: 16px;
-  letter-spacing: 4px;
+  
 }
 .home-4-main-slaider-area .main-slider-bottom-banner{
 	margin-top:30px;
@@ -1863,201 +1771,6 @@ h2.product-title a:hover{
 .home-4-header-area .header-cart ul > li:hover > a > i {
   background: #EEB742 none repeat scroll 0 0;
   color: #fff;
-}
-/*----------------------------------------
-  15. Home-5 Page Header-area
-----------------------------------------*/
-.wrraper{
-	padding-left: 270px;
-}
-.wrraper .container{
-	width: 97%;
-}
-.home-5-area .header-area{
-	background: #404e53 none repeat scroll 0 0;
-	display: block;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 270px;
-	z-index: 9997;
-}
-.home-5-area .header-area .header-logo{
-	padding: 20px 0;
-	text-align: center;
-	text-decoration: none !important;
-}
-.home-5-area .header-search {
-  background: #536065 none repeat scroll 0 0;
-  width: 100%;
-}
-.home-5-area .header-search input[type="text"] {
-  background: #536065;
-  height: 47px;
-  line-height: 47px;
-  width: 100%;
-}
-.home-5-area .header-search button {
-  background: #536065 none repeat scroll 0 0;
-  height: 47px;
-  color: #fff;
-}
-.home-5-area .header-search button:hover{
-  background: #ED4F50 none repeat scroll 0 0;
-}
-.home-5-area .header-social-icon {
-  text-align: center;
-}
-.home-5-area .header-social-icon ul li {
-	display: inline-block;
-	float: none;
-	padding-left: 0;
-}
-.home-5-area .header-social-icon ul li a {
-  color: #fff;
-  display: inline-block;
-  font-size: 16px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  padding-top: 11px;
-  text-transform: capitalize;
-}
-.home-5-area .header-social-icon ul li a {
-  display: inline-block;
-  font-size: 16px;
-  padding: 15px 5px;
-  text-transform: capitalize;
-}
-.home-5-area .header-social-icon ul li:hover a{
-  color: #7e7e7e;
-}
-.home-5-area .header-link-area{
-	border:1px solid #fff;
-	float: left;
-	margin-left: 23px;
-	text-align: left;
-}
-.home-5-area .header-link ul>li>a {
-  color: #afafaf;
-  padding: 20px;
-}
-.home-5-area .header-link ul ul {
-  left: 0;
-  min-width: 114px;
-  bottom:100%;
-}
-.home-5-area .header-link ul ul >li>a{
-  left: 0;
-  padding: 10px;
-}
-.home-5-area .header-cart-area {
-  background: #ec4445 none repeat scroll 0 0;
-  float: left;
-  margin-top: 20px;
-  width: 100%;
-}
-.home-5-area .header-cart ul > li > a > i {
-  background: #EC4445 none repeat scroll 0 0;
-  border-radius: 0;
-  border-right: 1px solid rgba(241, 241, 241, 0.51);
-  color: #fff;
-}
-.home-5-area .header-cart ul > li > a:hover i {
-  background: #eeb742 none repeat scroll 0 0;
-}
-.home-5-area .header-cart span.my-cart {
-  color: #fff;
-}
-.home-5-area .header-cart ul ul {
-	bottom:0;
-	display:none;
-	right: -100%;
-}
-.home-5-area .header-cart ul>li:hover>ul{
-	display:block;
-}
-/*----------------------------------------
-  15.1. Home-5 Main Menu Area
-----------------------------------------*/
-.home-5-main-menu-area .main-menu {
-	border-top: 1px solid #536065;
-	padding: 15px 0 20px;
-}
-.home-5-main-menu-area .main-menu nav .main-ul {
-  text-align: left;
-}
-.home-5-main-menu-area .main-menu nav .main-ul .mega-menu-ul > li {
-  box-shadow: none;
-  border: 1px solid #e5e5e5;
-}
-.home-5-main-menu-area .main-menu nav .main-ul > li {
-	position:relative;
-	display: block;
-	float: none;
-	padding-right:0px;
-}
-.home-5-main-menu-area .main-menu nav .main-ul > li > a:after {
-  border-right:none;
-  float:left;
-}
-.home-5-main-menu-area .main-menu nav .main-ul > li > a {
-  padding: 2px 20px;
-}
-.home-5-main-menu-area .main-menu nav .main-ul > li > a {
-  display: block;
-  color:#fff;
-}
-.home-5-main-menu-area .main-menu nav .main-ul > li > a > i{
-	float: right;
-	padding: 9px 0;
-}
-.home-5-main-menu-area .main-menu nav .main-ul .sub-menu {
-	box-shadow: none;
-	border: 1px solid #e5e5e5;
-	left: 100%;
-	top: 0;
-	display:none;
-}
-.home-5-main-menu-area .main-menu nav .main-ul .mega-menu-ul {
-	display:none;
-	left: 100%;
-	top: 0;
-	background:#fff;
-}
-.home-5-main-menu-area .main-menu nav .main-ul li:hover .mega-menu-ul, .home-5-main-menu-area .main-menu nav .main-ul li:hover .sub-menu {
-	display:block;
-}
-.home-5-main-menu-area .main-menu nav .main-ul .mega-menu-ul > li .mega-menu {
-  background: #fff none repeat scroll 0 0;
-}
-.home-5-main-menu-area .main-menu nav .main-ul > li:hover > a, .home-5-main-menu-area .main-menu nav ul > li > a.active {
-	background: #EBEBEB none repeat scroll 0 0;
-	color: #EC4445;
-}
-/*----------------------------------------
-  15.2. Home-5 Product Area
-----------------------------------------*/
-.home-5-area .single-product .action-button {
-	width: 100%;
-}
-.home-5-area .single-product .action-view{
-	width: 100%;
-}
-/*----------------------------------------
-  15.3. Home-5 Fotter Area
-----------------------------------------*/
-.home-5-area .footer-newsletter input {
-  width: 450px;
-}
-.home-5-area .footer-newsletter:after{
-	width: 100%;
-}
-/*----------------------------------------
-  16. Home-6 Area
-----------------------------------------*/
-.home-6-header-bottom{
-	margin-bottom:0;
 }
 .baner-area{}
 .banner{
@@ -2101,7 +1814,7 @@ h2.product-title a:hover{
 	border: 1px solid #fff;
 	color: #404e53;
 	display: inline-block;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 14px;
 	font-weight: bold;
 	margin-top: 25px;
@@ -2113,30 +1826,6 @@ h2.product-title a:hover{
 	background: #eeb742 none repeat scroll 0 0;
 	border-color: #eeb742;
 	color: #fff;
-}
-.home-6-footer-area{
-	background:#333333;
-}
-.home-6-footer-area .footer-newsletter h2, .home-6-footer-area .footer-payment h2, .home-6-footer-area .single-information-link h2 {
-  color: #fff;
-}
-.home-6-footer-area .copyright{
-	border-top: 1px solid #484848;
-}
-.home-6-footer-area .footer-left {
-  border-right: 1px solid #484848;
-}
-.home-6-footer-area .footer-newsletter:after {
-  border-bottom: 1px solid #484848;
-}
-.home-6-footer-area .footer-static-content p {
-  color: #ADADAD;
-}
-.home-6-footer-area .single-information-link ul li a {
-  color: #ADADAD;
-}
-.home-6-footer-area .single-information-link ul li a:hover{
-  color: #EC4445;
 }
 /*----------------------------------------
   17. Shope Page
@@ -2208,7 +1897,7 @@ h2.product-title a:hover{
 	line-height: 29px;
 	text-transform: capitalize;
 	line-height: 40px;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-weight: 700;
 }
 .shop-layout-area .layout-list ul>li>a>i{
@@ -2293,7 +1982,7 @@ h2.product-title a:hover{
 	line-height: 45px;
 	padding: 0;
 	color: #252525;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 16px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -2335,7 +2024,7 @@ h2.product-title a:hover{
 .product-tab-area .tab-bar{
 	border-top: 1px solid #c2c2c2;
 	color: #000;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 12px;
 	font-weight: 400;
 	margin: 30px 0 10px;
@@ -2712,7 +2401,7 @@ h2.product-title a:hover{
 	border-radius: 25px;
 	color: #fff;
 	display: block;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 12px;
 	font-weight: 700;
 	margin-left: 10px;
@@ -2742,7 +2431,7 @@ h2.product-title a:hover{
 }
 .product-select  h2 sup{
 	color: #ec4445;
-	font-size: 11px;
+	font-size: 12px;
 	position: absolute;
 	top: 5px;
 }
@@ -2793,7 +2482,7 @@ h2.product-title a:hover{
 	padding: 0;
 	width: 100%;
 	color: #252525;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 16px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -2906,13 +2595,13 @@ h2.product-title a:hover{
 }
 .porduct-rev-right-form label{
 	color: #666;
-	font-size: 11px;
+	font-size: 12px;
 	font-weight: normal;
 	position:relative;
 }
 .porduct-rev-right-form label sup{
 	color: #ec4445;
-	font-size: 11px;
+	font-size: 12px;
 	position: absolute;
 	right: -8px;
 	top: 8px;
@@ -3136,13 +2825,13 @@ h2.product-title a:hover{
 }
 .calculate-shipping h3{
 	color: #666;
-	font-size: 11px;
+	font-size: 12px;
 	font-weight: 700;
 	position: relative;
 }
 .calculate-shipping h3 sup{
 	color: #ec4445;
-	font-size: 11px;
+	font-size: 12px;
 	position: absolute;
 	top: 5px;
 }
@@ -3177,7 +2866,7 @@ h2.product-title a:hover{
 	background: #eeeeee none repeat scroll 0 0;
 	color: #7d7d7d;
 	display: block;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 10px;
 	font-weight: 700;
 	text-align: center;
@@ -3339,7 +3028,7 @@ h2.product-title a:hover{
 	color: #7d7d7d;
 	display: block;
 	float: right;
-	font-family: Montserrat;
+	font-family:"Vazir", Montserrat;
 	font-size: 10px;
 	font-weight: 700;
 	margin-left: 10px;
@@ -3359,13 +3048,13 @@ h2.product-title a:hover{
 }
 .account-form label {
   color: #666;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: normal;
   position: relative;
 }
 .account-form label sup {
   color: #ec4445;
-  font-size: 11px;
+  font-size: 12px;
   position: absolute;
   right: -8px;
   top: 8px;
@@ -3378,12 +3067,12 @@ h2.product-title a:hover{
 }
 .reauired-fields{
 	color: #666;
-	font-size: 11px;
+	font-size: 12px;
 	font-weight: normal;
 	position: relative;
 }
 .reauired-fields sup {
-  font-size: 11px;
+  font-size: 12px;
   position: absolute;
   left: -8px;
   top: 8px;
@@ -3421,7 +3110,7 @@ h1.entry-title{
   color: #EEB742;
   content: "";
   display: inline-block;
-  font-family: fontawesome;
+  font-family:"Vazir", fontawesome;
   left: 1.5em;
   position: absolute;
   top: 1em;
@@ -3470,7 +3159,7 @@ h1.entry-title{
   color: #fff;
   display: inline-block;
   float: left;
-  font-family: Montserrat,Arial,Helvetica,sans-serif;
+  font-family:"Vazir", Montserrat,Arial,Helvetica,sans-serif;
   font-size: 12px;
   font-weight: 700;
   height: 40px;
@@ -3526,7 +3215,7 @@ position: relative;}
 .country-select label,.checkout-form-list label{
 	color: #333;
 	display: block;
-	font-family: Montserrat,Arial,Helvetica,sans-serif;
+	font-family:"Vazir", Montserrat,Arial,Helvetica,sans-serif;
 	font-size: 13px;
 	margin: 0 0 5px;
 }
@@ -3541,7 +3230,7 @@ position: relative;}
 .country-select:before {
   content: "";
   display: inline-block;
-  font-family: fontawesome;
+  font-family:"Vazir", fontawesome;
   font-size: 20px;
   position: absolute;
   right: 12px;
@@ -3607,7 +3296,7 @@ top: 2px;}
 }
 .your-order-table table th{
 	border-top: medium none;
-	font-family: Montserrat,Arial,Helvetica,sans-serif;
+	font-family:"Vazir", Montserrat,Arial,Helvetica,sans-serif;
 	font-weight: normal;
 	text-align: center;
 	text-transform: uppercase;
@@ -3645,7 +3334,7 @@ font-size: 18px;}
 }
 .payment-accordion h3 a:before,.payment-accordion h3.open a:after{content: "";
 	display: inline-block;
-	font-family: fontawesome;
+	font-family:"Vazir", fontawesome;
 	font-size: 20px;
 	left: 0;
 	position: absolute;
@@ -3699,7 +3388,7 @@ font-size: 18px;}
 }
 .recent-posts .post-info .post-date.recent-post-s, .recent-comments .post-info .post-date.recent-post-s {
   color: #7e7e7e;
-  font-size: 11px;
+  font-size: 12px;
   font-style:italic;
 }
 .recent-posts ul li, .recent-comments ul li {
@@ -3728,13 +3417,13 @@ font-size: 18px;}
 .blog-post-area .single-item-content h2 a {
   color: #222;
   display: block;
-  font-family: Montserrat;
+  font-family:"Vazir", Montserrat;
   font-size: 16px;
   line-height: 22px;
   margin-top: 0;
 }
 .main-blog-page.blog-post-area .single-item-content h3 {
-  font-size: 11px;
+  font-size: 12px;
   font-style: italic;
   margin: 0;
   padding: 5px 0 15px;
@@ -3750,7 +3439,7 @@ font-size: 18px;}
 }
 .main-blog-page .blog-action h4 {
   float: left;
-  font-size: 11px;
+  font-size: 12px;
   font-style: italic;
   margin: 5px 0 10px 10px;
 }
@@ -3869,7 +3558,7 @@ font-size: 18px;}
 .modal-product .product-info .price-box p { margin: 0 }
 .modal-product .product-info .price-box .special-price {
 	color: #ec4445;
-	font-family: "Raleway",sans-serif;
+	font-family:"Vazir", "Raleway",sans-serif;
 	font-size: 24px;
 	font-weight: 400;
 }
@@ -4012,7 +3701,7 @@ h3.widget-title-modal{
   border-radius: 25px;
   color: #fff;
   display: block;
-  font-family: Montserrat;
+  font-family:"Vazir", Montserrat;
   font-size: 12px;
   font-weight: 700;
   margin-left: 10px;

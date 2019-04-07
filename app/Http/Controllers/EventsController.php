@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Event;
+use App\Model\ProductCategory;
 use Illuminate\Http\Request;
 use Session;
 
@@ -26,8 +27,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-
-        return view('admin.shop.events.create');
+        $categories=ProductCategory::all();
+        return view('admin.shop.events.create')->with('categories',$categories);
     }
 
     /**
@@ -41,7 +42,7 @@ class EventsController extends Controller
         $this->validate($request,[
                 'event_title'=>'required|max:255',
                 'featured_image'=>'required|max:255',
-                'link'=>'required|max:255',
+                
                 'detail'=>'required' 
             ]); 
 
@@ -53,7 +54,7 @@ class EventsController extends Controller
             $event= Event::create([
                 'event_title'=>$request->event_title,
                 'featured_image'=>'uploads/events/'.$featuredNewName,
-                'link'=>$request->link,
+                'category_id'=>$request->category_id,
                 'detail'=>$request->detail,
                 'active'=> $request->active==1?1:0,
  
@@ -80,9 +81,11 @@ class EventsController extends Controller
     {
 
        $event=Event::find($id);
+       $categories=ProductCategory::all();
 
       // dd($event);
-        return view('admin.shop.events.edit')->with('event',$event);
+        return view('admin.shop.events.edit')->with('event',$event)
+                                             ->with('categories',$categories);
     }
 
   
@@ -94,8 +97,7 @@ class EventsController extends Controller
         $this->validate($request,[
             'event_title'=>'required|max:255',
          
-            'link'=>'required|max:255',
-            'detail'=>'required' 
+             'detail'=>'required' 
         ]); 
 
 
@@ -113,7 +115,7 @@ class EventsController extends Controller
 
         $event->update([
             'event_title'=>$request->event_title,
-            'link'=>$request->link,
+            'category_id'=>$request->category_id,
             'detail'=>$request->detail,
             'active'=> $request->active==1?1:0,
 

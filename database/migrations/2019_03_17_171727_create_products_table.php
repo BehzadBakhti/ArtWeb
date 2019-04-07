@@ -17,9 +17,11 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('detail');
+            $table->text('description');
             $table->string('dimension');
             $table->string('material');
-            $table->integer('product_category_id');
+            $table->bigInteger('product_category_id')->unsigned()->index();
+            $table->foreign('product_category_id')->references('id')->on('product_categories');
             $table->bigInteger('defult_img_id')->nullable();
             $table->integer('stock');
             $table->double('price');

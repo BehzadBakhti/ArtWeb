@@ -9,39 +9,33 @@
 						<div class="main-slider">
 							<div class="slider">
 								<div id="mainSlider" class="nivoSlider slider-image">
-									<img src="img/slider/slider7.jpg" alt="main slider" title="#htmlcaption1"/>
-									<img src="img/slider/slider8.jpg" alt="main slider" title="#htmlcaption2"/>
+
+									@for( $i=0; $i < sizeof($events); $i++)
+									<img src="{{$events[$i]->featured_image}}" alt="main slider" title="#htmlcaption{{$i+1}}"/>
+									
+									@endfor
 								</div>
 								<!-- Slider Caption One -->
-								<div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
-									<div class="slider-progress"></div>									
-									<div class="slide-text">
-										<div class="middle-text">
-											<div class="cap-dec">
-												<h1 class="cap-dec wow zoomInRight" data-wow-duration="1.1s" data-wow-delay="0s">Huge sale</h1>
-												<p class="cap-dec wow zoomInRight" data-wow-duration="1.3s" data-wow-delay="0s"> up to 70% off Fahion collection Shop now</p>
-											</div>	
-											<div class="cap-readmore wow zoomInRight" data-wow-duration=".9s" data-wow-delay=".5s">
-												<a href="#">Shop Now</a>
-											</div>	
-										</div>	
-									</div>
-								</div>
-								<!-- Slider Caption Two -->
-								<div id="htmlcaption2" class="nivo-html-caption slider-caption-2">
-									<div class="slider-progress"></div>					
-									<div class="slide-text slide-text-2">
-										<div class="middle-text">
-											<div class="cap-dec">
-												<h1 class="wow zoomInUp" data-wow-duration="1.1s" data-wow-delay="0s">Huge sale</h1>
-												<p class="wow zoomInUp" data-wow-duration="1.3s" data-wow-delay="0s"> up to 70% off Fahion collection Shop now</p>
-											</div>	
-											<div class="cap-readmore wow zoomInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
-												<a href="#">Shop Now</a>
-											</div>	
-										</div>	
-									</div>
-								</div>
+
+
+								@for( $i=0; $i < sizeof($events); $i++)
+										<div id="htmlcaption{{$i+1}}" class="nivo-html-caption slider-caption-{{$i+1}}">
+											<div class="slider-progress"></div>									
+											<div class="slide-text">
+												<div class="middle-text">
+													<div class="cap-dec">
+														<h1 class="cap-dec wow fadeIn strokeme" data-wow-duration="1.1s" data-wow-delay="0s">{{$events[$i]->event_title}}</h1>
+														<p class="cap-dec wow fadeIn strokeme" data-wow-duration="1.1s" data-wow-delay="0.2s"> {{$events[$i]->detail}}</p>
+													</div>	
+													
+														<a href='{{route("index")."/event/".$events[$i]->category_id}}'>Shop Now</a>
+														
+												</div>	
+											</div>
+										</div>
+								@endfor
+								
+							
 							</div>
 						</div><!-- End Main Slider -->
 					</div>
@@ -71,405 +65,224 @@
 			</div>
 		</div><!-- End Main Slider Area -->		
 		<!-- Product area -->
-		<div class="product-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<!-- Product Top Bar -->
-						<div class="product-top-bar customize-tab-bar">
-							<!-- Tab Button -->
-							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#p-bestseller" data-toggle="tab"><i class="fa fa-pencil-square-o"></i>پر فروشترین ها</a></li>
-								<li role="presentation"><a href="#p-new" data-toggle="tab"><i class="fa fa-star"></i>جدید ترین ها</a></li>
-								<li role="presentation"><a href="#p-random" data-toggle="tab"><i class="fa fa-picture-o"></i>محبوب ترین ها</a></li>
-							</ul><!-- End Tab Button -->
-						</div><!-- End Product Top Bar -->
-					</div>
-					<div class="col-md-12">
-						<!-- Single Product area -->
-						<div class="single-product-area c-carousel-button">	
-							<!-- Tab Content -->
-							<div class="tab-content">
-								<!-- Tab Pane One -->
-								<div class="tab-pane active" id="p-bestseller">
-									<div class="row">
-										<!-- Single Product Carousel-->
-										<div id="single-product-bestseller" class="owl-carousel">
-											<!-- Start Single Product Column-->
 
-											@foreach($bestSeller as $product)
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-															
-																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
-																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
-															
-														</a>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
-															<p class="product-price">{{$product->price}}</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">																	
-																	<button  class="addItemToCart btn" type="button" product_id="$product->id" item="$product->name" price="$product->price"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-										@endforeach	
-										</div><!-- End Single Product Carousel-->
-									</div>
-								</div><!-- End Tab Pane One -->
-								<!-- Tab Pane Two -->
-								<div class="tab-pane" id="p-new">
-									<div class="row">
-										<!-- Single Product Carousel-->
-										<div id="single-product-new" class="owl-carousel">
-											<!-- Start Single Product Column -->
-											@foreach($newProducts as $product)
-											<div class="col-md-3" >
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
-																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
-														</a>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
-															<p class="product-price">{{$product->price}}</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">																	
-																	<button  class="addItemToCart btn" type="button" product_id="$product->id" item="$product->name" price="$product->price"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-										@endforeach	
-										</div><!-- End Single Product Carousel-->
-									</div>
-								</div><!-- End Tab Pane Two -->
-								<!-- Tab Pane Three -->
-								<div role="tabpanel" class="tab-pane" id="p-random">
-									<div class="row">
-										<!-- Single Product Carousel-->
-										<div id="single-product-random" class="owl-carousel">
-											<!-- Start Single Product Column -->
-											@foreach($promotedProducts as $product)
-											<div class="col-md-3">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="#">
-																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
-																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
-														</a>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
-															<p class="product-price">{{$product->price}}</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">																	
-																	<button  class="addItemToCart btn" type="button" product_id="$product->id" item="$product->name" price="$product->price"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
-																</div>
-																<div class="action-view">
-																	<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-										@endforeach	
-										</div><!-- End Single Product Carousel-->
-									</div>
-								</div><!-- End Tab Pane Three -->
-							</div><!-- End Tab Content -->
-						</div><!-- End Single Product area -->
-					</div>
-				</div>
-			</div>
-		</div><!-- End Product area -->
 		<!-- Brand Product area -->
 		<div class="brand-products-area">
 			<div class="container">
 				<div class="row">
-					<!-- Brand Product Column -->
-					<div class="col-md-6 col-sm-6">
+					<!-- Product Column -->
+					<div class="col-md-12 ">
+						<div class="brand-products brand-product-shoes c-carousel-button">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="products-head">
+										<div class="products-head-title">
+											<h2>پر فروش ترین ها</h2>
+											<i class="fa fa-picture-o"></i>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<!-- Single Product Carousel-->
+								<div id="product-brand-seller" class="owl-carousel">
+									<!-- Start Single Product Column -->
+									@foreach($bestSeller as $product)
+											<div class="col-md-6">
+												<div class="single-product">
+													<div class="single-product-img">
+														<a href="{{route('shop.product', ['id'=>$product->id])}}">
+																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
+														</a>
+													</div>
+													<div class="single-product-content">
+														<div class="product-content-head">
+															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+															<p class="product-price">
+																@if($product->discount>0)	
+																	<span>
+																		{{$product->price}}	
+																	</span>
+																		{{$product->price - $product->price*$product->discount/100}}
+
+																@else
+																		{{$product->price}}	
+																@endif
+															
+															</p>
+														</div>
+														<div class="product-bottom-action">
+															<div class="product-action">
+																	<div class="action-button">	
+																		<div hidden>
+																		<input type="hidden" class="qty" value="1">	
+																		</div>	
+																															
+																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
+																</div>
+																<div class="action-view">
+																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
+																	<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div><!-- End Single Product Column -->
+										@endforeach	
+
+								</div><!-- End Single Product Carousel -->
+							</div>
+						</div>
+					</div><!-- End Brand Products Column -->
+				</div>
+			</div>
+		</div><!-- End Brand Product area -->
+
+		<div class="brand-products-area" >
+			<div class="container">
+				<div class="row" >
+					<div class="col-md-12 ">
+						<div class="brand-products brand-product-shoes c-carousel-button">
+							<div class="row" >
+								<div class="col-md-12">
+									<div class="products-head">
+										<div class="products-head-title">
+											<i class="fa fa-picture-o"></i>
+											<h2>محبوب ترین ها</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<!-- Single Product Carousel-->
+								<div id="product-brand-fav" class="owl-carousel">
+									<!-- Start Single Product Column -->
+									@foreach($bestSeller as $product)
+									<div class="col-md-6">
+												<div class="single-product">
+													<div class="single-product-img">
+														<a href="{{route('shop.product', ['id'=>$product->id])}}">
+																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
+														</a>
+													</div>
+													<div class="single-product-content">
+														<div class="product-content-head">
+															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+															<p class="product-price">
+																@if($product->discount>0)	
+																	<span>
+																		{{$product->price}}	
+																	</span>
+																		{{$product->price - $product->price*$product->discount/100}}
+
+																@else
+																		{{$product->price}}	
+																@endif
+															
+															</p>
+														</div>
+														<div class="product-bottom-action">
+															<div class="product-action">
+																	<div class="action-button">	
+																		<div hidden>
+																		<input type="hidden" class="qty" value="1">	
+																		</div>	
+																															
+																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
+																</div>
+																<div class="action-view">
+																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
+																	<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div><!-- End Single Product Column -->
+										@endforeach	
+
+								</div><!-- End Single Product Carousel -->
+							</div>
+						</div>
+					</div><!-- End Brand Products Column -->
+
+				</div>
+			</div>
+		</div><!-- End Brand Product area -->
+
+		<div class="brand-products-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 ">
 						<div class="brand-products brand-product-shoes c-carousel-button">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="products-head">
 										<div class="products-head-title">
 											<i class="fa fa-picture-o"></i>
-											<h2>brand shoes</h2>
+											<h2>جدید ترین ها</h2>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<!-- Single Product Carousel-->
-								<div id="product-brand-shoes" class="owl-carousel">
+								<div id="product-brand-new" class="owl-carousel">
 									<!-- Start Single Product Column -->
+									@foreach($bestSeller as $product)
 									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp4.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp9.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price">$155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
+												<div class="single-product">
+													<div class="single-product-img">
+														<a href="{{route('shop.product', ['id'=>$product->id])}}">
+																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
+														</a>
+													</div>
+													<div class="single-product-content">
+														<div class="product-content-head">
+															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+															<p class="product-price">
+																@if($product->discount>0)	
+																	<span>
+																		{{$product->price}}	
+																	</span>
+																		{{$product->price - $product->price*$product->discount/100}}
+
+																@else
+																		{{$product->price}}	
+																@endif
+															
+															</p>
 														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
+														<div class="product-bottom-action">
+															<div class="product-action">
+																	<div class="action-button">	
+																		<div hidden>
+																		<input type="hidden" class="qty" value="1">	
+																		</div>	
+																															
+																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
+																</div>
+																<div class="action-view">
+																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
+																	<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
-									<!-- Start Single Product Column -->
-									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp3.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp19.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price"><span>$205.00</span> $155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
-									<!-- Start Single Product Column -->
-									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp2.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp5.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price">$155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
-									<!-- Start Single Product Column -->
-									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp6.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp1.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price">$155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
+											</div><!-- End Single Product Column -->
+										@endforeach	
+
 								</div><!-- End Single Product Carousel -->
 							</div>
 						</div>
 					</div><!-- End Brand Products Column -->
-					<!-- Brand Product Column -->
-					<div class="col-md-6 col-sm-6">
-						<div class="brand-products c-carousel-button">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="products-head">
-										<div class="products-head-title">
-											<i class="fa fa-picture-o"></i>
-											<h2>brand Bag</h2>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<!-- Single Product Carousel-->
-								<div id="product-brand-bag" class="owl-carousel">
-									<!-- Start Single Product Column -->
-									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp7.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp8.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price">$155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
-									<!-- Start Single Product Column -->
-									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp10.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp5.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price"><span>$205.00</span> $155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
-									<!-- Start Single Product Column -->
-									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp2.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp5.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price">$155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
-									<!-- Start Single Product Column -->
-									<div class="col-md-6">
-										<div class="single-product">
-											<div class="single-product-img">
-												<a href="#">
-													<img class="primary-img" src="img/product/sp6.jpg" alt="product">
-													<img class="secondary-img" src="img/product/sp1.jpg" alt="product">
-												</a>
-											</div>
-											<div class="single-product-content">
-												<div class="product-content-head">
-													<h2 class="product-title"><a href="#">Cras neque metus</a></h2>
-													<p class="product-price">$155.00</p>
-												</div>
-												<div class="product-bottom-action">
-													<div class="product-action">
-														<div class="action-button">
-															<button class="btn" type="button"><i class="fa fa-shopping-cart"></i> <span>Add to bag</span></button>
-														</div>
-														<div class="action-view">
-															<button type="button" class="btn" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>Quick view</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- End Single Product Column -->
-								</div><!-- End Single Product Carousel-->
-							</div>
-						</div>
-					</div><!-- End Brand Product Column -->
+
 				</div>
 			</div>
 		</div><!-- End Brand Product area -->
@@ -495,146 +308,47 @@
 				<div class="row">
 					<!-- Blog Post Carousel -->
 					<div id="blog-posts" class="owl-carousel">
-						<div class="col-md-12">
-							<!-- Blog Post Item area -->
-							<div class="blog-post-item-area">
-								<div class="row">
-									<!-- Blog Post Inner Item Column -->
-									<div class="col-md-6">
-										<!-- Blog Post Inner Item -->
-										<div class="blog-post-inner-item">
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b1.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b2.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-										</div><!-- End Blog Post Inner Item -->
-									</div><!-- End Fetured Product Inner Item Column -->
-									<!-- Blog Post Inner Item Column -->
-									<div class="col-md-6">
-										<!-- Blog Post Inner Item -->
-										<div class="blog-post-inner-item">
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b3.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b4.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-										</div><!-- End Blog Post Inner Item -->
-									</div><!-- End Fetured Product Inner Item Column -->
-								</div>
-							</div><!-- End Blog Post Item area -->
-						</div>
-						<div class="col-md-12">
-							<!-- Blog Post Item area -->
-							<div class="blog-post-item-area">
-								<div class="row">
-									<!-- Blog Post Inner Item Column -->
-									<div class="col-md-6">
-										<!-- Blog Post Inner Item -->
-										<div class="blog-post-inner-item">
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b1.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b2.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-										</div><!-- End Blog Post Inner Item -->
-									</div><!-- End Fetured Product Inner Item Column -->
-									<!-- Blog Post Inner Item Column -->
-									<div class="col-md-6">
-										<!-- Blog Post Inner Item -->
-										<div class="blog-post-inner-item">
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b3.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-											<!-- Fetured Product Single Item -->
-											<div class="blog-post-single-item">
-												<div class="single-item-img">
-													<a href="#">
-														<img src="img/blog/b4.png" alt="product">
-													</a>
-												</div>
-												<div class="single-item-content">
-													<h2><a href="#">Claritas est etiam processus dynamicus, qui sequitur</a></h2>
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat...</p>
-												</div>
-											</div><!-- End Blog Post Single Item -->
-										</div><!-- End Blog Post Inner Item -->
-									</div><!-- End Fetured Product Inner Item Column -->
-								</div>
-							</div><!-- End Blog Post Item area -->
-						</div>
+						@foreach($postChunks as $subChunk)
+							<div class="col-md-12">
+								<!-- Blog Post Item area -->
+								<div class="blog-post-item-area">
+									<div class="row">	
+										@foreach($subChunk->chunk(2) as $chunk)
+											<!-- Blog Post Inner Item Column -->
+											<div class="col-md-6">
+												<!-- Blog Post Inner Item -->
+												<div class="blog-post-inner-item">
+													<!-- Fetured Product Single Item -->
+													@foreach($chunk as $post)
+														<div class="blog-post-single-item">
+															<div class="single-item-img">
+																<a href="#">
+																	<img  width="200" height="200" src="{{$post->featured}}" alt="{{$post->name}}">
+																	
+																</a>
+															</div>
+															<div class="single-item-content">
+																<h2><a href="#">{{$post->title}}</a></h2>
+																<p>{{str_limit($post->body, 100)}}</p>
+															</div>
+														</div><!-- End Blog Post Single Item -->
+													@endforeach
+
+												</div><!-- End Blog Post Inner Item -->
+											</div><!-- End Fetured Product Inner Item Column -->
+										@endforeach
+							
+									</div>
+								</div><!-- End Blog Post Item area -->
+							</div>
+
+						@endforeach
 					</div><!-- End Blog Post Carousel -->
 				</div>
 			</div>
 		</div><!-- End Blog Post area -->
 		<!-- Brand Logo area -->
-		<div class="brand-logo-area">
+		<!-- <div class="brand-logo-area">
 			<div class="container">
 				<div class="brand-logo">
 					<div class="brand-logo-title">
@@ -694,5 +408,5 @@
 					</div>
 				</div>
 			</div>
-		</div><!-- End Brand Logo area -->
+		</div>End Brand Logo area -->
 @include('includes.front.footer')

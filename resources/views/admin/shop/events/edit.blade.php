@@ -32,9 +32,24 @@
                 </div>
                 
 
+<hr/> 
                 <div class="form-group">
-                    <label for="link">Link</label>
-                    <input type="text" name="link" class="form-control"  value="{{$event->link}}">
+                    <label for="category">Category</label>
+                    <select name="category_id" id="category" class="form-control" >
+                        @foreach($categories as $category)
+
+                            <option value="{{$category->id}}"  
+                            
+                                @if( $category->id == $event->category_id)
+
+                                        selected
+                                @endif
+                                
+                                >{{$category->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                   
                 </div>
 <hr/>                
                 

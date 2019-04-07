@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $fillable=['event_title', 'featured_image', 'link','detail','active'];
+    protected $fillable=['event_title', 'featured_image', 'category_id','detail','active'];
 }

@@ -69,17 +69,18 @@
 
                         <button type="button" width="100px" id="addImageBtn"> <img src="{{asset('images/add.png')}}" alt="add image"></button>
 
-  <hr/>                    
+                    
 
                 </div>
+ <hr/> 
                 <div class="form-group">
                     <label for="category">Category</label>
                     <select name="category_id" id="category" class="form-control" >
                         @foreach($categories as $category)
 
                             <option value="{{$category->id}}"  
-                            dump($product);
-                                @if( $category->id == $product->category_id)
+                            
+                                @if( $category->id == $product->product_category_id)
 
                                         selected
                                 @endif
@@ -148,9 +149,14 @@
 <hr/>
 
                 <div class="form-group">
-                    <label for="detail">ِDescription</label>
+                    <label for="detail">Detail</label>
                    <textarea name="detail" id="detail" class="form-control">{{$product->detail}}</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="description">ِDescription</label>
+                   <textarea name="description" id="description" class="form-control">{{$product->description}}</textarea>
+                </div>
+<hr/>
                 <div class="form-group">
                    <button type="submit" class="btn btn-success btn-sm"> Save Product</button>
                    <a href="{{route('admin.products')}}" class="btn btn-danger btn-sm"> Cancel</a> 

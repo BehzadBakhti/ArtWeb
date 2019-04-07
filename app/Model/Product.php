@@ -37,7 +37,7 @@ class Product extends Model
         return $this->belongsToMany('App\Model\ProductTag');
     }
 
-    protected $fillable =['name','detail', 'dimension', 'material', 'product_category_id', 'default_img_id', 'stock','price','discount'];
+    protected $fillable =['name','detail','description', 'dimension', 'material', 'product_category_id', 'default_img_id', 'stock','price','discount'];
 
      
 

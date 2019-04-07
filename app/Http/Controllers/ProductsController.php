@@ -61,12 +61,14 @@ class ProductsController extends Controller
                 'stock'=>'required|numeric',
                 'discount'=>'required|numeric|min:0|max:100',
                 'images' => 'required|array|min:2',
-                'detail'=>'required' 
+                'detail'=>'required|max:255',
+                'description'=>'required' 
             ]); 
 
             $product= Product::create([
                 'name'=>$request->name,
                 'detail'=>$request->detail,
+                'description'=>$request->description,
                 'product_category_id'=>$request->category_id,
                 'dimension'=>$request->dimension,
                 'material'=> $request->material,
@@ -168,9 +170,10 @@ class ProductsController extends Controller
             'material'=>'required|max:255',
             'price'=>'required|numeric',
             'stock'=>'required|numeric',
-            'discount'=>'required|numeric|min:0|max=100',
+            'discount'=>'required|numeric|min:0|max:100',
             
-            'detail'=>'required' 
+            'detail'=>'required|max:255',
+            'description'=>'required' 
         ]); 
 
 
@@ -179,6 +182,7 @@ class ProductsController extends Controller
         $product->update([
             'name'=>$request->name,
             'detail'=>$request->detail,
+            'description'=>$request->description,
             'product_category_id'=>$request->category_id,
             'dimension'=>$request->dimension,
             'material'=> $request->material,

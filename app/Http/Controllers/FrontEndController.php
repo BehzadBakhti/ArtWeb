@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Product;
+use App\Model\Post;
+use App\Model\Event;
 use App\Model\ProductCategory;
 use Cart;
 
@@ -15,12 +17,16 @@ class FrontEndController extends Controller
 
         $categoryTree=ProductCategory::where('parent_id',0)->get();
         $cartContent=Cart::getContent();
+        $postChunks=Post::all()->chunk(4);
+        $events=Event::all();
         $promotedProducts=Product::all();
         $newProducts=$promotedProducts;
         $bestSeller=$promotedProducts;
          //dd($promotedProducts);
         return view('frontEnd.index')->with('categoryTree', $categoryTree)
                                      ->with('cartContent', $cartContent)
+                                     ->with('events', $events)
+                                     ->with('postChunks', $postChunks)
                                      ->with(['bestSeller'=>$bestSeller, 'newProducts'=>$newProducts, 'promotedProducts'=> $promotedProducts]);
         
     }

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#detail').summernote({
+    $('#description').summernote({
     
         popover: {
             image: [],

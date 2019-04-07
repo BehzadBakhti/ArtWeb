@@ -95,20 +95,7 @@
 												</li>
 											</ul>
 										</div>
-										<div class="header-link">
-											<ul>
-												<li><a href="#">Account <span class="caret"></span></a>
-													<ul>
-														<li><a href="my-account.html">My Account</a></li>
-														<li><a href="wishlist.html">My Wishlist</a></li>
-														<li><a href="cart.html">My Cart</a></li>
-														<li><a href="checkout.html">Checkout</a></li>
-														<li><a href="blog.html">Blog</a></li>
-														<li><a href="my-account.html">login</a></li>
-													</ul>
-												</li>
-											</ul>
-										</div>
+										
 									</div><!-- End Header Link Area -->
 								</div>
 							</div>
@@ -155,35 +142,13 @@
 																<i class="fa fa-shopping-cart"></i>
 																<span class="my-cart">سبد خرید</span>
 																<div id="cartIcon">
-																	<span class="badge">{{sizeof($cartContent)}}</span>
+																	
 																</div>
 															</a>
 															<ul>
 																
-																<li>
-																	
-																	@foreach($cartContent as $item)
-																		<div class="cart-list">
-																			<div class="cart-list-item">
-																				<div class="cart-list-img">
-																					<a href="{{route('shop.product', ['id'=>$item->id])}}"><img src="uploads\products\a.jpg" width="50px" alt="cart" /></a>
-																				</div>
-																				<div class="cart-content">
-																					<a href="{{route('shop.product', ['id'=>$item->id])}}">{{$item->name}}</a>
-																					<p>{{$item->quantity}} x <span>{{$item->price}}</span></p>
-																				</div>
-																				<div class="cart-button">
-																					<a href="#" id="{{$item->id}}" class="removeItemFromCart" data-toggle="modal" data-target="#removeFromCartModal"><i class="fa fa-times"></i></a>
-																				</div>
-																			</div>
-																		</div>
-																	@endforeach
-																	<div class="cart-subtotal">
-																		<p>Subtotal: <span>$1,131.00</span></p>
-																	</div>
-																	<div class="cart-action">
-																		<button type="button" class="btn"><span>checkout</span> <i class="fa fa-long-arrow-right"></i></button>
-																	</div>
+																<li id="cartArea">
+																	<!-- Java script populates here -->
 
 																</li>
 															</ul>

@@ -78,27 +78,41 @@
 	}); 
 
 	/* Product Brand Shoes */
-	$("#product-brand-shoes").owlCarousel({
+	$("#product-brand-fav").owlCarousel({
 		autoPlay: false, 
 		slideSpeed:2000,
 		pagination:false,
 		navigation:true,	  
-		items : 2,
+		items : 4,
 		/* transitionStyle : "fade", */    /* [This code for animation ] */
 		navigationText:["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-		itemsDesktop : [1199,2],
-		itemsDesktopSmall : [980,2],
+		itemsDesktop : [1199,4],
+		itemsDesktopSmall : [980,3],
 		itemsTablet: [768,2],
 		itemsMobile : [479,1],
 	});
 
-	/* Product Brand Bag */
-	$("#product-brand-bag").owlCarousel({
+
+	$("#product-brand-new").owlCarousel({
 		autoPlay: false, 
 		slideSpeed:2000,
 		pagination:false,
 		navigation:true,	  
-		items : 2,
+		items : 4,
+		/* transitionStyle : "fade", */    /* [This code for animation ] */
+		navigationText:["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+		itemsDesktop : [1199,4],
+		itemsDesktopSmall : [980,3],
+		itemsTablet: [768,2],
+		itemsMobile : [479,1],
+	});
+	/* Product Brand Bag */
+	$("#product-brand-seller").owlCarousel({
+		autoPlay: false, 
+		slideSpeed:2000,
+		pagination:false,
+		navigation:true,	  
+		items : 4,
 		/* transitionStyle : "fade", */    /* [This code for animation ] */
 		navigationText:["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
 		itemsDesktop : [1199,2],
