@@ -1,7 +1,8 @@
+	</div>
 		<!-- Footer area -->
-		<div class="footer-area">
+		<div class="footer-area" >
 			<!-- Footer Top -->
-			<div class="footer-top">
+			<div class="footer-top" >
 				<div class="container">
 					<div class="row">
 						<div class="col-md-4">
@@ -28,39 +29,32 @@
 								<div class="footer-newsletter">
 									<form action="#">
 										<h2>Newsletter</h2>
+										
 										<input type="text" title="Sign up for our newsletter" required>
 										<button type="submit">Subscribe</button>
+										
 									</form>
 								</div>
-								<div class="information-link">
-									<div class="single-information-link">
-										<h2>Informations</h2>
-										<ul>
-											<li><a href="#">Sitemap</a></li>
-											<li><a href="#">Privacy Policy</a></li>
-											<li><a href="#">Your Account</a></li>
-											<li><a href="#">Advanced Search</a></li>
-											<li><a href="#">Contact Us</a></li>
-										</ul>
-									</div>
-									<div class="single-information-link">
-										<h2>other static link</h2>
-										<ul>
-											<li><a href="#">Product Recall</a></li>
-											<li><a href="#">Gift Vouchers</a></li>
-											<li><a href="#">Returns and Exchanges</a></li>
-											<li><a href="#">Shipping Options</a></li>
-											<li><a href="#">Help & FAQs</a></li>
-										</ul>
-									</div>
-									<div class="single-information-link">
-										<h2> My account </h2>
-										<ul>
-											<li><a href="#">My orders</a></li>
-											<li><a href="#">My credit slips</a></li>
-											<li><a href="#">My addresses</a></li>
-											<li><a href="#">My personal info</a></li>
-										</ul>
+								<div class="row">
+									<div class="col-md-12 information-link">
+										<div class="col-md-6 single-information-link">
+											<h2>اطلاعات</h2>
+											<ul>
+												<li><a href="#">نقشه سایت</a></li>
+												<li><a href="{{route('terms')}}">قوانین سایت</a></li>
+												<li><a href="#">جستجوی پیشرفته</a></li>
+												<li><a href="{{route('contact_us')}}">ارتباط با ما</a></li>
+											</ul>
+										</div>
+										
+										<div class=" col-md-6 single-information-link">
+											<h2> پروفایل من </h2>
+											<ul>
+												<li><a href="#">سفارشات</a></li>
+												
+												<li><a href="#">اطلاعات شخصی</a></li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div><!-- End Footer Left -->
@@ -73,7 +67,6 @@
 				<div class="container">
 					<!-- Copyright -->
 					<div class="copyright">
-						<p>Copyright &copy; <a href="http://bootexperts.com/">BootExperts</a> All Rights Reserved.</p>
 					</div>
 				</div>
 			</div><!-- End Footer Bottom -->
@@ -128,6 +121,7 @@
 
 			@include('includes.javascripts.cart_manage')
 			@include('includes.javascripts.product_modal')
+			@include('includes.javascripts.category_tree')
 		<!-- <script src="{{asset('js/cart_manage.js')}}"></script> -->
     </body>
 </html>

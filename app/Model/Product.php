@@ -4,9 +4,25 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Review;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
+
+    use Searchable;
+    public function toSearchableArray()
+    {
+        $array = [
+        'id'=>$this->id,
+        'name'=>$this->name,
+        'detail'=>$this->detail,
+        'description'=>$this->description,
+        ];
+        // Customize array...
+
+        return $array;
+    }
+
     //
     public function reviews(){
         return $this->hasMany('App\Model\Review');

@@ -55,6 +55,13 @@
                         
                   </div>
 
+                  <div class="form-group ">
+                    <label for="mainEvent ">Type</label>
+                    <div class="checkbox col-md-2">
+                            <label ><input class="px-2" type="checkbox" name="mainEvent" value="1">&nbsp Is Main?</label>
+                        
+                  </div>
+
 <hr/>
                 <div class="form-group">
                     <label for="detail">Detail</label>

@@ -13,7 +13,7 @@ class ProductCategory extends Model
 
      public function parent(){
 
-      $parent = $this->belongsTo(self::class, 'parent_id');
+      $parent = $this->belongsTo(self::class, 'id');
     //   if(isset($parent->childeren)) {
     //     $parent->childeren->merge($parent);
     //   }
@@ -24,7 +24,7 @@ class ProductCategory extends Model
 
      public function childeren(){
 
-        $childeren=  $this->hasMany(self::class, 'parent_id');
+        $childeren=  $this->hasMany(self::class, 'id');
 
         // foreach($children as $child) {
         //     $child->mom = $this;

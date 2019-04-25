@@ -2,9 +2,9 @@
         
 		<!-- Main Slider Area -->
 		<div class="main-slider-area home-4-main-slaider-area entire-home-main-slider">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="row">
 						<!-- Main Slider -->
 						<div class="main-slider">
 							<div class="slider">
@@ -39,25 +39,20 @@
 							</div>
 						</div><!-- End Main Slider -->
 					</div>
+					
 					<div class="col-md-12">
 						<!-- Main Slider Banner Bottom-->
 						<div class="main-slider-bottom-banner">
 							<div class="row">
-								<div class="col-md-4 col-sm-4 banner-add">
-									<a href="#">
-										<img alt="banner" src="img/banner/b15.png">
-									</a>
-								</div>
-								<div class="col-md-4 col-sm-4 banner-add">
-									<a href="#">
-										<img alt="banner" src="img/banner/b16.png">
-									</a>
-								</div>
-								<div class="col-md-4 col-sm-4 banner-add">
-									<a href="#">
-										<img alt="banner" src="img/banner/b17.png">
-									</a>
-								</div>
+								@foreach($secondaryEvents as $event)
+									<a href='{{route("shop.category" , ["id" => $event->category_id])}}'>
+									<div class="col-md-4 col-sm-4 banner-add ">
+										
+											<img alt="{{$event->event_title}}" src="{{$event->featured_image}}">
+											<h2 class="secondary-event-text strokeme">{{$event->event_title}} </h2>
+										
+									</div></a>
+								@endforeach
 							</div>
 						</div><!-- End Main Slider Banner Bottom-->
 					</div>
@@ -65,7 +60,7 @@
 			</div>
 		</div><!-- End Main Slider Area -->		
 		<!-- Product area -->
-
+		<hr/>
 		<!-- Brand Product area -->
 		<div class="brand-products-area">
 			<div class="container">
@@ -78,7 +73,7 @@
 									<div class="products-head">
 										<div class="products-head-title">
 											<h2>پر فروش ترین ها</h2>
-											<i class="fa fa-picture-o"></i>
+											<i class="fas fa-cart-plus"></i>
 											
 										</div>
 									</div>
@@ -115,12 +110,12 @@
 														</div>
 														<div class="product-bottom-action">
 															<div class="product-action">
-																	<div class="action-button">	
+																<div class="action-button">	
 																		<div hidden>
 																		<input type="hidden" class="qty" value="1">	
 																		</div>	
 																															
-																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
+																		<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
 																</div>
 																<div class="action-view">
 																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
@@ -150,7 +145,7 @@
 								<div class="col-md-12">
 									<div class="products-head">
 										<div class="products-head-title">
-											<i class="fa fa-picture-o"></i>
+											<i class="far fa-thumbs-up"></i>
 											<h2>محبوب ترین ها</h2>
 										</div>
 									</div>
@@ -171,7 +166,7 @@
 													</div>
 													<div class="single-product-content">
 														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+															<h2 class="product-title"><a href="{{route('shop.product', ['id'=>$product->id])}}">{{$product->name}}</a></h2>
 															<p class="product-price">
 																@if($product->discount>0)	
 																	<span>
@@ -192,7 +187,7 @@
 																		<input type="hidden" class="qty" value="1">	
 																		</div>	
 																															
-																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
+																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
 																</div>
 																<div class="action-view">
 																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
@@ -223,7 +218,7 @@
 								<div class="col-md-12">
 									<div class="products-head">
 										<div class="products-head-title">
-											<i class="fa fa-picture-o"></i>
+											<i class="fa fa-fire"></i>
 											<h2>جدید ترین ها</h2>
 										</div>
 									</div>
@@ -265,7 +260,7 @@
 																		<input type="hidden" class="qty" value="1">	
 																		</div>	
 																															
-																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
+																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
 																</div>
 																<div class="action-view">
 																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
@@ -296,8 +291,8 @@
 								<div class="col-md-12">
 									<div class="products-head">
 										<div class="products-head-title">
-											<i class="fa fa-picture-o"></i>
-											<h2>Blog posts</h2>
+											<i class="fa fa-edit"></i>
+											<h2>آخرین مطالب وبلاگ</h2>
 										</div>
 									</div>
 								</div>
@@ -321,14 +316,15 @@
 													<!-- Fetured Product Single Item -->
 													@foreach($chunk as $post)
 														<div class="blog-post-single-item">
-															<div class="single-item-img">
-																<a href="#">
-																	<img  width="200" height="200" src="{{$post->featured}}" alt="{{$post->name}}">
-																	
-																</a>
-															</div>
+															<a href="{{route('blog.post', ['slug'=>$post->slug])}}">
+																<div class="single-item-img">
+																
+																	<img   src="{{$post->featured}}" alt="{{$post->name}}">
+	
+																</div>
+															</a>
 															<div class="single-item-content">
-																<h2><a href="#">{{$post->title}}</a></h2>
+																<h2><a href="{{route('blog.post', ['slug'=>$post->slug])}}">{{$post->title}}</a></h2>
 																<p>{{str_limit($post->body, 100)}}</p>
 															</div>
 														</div><!-- End Blog Post Single Item -->

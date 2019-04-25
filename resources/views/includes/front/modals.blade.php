@@ -31,7 +31,7 @@
 													<input type="button" value="+" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" class="qty-increase">
 												</div>
 												
-												<button id="modal_productAddToCartBtn" class="addItemToCart btn" type="button" product_id="" item="" price="" data-dismiss="modal"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد کالا</span></button>
+												<button id="modal_productAddToCartBtn" class="addItemToCart btn" type="button" product_id="" item="" price="" data-dismiss="modal"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
 											</div>
 										</div>
 										</form>

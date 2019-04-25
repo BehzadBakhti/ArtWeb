@@ -564,9 +564,20 @@
 .blog-post-area .single-item-img {
   margin-bottom: 25px;
   width: 100%;
+
+  display:flex;
+	justify-content:center;
+	align-items:center;
+	overflow:hidden
 }
 .blog-post-area .single-item-img img{
   width: 100%;
+
+  object-fit: cover;
+	min-height: 100%;
+	min-width: 100%;
+	width: auto;
+height: auto;
 }
 .single-support {
   margin-bottom: 20px;

@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('featured_image');
             $table->bigInteger('category_id');
             $table->boolean('active');
+            $table->boolean('is_main');
             $table->text('detail');
             $table->timestamps();
         });

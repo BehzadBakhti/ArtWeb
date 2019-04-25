@@ -56,6 +56,7 @@ class EventsController extends Controller
                 'featured_image'=>'uploads/events/'.$featuredNewName,
                 'category_id'=>$request->category_id,
                 'detail'=>$request->detail,
+                'is_main'=> $request->mainEvent==1?1:0,
                 'active'=> $request->active==1?1:0,
  
             ]);
@@ -118,6 +119,7 @@ class EventsController extends Controller
             'category_id'=>$request->category_id,
             'detail'=>$request->detail,
             'active'=> $request->active==1?1:0,
+            'is_main'=> $request->mainEvent==1?1:0,
 
         ]);
 

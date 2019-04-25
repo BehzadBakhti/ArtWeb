@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="" >
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -21,7 +21,8 @@
         <link rel="stylesheet" href="{{asset('app/css/bootstrap.min.css')}}">
 		<!-- Font Awesome CSS
 		============================================ -->
-        <link rel="stylesheet" href="{{asset('app/css/font-awesome.min.css')}}">
+		<!-- <link rel="stylesheet" href="{{asset('app/css/font-awesome.min.css')}}"> -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<!-- Mean Menu CSS
 		============================================ -->      
         <link rel="stylesheet" href="{{asset('app/css/meanmenu.min.css')}}">
@@ -104,10 +105,9 @@
 									<!-- Header Social Icon -->
 									<div class="header-social-icon">
 										<ul>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+											
+											<li><a href="#"><i class="fab fa-telegram"></i></a></li>
+											<li><a href="#"><i class="fab fa-instagram"></i></a></li>
 										</ul>
 									</div>
 								</div>
@@ -158,9 +158,10 @@
 											</div><!-- End Header Cart Area-->
 											<!-- Header Search -->
 											<div class="header-search">
-												<form action="#">
-													<input type="text" placeholder="SEARCH...">
-													<button type="button" class="btn"><i class="fa fa-search"></i></button>
+												<form action="{{route('search')}}" method="GET">
+												
+													<input type="text" name='phrase' placeholder="SEARCH...">
+													<button type="submit" class="btn"><i class="fa fa-search"></i></button>
 												</form>
 											</div>
 										</div>
@@ -175,7 +176,7 @@
 												<nav>
 													<ul class="main-ul">
 														<li class="sub-menu-li"><a href="{{route('index')}}" class="active">خانه</i></a></li>
-														<li><a href="{{route('shop')}}"> فروشگاه<i class="fa fa-chevron-down"></i></a>
+														<li><a href="{{route('shop')}}"> فروشگاه &nbsp <i class="fa fa-chevron-down"></i></a>
 															<ul class="mega-menu-ul">
 																<li>
 																	<!-- Mega Menu -->
@@ -243,5 +244,6 @@
 				</div>
 			</div><!-- End Header bottom -->
 		</div><!-- End Header Area -->
+		<div class="container-fluid">
 	
 		

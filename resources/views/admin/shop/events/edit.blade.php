@@ -51,23 +51,25 @@
                     </select>
                    
                 </div>
-<hr/>                
-                
+<hr/>                 
                 <div class="form-group ">
                     <label for="active ">Activity</label>
                     <div class="checkbox col-md-2">
                             <label ><input class="px-2" type="checkbox" name="active" value="1"  
                             @if($event->active==1))
-
                                 checked
-
                              @endif
-                            
-                            
                             >&nbsp Is Active?</label>
-                        
-                  </div>
+                     </div>
 
+                    <label for="mainEvent ">Activity</label>
+                    <div class="checkbox col-md-2">
+                            <label ><input class="px-2" type="checkbox" name="mainEvent" value="1"  
+                            @if($event->is_main==1))
+                                checked
+                             @endif
+                            >&nbsp Is Main?</label>
+                     </div>
 <hr/>
                 <div class="form-group">
                     <label for="detail">Detail</label>
