@@ -500,7 +500,7 @@ body {
 	right:0px;
 	transform: scaleY(0);
     transform-origin: 0 0 0;
-	transition: all 0.5s ease 0s;
+	transition: all 0.2s ease 0s;
 }
 .main-menu nav .main-ul .small-megamenu-li{
 	position:relative;
@@ -1116,13 +1116,36 @@ h2.product-title a:hover{
 	display: block;
 	margin-top: 50px;
 }
-.banner-add{}
+.border{
+	border: #000 solid 1px;
+}
+
+.banner-add{
+	
+	height: 250px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	overflow:hidden;
+}
+
+
+
+.banner-add img{
+	object-fit: cover;
+	min-height: 100%;
+	min-width: 100%;
+	width: auto;
+	height: auto;
+	
+	} 
+
 .banner-add a{
   display: inline-block;
   max-width: 100%;
   position: relative;
 }
-.banner-add a:before, .banner-add a:before {
+.banner-add a::before, .banner-add a::before {
   border: 0 solid rgba(255, 255, 255, 0.5);
   bottom: 0;
   box-sizing: border-box;
@@ -1142,6 +1165,7 @@ h2.product-title a:hover{
   opacity: 1;
   transition: all 0.3s ease 0s;
 }
+
 /*----------------------------------------
   8.  Brand Product Area
 ----------------------------------------*/
@@ -1792,25 +1816,7 @@ height: auto;
 	width: 100%;
 }
 
-.banner-add{
-	
-	height: 250px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	overflow:hidden
-}
-.border{
-	border: #000 solid 1px;
-}
-.banner-add img{
-	object-fit: cover;
-	min-height: 100%;
-	min-width: 100%;
-	width: auto;
-height: auto;
-	
-	}
+
 .secondary-event-text{
 	position: absolute;
 	
@@ -4046,3 +4052,56 @@ width: 100%;}
 	text-decoration: none;
 	width: 45px;
 }
+
+
+
+
+
+
+
+.column {
+
+
+	height: 250px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	overflow:hidden;
+}
+
+
+
+.column img {
+	object-fit: cover;
+	min-height: 100%;
+	min-width: 100%;
+	width: auto;
+	height: auto;
+	
+}
+
+/* CSS Image Hover. Created refering to Naoya's Pen: https://codepen.io/nxworld/pen/ZYNOBZ */
+/*With Simple Caption*/
+
+.column#caption .text {
+	position: absolute;
+	
+	top: 40%;
+	right: auto;
+	margin: auto;
+	color: #ffffff;
+	z-index: 10;
+	opacity: 0;
+	transition: all 0.5s ease;          
+}
+
+.column#caption:hover .text {
+	opacity: 1;
+	
+}
+.column#caption:hover img {
+	/* -webkit-filter: sepia(100%); */
+	filter: brightness(70%)
+}
+
+/* Craeted refering to LittleSnippets.net Pen: https://codepen.io/littlesnippets/pen/adLELd */

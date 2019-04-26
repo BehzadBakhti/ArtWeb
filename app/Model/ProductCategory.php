@@ -3,11 +3,12 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+ use App\Model\Product;
 
 class ProductCategory extends Model
 {
     public function products(){
-        return $this->hasMany(App\Model\Product::class);
+        return $this->hasMany(Product::class);
      }
 
 
@@ -24,7 +25,7 @@ class ProductCategory extends Model
 
      public function childeren(){
 
-        $childeren=  $this->hasMany(self::class, 'id');
+        $childeren=  $this->hasMany(self::class, 'parent_id');
 
         // foreach($children as $child) {
         //     $child->mom = $this;

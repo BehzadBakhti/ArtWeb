@@ -13,6 +13,9 @@ use Cart;
 
 class FrontEndController extends Controller
 {
+
+    
+
     public function index(){
 
         $categoryTree=ProductCategory::where('parent_id',0)->get();
@@ -47,7 +50,7 @@ class FrontEndController extends Controller
     public function shop(){
         $categoryTree=ProductCategory::where('parent_id',0)->get();
         $producChunks=Product::paginate(12);
-        $categoryTreeHtml=$this->categoryTreeGen(0);
+        $categoryTreeHtml=$this->categoryTreeGen($categoryTree);
         $categoryPathHtml=$this->categoryPath(0);
       //  dd($categoryTreeHtml);
         $cartContent=Cart::getContent();
@@ -61,6 +64,54 @@ class FrontEndController extends Controller
         
     }
 
+    private function categoryTreeGen($categories){
+        $html='';
+        //dd($categories->childeren());
+        foreach ($categories as  $category) {
+           // dd($category->childeren()->get()); 
+            $html.=  '<li class="treeChild" ><a href='.route('shop.category', ['id'=>$category->id]).'> <span>(15)</span>'.$category->name.' <i class="treeItemHandle far fa-plus-square">&nbsp</i> </a>
+                       <ul class="nested">'. $this->categoryTreeGen($category->childeren()->get()). ' </ul>
+                      </li>';
+        }
+        return $html;
+    }
+
+    public function category($id){
+        
+        $categoryTree=ProductCategory::where('parent_id',0)->get();
+        $category=ProductCategory::where('id',$id)->get();
+        
+        $productsCollection=collect();//$category->first()->products()->get();
+        $this->categoryProducts($category ,$productsCollection);
+        $producChunks=$productsCollection->paginate(12);
+
+        $categoryTreeHtml=$this->categoryTreeGen($category);
+        $categoryPathHtml=$this->categoryPath($id);
+       
+        $cartContent=Cart::getContent();
+        return view('frontEnd.shop')->with('categoryTree', $categoryTree)
+                                    ->with('productChunks', $producChunks)
+                                    ->with('categoryTreeHtml', $categoryTreeHtml)
+                                    ->with('categoryPathHtml', $categoryPathHtml)
+                                    ->with('cartContent', $cartContent);
+
+    }
+  
+
+    private function categoryProducts($category,  &$productsCollection){
+       
+       
+        foreach ($category as $child) {
+            
+            foreach ($child->products()->get() as $product) {
+                # code...
+                   $productsCollection->push($product);
+            }
+        
+            $this->categoryProducts($child->childeren()->get(),  $productsCollection);
+
+        }
+    }
 
     private function categoryPath($categoryId){
 
@@ -81,20 +132,9 @@ class FrontEndController extends Controller
     }
 
 
-    private function categoryTreeGen($parentId){
-        $categoryTree=ProductCategory::where('parent_id',$parentId)->get();
-    // dump($categoryTree);
-        $html='';
-        foreach ($categoryTree as  $subTree) {
-            
-                $html.=  '<li class="treeChild" ><a href="#"> <span>(15)</span>'.$subTree->name.' <i class="treeItemHandle far fa-plus-square">&nbsp</i> </a> 
-                                <ul class="nested">
-                                '.$this->categoryTreeGen($subTree->id).'
-                                </ul>
-                            </li>';
-            }
-        return $html;
-    }
+
+
+    
 
     public function singlePost($slug){
         return view('frontEnd.singlePost');
@@ -110,22 +150,7 @@ class FrontEndController extends Controller
 
 
 
-    public function category($id){
-        $categoryTree=ProductCategory::where('parent_id',0)->get();
-        $producChunks=Product::paginate(12);
-        $categoryTreeHtml=$this->categoryTreeGen($id);
-        $categoryPathHtml=$this->categoryPath($id);
-      //  dd($categoryTreeHtml);
-        $cartContent=Cart::getContent();
-        return view('frontEnd.shop')->with('categoryTree', $categoryTree)
-                                    ->with('productChunks', $producChunks)
-                                    ->with('categoryTreeHtml', $categoryTreeHtml)
-                                    ->with('categoryPathHtml', $categoryPathHtml)
-                                    ->with('cartContent', $cartContent);
 
-        
-        
-    }
 
 
     public function search(Request $request){ 

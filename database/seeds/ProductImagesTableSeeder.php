@@ -20,12 +20,12 @@ class ProductImagesTableSeeder extends Seeder
             
             App\Model\ProductImage::create([
                        'product_id' => $product->id,
-                       'image_name' =>'uploads/products/'.$faker->image(public_path('/uploads/products'),400,400, 'abstract', false),
+                       'image_name' =>'uploads/products/'.$faker->image(public_path('/uploads/products'),400,400, 'technics', false),
                     ]);
 
             App\Model\ProductImage::create([
                         'product_id' => $product->id,
-                        'image_name' =>'uploads/products/'.$faker->image(public_path('/uploads/products'),400,400, 'cats', false),
+                        'image_name' =>'uploads/products/'.$faker->image(public_path('/uploads/products'),400,400, 'sports', false),
                      ]);
                     
         };

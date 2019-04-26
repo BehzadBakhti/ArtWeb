@@ -45,13 +45,12 @@
 						<div class="main-slider-bottom-banner">
 							<div class="row">
 								@foreach($secondaryEvents as $event)
-									<a href='{{route("shop.category" , ["id" => $event->category_id])}}'>
-									<div class="col-md-4 col-sm-4 banner-add ">
-										
-											<img alt="{{$event->event_title}}" src="{{$event->featured_image}}">
-											<h2 class="secondary-event-text strokeme">{{$event->event_title}} </h2>
-										
-									</div></a>
+
+									<a href='{{route("shop.category" , ["id" => $event->category_id])}}' class = "column col-xs-4" id = "caption">
+										<span class = "text "><h1>{{$event->event_title}}</h1></span>
+										<img alt="{{$event->event_title}}" src = "{{$event->featured_image}}">
+									</a>
+								
 								@endforeach
 							</div>
 						</div><!-- End Main Slider Banner Bottom-->
