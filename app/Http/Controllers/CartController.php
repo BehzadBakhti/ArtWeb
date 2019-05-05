@@ -11,13 +11,27 @@ class CartController extends Controller
 
     public function index(){
 
-        return view('frontEnd.cart');
+       
     }
 
 
     public function addToCart(Request $request){
 
-        Cart::add($request->id, $request->item, $request->price, $request->qty);
+       
+
+        Cart::add(array(
+            'id' => $request->id,
+            'name' => $request->item,
+            'price' => $request->price,
+            'quantity' => $request->qty,
+            'discount'=>Product::find($request->id)->discount,
+            'attributes' => array(
+                'discount'=>Product::find($request->id)->discount
+            )
+        ));
+
+
+
 
         return ["output"=> Cart::getContent()];
     }
@@ -26,7 +40,7 @@ class CartController extends Controller
 
         Cart::remove($request->idToRemove);
 
-        return response()->json(['success'=>'Successful']);
+        return redirect()->back();
     }
 
 

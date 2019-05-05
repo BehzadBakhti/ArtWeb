@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home-Four || Minoan</title>
+        <title>ArtWeb</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
@@ -21,8 +21,8 @@
         <link rel="stylesheet" href="{{asset('app/css/bootstrap.min.css')}}">
 		<!-- Font Awesome CSS
 		============================================ -->
-		<!-- <link rel="stylesheet" href="{{asset('app/css/font-awesome.min.css')}}"> -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{asset('app/css/all.min.css')}}">
+		<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
 		<!-- Mean Menu CSS
 		============================================ -->      
         <link rel="stylesheet" href="{{asset('app/css/meanmenu.min.css')}}">
@@ -139,7 +139,7 @@
 													<ul>
 														<li>
 															<a href="{{route('cart.index')}}">
-																<i class="fa fa-shopping-cart"></i>
+																<i class="fas fa-shopping-cart"></i>
 																<span class="my-cart">سبد خرید</span>
 																<div id="cartIcon">
 																	
@@ -186,7 +186,7 @@
 																			<div class="single-mega-menu">
 																				<h2><a href="{{route('shop.category', ['id'=>$mainCat->id])}}">{{$mainCat->name}}</a></h2>
 																				@foreach($mainCat->childeren as $cat)
-																				<a href="{{route('shop.category', ['id'=>$cat->id])}}"><i class="fa fa-chevron-circle-right"></i> <span>{{$cat->name}}</span></a>
+																				<a href="{{route('shop.category', ['id'=>$cat->id])}}"><span>{{$cat->name}}</span><i class="fa fa-chevron-circle-left"></i> </a>
 																				@endforeach
 																				
 																			</div>

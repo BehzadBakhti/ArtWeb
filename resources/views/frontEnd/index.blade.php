@@ -18,22 +18,23 @@
 								<!-- Slider Caption One -->
 
 
-								@for( $i=0; $i < sizeof($events); $i++)
+									@for( $i=0; $i < sizeof($events); $i++)
 										<div id="htmlcaption{{$i+1}}" class="nivo-html-caption slider-caption-{{$i+1}}">
-											<div class="slider-progress"></div>									
-											<div class="slide-text">
-												<div class="middle-text">
-													<div class="cap-dec">
-														<h1 class="cap-dec wow fadeIn strokeme" data-wow-duration="1.1s" data-wow-delay="0s">{{$events[$i]->event_title}}</h1>
-														<p class="cap-dec wow fadeIn strokeme" data-wow-duration="1.1s" data-wow-delay="0.2s"> {{$events[$i]->detail}}</p>
+											<div class="slider-progress"></div>	
+																		
+												<div class="slide-text">
+													<div class="middle-text">
+														<a href='{{route("shop.category" , ["id" => $events[$i]->category_id])}}'>	
+															<div class="cap-dec">
+																<h1 class="cap-dec wow fadeIn " data-wow-duration="1.1s" data-wow-delay="0s">{{$events[$i]->event_title}}</h1>
+																<p class="cap-dec wow fadeIn " data-wow-duration="1.1s" data-wow-delay="0.2s"> {{$events[$i]->detail}}</p>
+															</div>	
+														</a>	
 													</div>	
-													
-														<a href='{{route("index")."/event/".$events[$i]->category_id}}'>Shop Now</a>
-														
-												</div>	
-											</div>
+												</div>
+											
 										</div>
-								@endfor
+									@endfor
 								
 							
 							</div>
@@ -61,287 +62,286 @@
 		<!-- Product area -->
 		<hr/>
 		<!-- Brand Product area -->
-		<div class="brand-products-area">
-			<div class="container">
-				<div class="row">
-					<!-- Product Column -->
-					<div class="col-md-12 ">
-						<div class="brand-products brand-product-shoes c-carousel-button">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="products-head">
-										<div class="products-head-title">
-											<h2>پر فروش ترین ها</h2>
-											<i class="fas fa-cart-plus"></i>
-											
+		<div class="index-products-section">
+			<div class="brand-products-area">
+				<div class="container">
+					<div class="row">
+						<!-- Product Column -->
+						<div class="col-md-12 ">
+							<div class="brand-products brand-product-shoes c-carousel-button">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="products-head">
+											<div class="products-head-title">
+												<h2>پر فروش ترین ها</h2>
+												<i class="fas fa-shopping-cart"></i>
+												
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<!-- Single Product Carousel-->
-								<div id="product-brand-seller" class="owl-carousel">
-									<!-- Start Single Product Column -->
-									@foreach($bestSeller as $product)
-											<div class="col-md-6">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="{{route('shop.product', ['id'=>$product->id])}}">
-																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
-																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
-														</a>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
-															<p class="product-price">
-																@if($product->discount>0)	
-																	<span>
-																		{{$product->price}}	
-																	</span>
-																		{{$product->price - $product->price*$product->discount/100}}
-
-																@else
-																		{{$product->price}}	
-																@endif
-															
-															</p>
+								<div class="row">
+									<!-- Single Product Carousel-->
+									<div id="product-brand-seller" class="owl-carousel">
+										<!-- Start Single Product Column -->
+										@foreach($bestSeller as $product)
+												<div class="col-md-6">
+													<div class="single-product">
+														<div class="single-product-img">
+															<a href="{{route('shop.product', ['id'=>$product->id])}}">
+																	<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																	<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
+															</a>
 														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																<div class="action-button">	
-																		<div hidden>
-																		<input type="hidden" class="qty" value="1">	
-																		</div>	
-																															
-																		<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
-																</div>
-																<div class="action-view">
-																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
-																	<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
-																</div>
+														<div class="single-product-content">
+															<div class="product-content-head">
+																<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+																<p class="product-price">
+																	@if($product->discount>0)	
+																		<span>
+																			{{$product->price}}	
+																		</span>
+																			{{$product->price - $product->price*$product->discount/100}}
+
+																	@else
+																			{{$product->price}}	
+																	@endif
+																
+																</p>
 															</div>
-														</div>
-													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-										@endforeach	
-
-								</div><!-- End Single Product Carousel -->
-							</div>
-						</div>
-					</div><!-- End Brand Products Column -->
-				</div>
-			</div>
-		</div><!-- End Brand Product area -->
-
-		<div class="brand-products-area" >
-			<div class="container">
-				<div class="row" >
-					<div class="col-md-12 ">
-						<div class="brand-products brand-product-shoes c-carousel-button">
-							<div class="row" >
-								<div class="col-md-12">
-									<div class="products-head">
-										<div class="products-head-title">
-											<i class="far fa-thumbs-up"></i>
-											<h2>محبوب ترین ها</h2>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<!-- Single Product Carousel-->
-								<div id="product-brand-fav" class="owl-carousel">
-									<!-- Start Single Product Column -->
-									@foreach($bestSeller as $product)
-									<div class="col-md-6">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="{{route('shop.product', ['id'=>$product->id])}}">
-																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
-																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
-														</a>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="{{route('shop.product', ['id'=>$product->id])}}">{{$product->name}}</a></h2>
-															<p class="product-price">
-																@if($product->discount>0)	
-																	<span>
-																		{{$product->price}}	
-																	</span>
-																		{{$product->price - $product->price*$product->discount/100}}
-
-																@else
-																		{{$product->price}}	
-																@endif
-															
-															</p>
-														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
+															<div class="product-bottom-action">
+																<div class="product-action">
 																	<div class="action-button">	
-																		<div hidden>
-																		<input type="hidden" class="qty" value="1">	
-																		</div>	
-																															
-																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
-																</div>
-																<div class="action-view">
-																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
-																	<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+																			<div hidden>
+																			<input type="hidden" class="qty" value="1">	
+																			</div>	
+																																
+																			<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fas fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
+																	</div>
+																	<div class="action-view">
+																		<div class="productDetail" hidden>{!! $product->detail!!}</div> 
+																		<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-										@endforeach	
+												</div><!-- End Single Product Column -->
+											@endforeach	
 
-								</div><!-- End Single Product Carousel -->
+									</div><!-- End Single Product Carousel -->
+								</div>
 							</div>
-						</div>
-					</div><!-- End Brand Products Column -->
-
+						</div><!-- End Brand Products Column -->
+					</div>
 				</div>
-			</div>
-		</div><!-- End Brand Product area -->
+			</div><!-- End Brand Product area -->
 
-		<div class="brand-products-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 ">
-						<div class="brand-products brand-product-shoes c-carousel-button">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="products-head">
-										<div class="products-head-title">
-											<i class="fa fa-fire"></i>
-											<h2>جدید ترین ها</h2>
+			<div class="brand-products-area" >
+				<div class="container">
+					<div class="row" >
+						<div class="col-md-12 ">
+							<div class="brand-products brand-product-shoes c-carousel-button">
+								<div class="row" >
+									<div class="col-md-12">
+										<div class="products-head">
+											<div class="products-head-title">
+												<i class="far fa-thumbs-up"></i>
+												<h2>محبوب ترین ها</h2>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<!-- Single Product Carousel-->
-								<div id="product-brand-new" class="owl-carousel">
-									<!-- Start Single Product Column -->
-									@foreach($bestSeller as $product)
-									<div class="col-md-6">
-												<div class="single-product">
-													<div class="single-product-img">
-														<a href="{{route('shop.product', ['id'=>$product->id])}}">
-																<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
-																<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
-														</a>
-													</div>
-													<div class="single-product-content">
-														<div class="product-content-head">
-															<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
-															<p class="product-price">
-																@if($product->discount>0)	
-																	<span>
-																		{{$product->price}}	
-																	</span>
-																		{{$product->price - $product->price*$product->discount/100}}
-
-																@else
-																		{{$product->price}}	
-																@endif
-															
-															</p>
+								<div class="row">
+									<!-- Single Product Carousel-->
+									<div id="product-brand-fav" class="owl-carousel">
+										<!-- Start Single Product Column -->
+										@foreach($bestSeller as $product)
+										<div class="col-md-6">
+													<div class="single-product">
+														<div class="single-product-img">
+															<a href="{{route('shop.product', ['id'=>$product->id])}}">
+																	<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																	<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
+															</a>
 														</div>
-														<div class="product-bottom-action">
-															<div class="product-action">
-																	<div class="action-button">	
-																		<div hidden>
-																		<input type="hidden" class="qty" value="1">	
-																		</div>	
-																															
-																	<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fa fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
-																</div>
-																<div class="action-view">
-																	<div class="productDetail" hidden>{!! $product->detail!!}</div> 
-																	<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+														<div class="single-product-content">
+															<div class="product-content-head">
+																<h2 class="product-title"><a href="{{route('shop.product', ['id'=>$product->id])}}">{{$product->name}}</a></h2>
+																<p class="product-price">
+																	@if($product->discount>0)	
+																		<span>
+																			{{$product->price}}	
+																		</span>
+																			{{$product->price - $product->price*$product->discount/100}}
+
+																	@else
+																			{{$product->price}}	
+																	@endif
+																
+																</p>
+															</div>
+															<div class="product-bottom-action">
+																<div class="product-action">
+																		<div class="action-button">	
+																			<div hidden>
+																			<input type="hidden" class="qty" value="1">	
+																			</div>	
+																																
+																		<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fas fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
+																	</div>
+																	<div class="action-view">
+																		<div class="productDetail" hidden>{!! $product->detail!!}</div> 
+																		<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
-												</div>
-											</div><!-- End Single Product Column -->
-										@endforeach	
+												</div><!-- End Single Product Column -->
+											@endforeach	
 
-								</div><!-- End Single Product Carousel -->
+									</div><!-- End Single Product Carousel -->
+								</div>
 							</div>
-						</div>
-					</div><!-- End Brand Products Column -->
+						</div><!-- End Brand Products Column -->
 
+					</div>
 				</div>
-			</div>
-		</div><!-- End Brand Product area -->
-		<!-- Blog Post area -->
-		<div class="blog-post-area brand-products c-carousel-button home-4-blog-post-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="blog-post">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="products-head">
-										<div class="products-head-title">
-											<i class="fa fa-edit"></i>
-											<h2>آخرین مطالب وبلاگ</h2>
+			</div><!-- End Brand Product area -->
+
+			<div class="brand-products-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 ">
+							<div class="brand-products brand-product-shoes c-carousel-button">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="products-head">
+											<div class="products-head-title">
+												<i class="fa fa-fire"></i>
+												<h2>جدید ترین ها</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<!-- Single Product Carousel-->
+									<div id="product-brand-new" class="owl-carousel">
+										<!-- Start Single Product Column -->
+										@foreach($bestSeller as $product)
+										<div class="col-md-6">
+													<div class="single-product">
+														<div class="single-product-img">
+															<a href="{{route('shop.product', ['id'=>$product->id])}}">
+																	<img class="primary-img" src="{!!asset($product->images[0]->image_name)!!}" alt="product">
+																	<img class="secondary-img" src="{!!asset($product->images[1]->image_name)!!}" alt="product">
+															</a>
+														</div>
+														<div class="single-product-content">
+															<div class="product-content-head">
+																<h2 class="product-title"><a href="#">{{$product->name}}</a></h2>
+																<p class="product-price">
+																	@if($product->discount>0)	
+																		<span>
+																			{{$product->price}}	
+																		</span>
+																			{{$product->price - $product->price*$product->discount/100}}
+
+																	@else
+																			{{$product->price}}	
+																	@endif
+																
+																</p>
+															</div>
+															<div class="product-bottom-action">
+																<div class="product-action">
+																		<div class="action-button">	
+																			<div hidden>
+																			<input type="hidden" class="qty" value="1">	
+																			</div>	
+																																
+																		<button  class="addItemToCart btn" type="button" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}"><i class="fas fa-shopping-cart"></i> <span>افزودن به سبد خرید</span></button>
+																	</div>
+																	<div class="action-view">
+																		<div class="productDetail" hidden>{!! $product->detail!!}</div> 
+																		<button type="button" class="quickViewBtn btn" product_id="{{$product->id}}" item="{{$product->name}}" price="{{$product->price}}" imgSrc="{!!asset($product->images[0]->image_name)!!}" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i>نمایش سریع</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div><!-- End Single Product Column -->
+											@endforeach	
+
+									</div><!-- End Single Product Carousel -->
+								</div>
+							</div>
+						</div><!-- End Brand Products Column -->
+
+					</div>
+				</div>
+			</div><!-- End Brand Product area -->
+		</div>
+			<!-- Blog Post area -->
+		<div class="index-products-section">
+			<div class="blog-post-area brand-products c-carousel-button home-4-blog-post-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="blog-post">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="products-head">
+											<div class="products-head-title">
+												<i class="fa fa-edit"></i>
+												<h2>آخرین مطالب وبلاگ</h2>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<!-- Blog Post Carousel -->
-					<div id="blog-posts" class="owl-carousel">
-						@foreach($postChunks as $subChunk)
-							<div class="col-md-12">
-								<!-- Blog Post Item area -->
-								<div class="blog-post-item-area">
-									<div class="row">	
-										@foreach($subChunk->chunk(2) as $chunk)
-											<!-- Blog Post Inner Item Column -->
-											<div class="col-md-6">
-												<!-- Blog Post Inner Item -->
-												<div class="blog-post-inner-item">
-													<!-- Fetured Product Single Item -->
-													@foreach($chunk as $post)
-														<div class="blog-post-single-item">
-															<a href="{{route('blog.post', ['slug'=>$post->slug])}}">
-																<div class="single-item-img">
-																
-																	<img   src="{{$post->featured}}" alt="{{$post->name}}">
-	
+					<div class="row">
+						<!-- Blog Post Carousel -->
+						<div id="blog-posts" class="owl-carousel">
+							@foreach($postChunks as $subChunk)
+								<div class="col-md-12">
+									<!-- Blog Post Item area -->
+									<div class="blog-post-item-area">
+										<div class="row">	
+											@foreach($subChunk->chunk(2) as $chunk)
+												<!-- Blog Post Inner Item Column -->
+												<div class="col-md-6">
+													<!-- Blog Post Inner Item -->
+													<div class="blog-post-inner-item">
+														<!-- Fetured Product Single Item -->
+														@foreach($chunk as $post)
+															<div class="blog-post-single-item ">
+																<a class="col-md-5 floatright" href="{{route('blog.post', ['slug'=>$post->slug])}}">
+																	<div class="single-item-img">	
+																		<img   src="{{$post->featured}}" alt="{{$post->title}}">
+																	</div>
+																</a>
+																<div class="single-item-content col-md-7 rtl floatleft text-align-right">
+																	<h2><a href="{{route('blog.post', ['slug'=>$post->slug])}}">{{$post->title}}</a></h2>
+																	<p>{{str_limit($post->body, 100)}}</p>
 																</div>
-															</a>
-															<div class="single-item-content">
-																<h2><a href="{{route('blog.post', ['slug'=>$post->slug])}}">{{$post->title}}</a></h2>
-																<p>{{str_limit($post->body, 100)}}</p>
-															</div>
-														</div><!-- End Blog Post Single Item -->
-													@endforeach
-
-												</div><!-- End Blog Post Inner Item -->
-											</div><!-- End Fetured Product Inner Item Column -->
-										@endforeach
-							
-									</div>
-								</div><!-- End Blog Post Item area -->
-							</div>
-
-						@endforeach
-					</div><!-- End Blog Post Carousel -->
+															</div><!-- End Blog Post Single Item -->
+														@endforeach
+													</div><!-- End Blog Post Inner Item -->
+												</div><!-- End Fetured Product Inner Item Column -->
+											@endforeach
+										</div>
+									</div><!-- End Blog Post Item area -->
+								</div>
+							@endforeach
+						</div><!-- End Blog Post Carousel -->
+					</div>
 				</div>
-			</div>
-		</div><!-- End Blog Post area -->
+			</div><!-- End Blog Post area -->
+		</div>
 		<!-- Brand Logo area -->
 		<!-- <div class="brand-logo-area">
 			<div class="container">

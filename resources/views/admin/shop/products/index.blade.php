@@ -60,6 +60,10 @@ Product <a href="{{route('product.create')}}" class="btn btn-primary btn-sm my-2
             
         </table>
     </div>
+    
 </div>
 
+<div id="paginationLinks">
+    {{$products->links()}}
+</div>
 @endSection 

@@ -22,7 +22,7 @@ Route::group(["prefix"=>'admin', 'middleware'=>'auth'], function(){
 
     });
 
-Route::group(["prefix"=>'admin/blog', 'middleware'=>'auth'], function(){
+Route::group(["prefix"=>'admin/blog', 'middleware'=>'admin'], function(){
 
 
 

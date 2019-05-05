@@ -27,7 +27,7 @@ class Post extends Model
     }
 
     protected $fillable = [
-        'title', 'body', 'category_id', 'featured', 'slug', 'is_published'
+        'title', 'body', 'category_id', 'user_id', 'featured','read_count', 'slug', 'is_published'
     ];
 
     public function getFeaturedAttribute($featured){
@@ -38,6 +38,18 @@ class Post extends Model
     public function category(){
 
         return $this-> belongsTo('App\Model\Category');
+
+    }
+
+    public function user(){
+
+        return $this-> belongsTo('App\User');
+
+    }
+
+
+    public function comments(){
+        return $this->hasMany('App\Model\Comment');
 
     }
 

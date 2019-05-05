@@ -7,14 +7,28 @@ use App\Model\Product;
 use App\Model\Post;
 use App\Model\Event;
 use App\Model\ProductCategory;
+use Morilog\Jalali\jalalian;
 use Cart;
+use MPCO\EnglishPersianNumber\Numbers;
 
 
 
 class FrontEndController extends Controller
 {
 
-    
+    public function cart(){
+        $categoryTree=ProductCategory::where('parent_id',0)->get();
+        $cartContent=Cart::getContent();
+        $imgAddress=Array();
+        foreach ($cartContent as $key => $value) {
+            $name=Product::find($key)->images[0]->image_name;
+           array_push($imgAddress,[$key,$name]);
+        }
+        //dd($$cartContent[$imgAddress[$i][0]]->attributes->discount);
+        return view('frontEnd.cart')->with('categoryTree', $categoryTree)
+                                     ->with('cartContent', $cartContent)
+                                     ->with('imgAddress', $imgAddress);;
+    }
 
     public function index(){
 
@@ -40,19 +54,49 @@ class FrontEndController extends Controller
 
 
     public function blog(){
-        return view('frontEnd.blog');
+
+        $categoryTree=ProductCategory::where('parent_id',0)->get();
+        $cartContent=Cart::getContent();
+        $recentPosts=Post::orderBy('updated_at', "DESC")->get()->paginate(6);
+        $mostRead=Post::orderBy('read_count', "DESC")->get()->take(5);
+        $mostCommented=Post:: all()->sortByDesc(function($post)
+        {
+            return $post->comments()->where('qualified', true)->count();
+        })->take(5);
+        return view('frontEnd.blog')->with('categoryTree', $categoryTree)
+                                    ->with('recentPosts', $recentPosts)
+                                    ->with('mostRead', $mostRead)
+                                    ->with('mostCommented', $mostCommented)
+                                    ->with('cartContent', $cartContent);
 
     }
 
+    public function singlePost($slug){
+        $categoryTree=ProductCategory::where('parent_id',0)->get();
+        $cartContent=Cart::getContent();
+        $thisPost=Post::where('slug',$slug)->first();
+       // dd($thisPost->user);
+        $comments=$thisPost->comments()->where('qualified', true)->get();
+        $recentPosts=Post::orderBy('updated_at', "DESC")->get()->take(5);
+        $mostRead=Post::orderBy('read_count', "DESC")->get()->take(5);
 
+        return view('frontEnd.singlePost')->with('categoryTree', $categoryTree)
+                                            ->with('recentPosts', $recentPosts)
+                                            ->with('mostRead', $mostRead)
+                                            ->with('thisPost', $thisPost)
+                                            ->with('comments', $comments)
+                                            ->with('cartContent', $cartContent);
+        
+    }
 
 
     public function shop(){
+        $perPage=18;
         $categoryTree=ProductCategory::where('parent_id',0)->get();
-        $producChunks=Product::paginate(12);
+        $producChunks=Product::paginate($perPage);
         $categoryTreeHtml=$this->categoryTreeGen($categoryTree);
         $categoryPathHtml=$this->categoryPath(0);
-      //  dd($categoryTreeHtml);
+      // dd($producChunks->links());
         $cartContent=Cart::getContent();
         return view('frontEnd.shop')->with('categoryTree', $categoryTree)
                                     ->with('productChunks', $producChunks)
@@ -60,35 +104,60 @@ class FrontEndController extends Controller
                                     ->with('categoryPathHtml', $categoryPathHtml)
                                     ->with('cartContent', $cartContent);
 
-        
-        
     }
 
-    private function categoryTreeGen($categories){
+
+    /*
+        $category to input is of type collection
+        */
+    private function categoryTreeGen($categories ){
         $html='';
         //dd($categories->childeren());
         foreach ($categories as  $category) {
-           // dd($category->childeren()->get()); 
-            $html.=  '<li class="treeChild" ><a href='.route('shop.category', ['id'=>$category->id]).'> <span>(15)</span>'.$category->name.' <i class="treeItemHandle far fa-plus-square">&nbsp</i> </a>
+        //dd(collect($category)); 
+           $prodList=collect();
+           $this->categoryProducts($category ,$prodList);
+            $html.=  '<li class="treeChild" ><a href='.route('shop.category', ['id'=>$category->id]).'> <span>'.$prodList->count().'</span>'.$category->name.' <i class="treeItemHandle far fa-plus-square">&nbsp</i> </a>
                        <ul class="nested">'. $this->categoryTreeGen($category->childeren()->get()). ' </ul>
                       </li>';
         }
         return $html;
     }
 
+    /*
+ $category to input is of type ProductCategory Model Instance !!!!!!!!!
+*/
+    protected function categoryProducts($category,  &$productsCollection){
+       
+        $products=$category->products()->get();
+         //dd($productsCollection);
+        foreach ($products as $product) {
+            $productsCollection->push($product);
+            //dump($productsCollection);
+        }
+        
+         foreach ($category->childeren()->get() as $child) {
+             
+             $this->categoryProducts($child,  $productsCollection);
+ 
+         }
+     }
+
+
     public function category($id){
-        
+        $perPage=18;
         $categoryTree=ProductCategory::where('parent_id',0)->get();
-        $category=ProductCategory::where('id',$id)->get();
-        
+        $cartContent=Cart::getContent();
+        $category=ProductCategory::find($id);
+        $catCollection=ProductCategory::where('id',$id)->get();
+      //  dd($category);
         $productsCollection=collect();//$category->first()->products()->get();
         $this->categoryProducts($category ,$productsCollection);
-        $producChunks=$productsCollection->paginate(12);
+        $producChunks=$productsCollection->paginate($perPage);
 
-        $categoryTreeHtml=$this->categoryTreeGen($category);
+        $categoryTreeHtml=$this->categoryTreeGen($catCollection);
         $categoryPathHtml=$this->categoryPath($id);
        
-        $cartContent=Cart::getContent();
         return view('frontEnd.shop')->with('categoryTree', $categoryTree)
                                     ->with('productChunks', $producChunks)
                                     ->with('categoryTreeHtml', $categoryTreeHtml)
@@ -98,53 +167,49 @@ class FrontEndController extends Controller
     }
   
 
-    private function categoryProducts($category,  &$productsCollection){
-       
-       
-        foreach ($category as $child) {
-            
-            foreach ($child->products()->get() as $product) {
-                # code...
-                   $productsCollection->push($product);
-            }
-        
-            $this->categoryProducts($child->childeren()->get(),  $productsCollection);
-
-        }
-    }
+    
 
     private function categoryPath($categoryId){
 
         if($categoryId==0){
-            return '<li><a href="#">خانه</a></li>';
+            return '<li><a href="'.route('shop').'">فروشگاه</a></li>';
         }
 
         $category=ProductCategory::find($categoryId);
+       // dd($category->parent()->get());
 
         $html="<li><a href=".route('shop.category', ['id'=>$category->id])."> $category->name</a></li>";
         while ($category->parent_id > 0) {
-            $category=ProductCategory::find($category->parent_id);
+            $category=$category->parent()->get()->first();
             $html=$html."<li><a href=".route('shop.category', ['id'=>$category->id])."> $category->name</a></li>";
             
         }
-        $html=$html."<li><a href=".route('shop').">خانه</a></li>";
+        $html=$html."<li><a href=".route('shop').">فروشگاه</a></li>";
         return $html;
     }
 
 
 
-
-    
-
-    public function singlePost($slug){
-        return view('frontEnd.singlePost');
-        
-    }
-
-
-
     public function singleProduct($id){
-        return view('frontEnd.singleProduct');
+        $categoryTree=ProductCategory::where('parent_id',0)->get();
+        $product=Product::find($id);
+       // dd(jdate($product->created_at)->format(' %d %B %y'));
+        $reviewCount=$product->reviews()->where('qualified', true)->count();
+        $reviewStars=ceil($product->reviews()->where('qualified', true)->avg('star'));
+
+        $sameCatProds=collect();//$category->first()->products()->get();
+        $category=$product->product_category;
+        
+        $this->categoryProducts($category ,$sameCatProds);
+        $categoryPathHtml='<li>'.$product->name.'</li>'.$this->categoryPath($product->product_category_id);
+        $productReviews=$product->reviews()->where('qualified', true)->paginate(6);
+        return view('frontEnd.singleProduct')->with('categoryTree', $categoryTree)
+                                             ->with('product', $product)
+                                             ->with('sameCatProds', $sameCatProds)
+                                             ->with('categoryPathHtml', $categoryPathHtml)
+                                             ->with('productReviews', $productReviews)
+                                             ->with('reviewCount', $reviewCount)
+                                             ->with('reviewStars', $reviewStars);
         
     }
 

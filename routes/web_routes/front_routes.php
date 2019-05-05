@@ -21,8 +21,31 @@ Route::get('/shop/category-{id}', [
     'as'=>'shop.category'
 ]);
 
+Route::post('/shop/product/addReview/{id}', [
+'middleware'=>'auth',
+'uses'=>'ReviewsController@store',
+'as'=>'shop.product.addReview'
+]);
+// AJAX CALLS ********************************************************** */
+Route::get('/shop/ajax/{sortBy}', [
+    'uses'=>'AjaxFrontEndController@ajaxShop',
+    'as'=>'ajax-shop'
+]);
 
 
+
+Route::get('/shop/ajax/category-{id}/{sortBy}', [
+    'uses'=>'AjaxFrontEndController@ajaxCategory',
+    'as'=>'shop.ajax-category'
+]);
+
+
+Route::get('/shop/ajax/product/{id}', [
+    'uses'=>'AjaxFrontEndController@ajaxReviews',
+    'as'=>'shop.ajax.product'
+]);
+
+//********************************************************* */
 
 Route::get('/blog', [
     'uses'=>'FrontEndController@blog',
@@ -34,7 +57,11 @@ Route::get('/blog/{slog}', [
     'as'=>'blog.post'
 ]);
 
+Route::post('/blog/post/addComment/{id}', [
 
+'uses'=>'CommentsController@store',
+'as'=>'blog.post.addComment'
+]);
 
 
 
@@ -45,7 +72,7 @@ Route::get('/search', [
 ]);
 
 Route::get('/cart', [
-    'uses'=>'CartController@index',
+    'uses'=>'FrontEndController@cart',
     'as'=>'cart.index'
 ]);
 

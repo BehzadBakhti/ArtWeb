@@ -43,11 +43,11 @@
 										<div class="widget widget_socialsharing_widget">
 											<h3 class="widget-title-modal">به اشتراک بگذارید</h3>
 											<ul class="social-icons">
-												<li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
-												<li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>
-												<li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="fa fa-pinterest"></i></a></li>
-												<li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="fa fa-google-plus"></i></a></li>
-												<li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="fa fa-linkedin"></i></a></li>
+												<li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fab fa-facebook"></i></a></li>
+												<li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fab fa-twitter"></i></a></li>
+												<li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="fab fa-pinterest"></i></a></li>
+												<li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="fab fa-google-plus"></i></a></li>
+												<li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="fab fa-linkedin"></i></a></li>
 											</ul>
 										</div>
 									</div>

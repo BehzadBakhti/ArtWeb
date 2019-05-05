@@ -14,7 +14,7 @@ class ProductCategory extends Model
 
      public function parent(){
 
-      $parent = $this->belongsTo(self::class, 'id');
+      $parent = $this->belongsTo(self::class, 'parent_id');
     //   if(isset($parent->childeren)) {
     //     $parent->childeren->merge($parent);
     //   }

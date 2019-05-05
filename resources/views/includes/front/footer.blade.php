@@ -111,17 +111,20 @@
         <script src="{{asset('app/js/jquery.collapse.js')}}"></script>
 		<!-- plugins JS
 		============================================ -->		
-        <script src="{{asset('app/js/plugins.js')}}"></script>
+		<script src="{{asset('app/js/plugins.js')}}"></script>
+		<script src="{{asset('app/js/all.min.js')}}"></script>
 		<!-- main JS
 		============================================ -->		
 		<script src="{{asset('app/js/main.js')}}"></script>
-
+		
 		<!-- My JS
 		============================================ -->
 
 			@include('includes.javascripts.cart_manage')
 			@include('includes.javascripts.product_modal')
 			@include('includes.javascripts.category_tree')
+			@include('includes.javascripts.product_sort')
+			@include('includes.javascripts.product_review_load')
 		<!-- <script src="{{asset('js/cart_manage.js')}}"></script> -->
     </body>
 </html>

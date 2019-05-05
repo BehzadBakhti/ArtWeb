@@ -18,6 +18,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+   
+        <link rel="stylesheet" href="{{asset('app/css/main.css')}}">
+		<!-- style CSS
+		============================================ -->
+        <link rel="stylesheet" href="{{asset('app/style.css')}}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     @yield('styles')
