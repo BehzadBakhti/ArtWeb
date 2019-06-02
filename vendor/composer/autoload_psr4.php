@@ -70,6 +70,7 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Darryldecode\\' => array($vendorDir . '/darryldecode/cart/src/Darryldecode'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
+    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
     'BeyondCode\\DumpServer\\' => array($vendorDir . '/beyondcode/laravel-dump-server/src'),
     'Assert\\' => array($vendorDir . '/beberlei/assert/lib/Assert'),
     'App\\' => array($baseDir . '/app'),

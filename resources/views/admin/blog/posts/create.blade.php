@@ -1,11 +1,11 @@
-@extends('layouts.admin_blog')
+@extends('layouts.dashboard')
 
 
-@section ('content')
+@section ('dashboadr_subpage')
 
  @include('includes.error')
 
-<div class="panel panel-default">
+<div class="panel panel-default rtl">
     <div class="panel-heading">
          Create a New Post 
     </div>
@@ -55,9 +55,15 @@
                     <label for="body">Body</label>
                    <textarea name="body" id="body" class="form-control"></textarea>
                 </div>
+                <div class="form-group">وضعیت پست
+                    <select name="status" >
+                        <option value="draft">پیش نویس</option>
+                        <option value="published">منتشر شده</option>
+                    </select>
+                </div>
                 <div class="form-group">
                    <button type="submit" class="btn btn-success btn-sm"> Save Post</button>
-                   <a href="{{route('posts')}}" class="btn btn-danger btn-sm"> Cancel</a> 
+                   <a href="{{route('posts', ['status'=>'draft'])}}" class="btn btn-danger btn-sm"> Cancel</a> 
                 </div>
 
 

@@ -16,10 +16,14 @@ class Admin
     public function handle($request, Closure $next)
     {
       //  dd(auth()->user()->user_role);
+      if(auth()->check()){
         if(auth()->user()->user_role == 'admin'){
              return $next($request);
+            } elseif (auth()->user()->user_role == 'user') {
+              abort(404, 'Page Not Found');
             }
-
-       return redirect()->back()->with('error','Only Admin can access this URL');
+          return redirect()->route('dashboard')->with('error','Only Admin can access this URL');
+          }
+          return redirect()->route('login');
     }
 }

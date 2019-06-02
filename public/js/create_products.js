@@ -74,7 +74,7 @@ $(document).ready(function() {
         e.preventDefault();
         spx++;
         
-        $('#specs-wrapper').append('<div class="spec-container row"><div class=" col-md-3 pr-1"> <div>Spec Name</div> <input class="form-control" type="text" name="spec_key[]"> </div> <div class="col-md-7 px-1"> <div> Spec Value</div> <input class="form-control" type="text" name="spec_value[]">  </div> <div class="col-md-2 pl-1"> <div >&nbsp</div>  <button type="button" class="removeSpecBtn btn btn-danger">Remove</button>   </div></div>');
+        $('#specs-wrapper').append('<div class="spec-container row"><div class=" col-md-3 pr-1"> <div>Spec Name</div> <input class="form-control" type="text" name="spec_key[]"> </div> <div class="col-md-7 px-1"> <div> Spec Value</div> <input class="form-control" type="text" name="spec_value[]">  </div> <div class="col-md-2 pl-1"> <div >&nbsp</div>  <button type="button" class="removeSpecBtn btn btn-danger">حذف ویژه‌گی</button>   </div></div>');
         
     });
 

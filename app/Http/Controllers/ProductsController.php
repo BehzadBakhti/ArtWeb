@@ -20,8 +20,14 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
-        return  view('admin.shop.products.index')->with('products', Product::all()->paginate(10)) ;
+        if(auth()->user()->user_role=='admin'){
+            $products=Product::all();
+        }else{
+
+            $products=auth()->user()->products;
+        }
+        
+        return  view('admin.shop.products.index')->with('products', $products->paginate(10)) ;
     }
 
     /**
@@ -141,8 +147,15 @@ class ProductsController extends Controller
      */
     public function edit($id )
     {
+        $product=Product::find($id);
+       // dd($product->brand()->first()->user()->first());
+        if(auth()->user()->user_role!='admin'){
+            if(auth()->user()!=$product->brand->user){
+                Session::flash('info',"You only can edit your own Products");
+                return redirect()->back();
+            }
+        } 
 
-       $product=Product::find($id);
        $images=$product->images;
        $specs=$product->specs;
         return view('admin.shop.products.edit')->with('categories',ProductCategory::all())
@@ -219,9 +232,6 @@ class ProductsController extends Controller
 
 
 
-
-
-
             foreach ($product->images as $oldImg) {
 
                 if(!in_array($oldImg->image_name, $request->image_names)){
@@ -262,10 +272,34 @@ class ProductsController extends Controller
      */
     public function destroy( $id)
     {
-        Product::find($id)->delete();
+        $product=Product::find($id);
+        // dd($product->brand()->first()->user()->first());
+        if(auth()->user()->user_role!='admin'){
+            if(auth()->user()!=$product->brand->user){
+                Session::flash('info',"You only can Delete your own Products");
+                return redirect()->back();
+            }
+        } 
+ 
+         $product->delete();
 
         Session::flash('success', "The Product Deleted Successfully");
 
         return redirect()->back();
     }
+
+
+
+    public function getStock(){
+	   
+        $stockProducts=auth()->user()->products()->get();
+        //
+        if(auth()->user()->user_role=='admin'){
+            $stockProducts=Product::all();
+        }
+        return view('admin.shop.orders.stock')->with('stockProducts', $stockProducts);
+    
+    
+    }
+
 }

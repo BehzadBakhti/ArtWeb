@@ -42,6 +42,11 @@ class Product extends Model
 
     }
     
+    public function brand(){
+
+        return $this-> belongsTo('App\Model\Brand');
+
+    }
     
     public function images(){
 
@@ -59,6 +64,15 @@ class Product extends Model
         return $this->belongsToMany('App\Model\ProductTag');
     }
 
+    public function orders(){
+
+        return $this->belongsToMany('App\Model\Order')->withPivot('quantity');
+    }
+
+    public function cargoes(){
+
+        return $this->belongsToMany('App\Model\Cargo')->withPivot('quantity');
+    }
     protected $fillable =['name','detail','description', 'dimension', 'material', 'product_category_id', 'default_img_id', 'stock','price','discount'];
 
      

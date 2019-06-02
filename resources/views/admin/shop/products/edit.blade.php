@@ -1,45 +1,45 @@
-@extends('layouts.admin_shop')
+@extends('layouts.dashboard')
 
 
-@section ('content')
+@section ('dashboadr_subpage')
 
  @include('includes.error')
 
-<div class="panel panel-default">
+<div class="panel panel-default rtl">
     <div class="panel-heading">
-         Edit Product 
+         ویرایش محصول
     </div>
     <div class="panel-body">
         <form action="{{ route('product.update', ['id'=>$product->id]) }}" method="post" enctype="multipart/form-data" >
               {{ csrf_field() }}
               <div class="form-group">
-                    <label for="name">Product Name</label>
+                    <label for="name">عنوان محصول</label>
                     <input type="text" name="name" class="form-control" value="{{$product->name}}">
                 </div>
 
                 <div class="form-group">
-                    <label for="dimension">Dimensions</label>
+                    <label for="dimension">ابعاد</label>
                     <input type="text" name="dimension" class="form-control" value="{{$product->dimension}}">
                 </div>
                 <div class="form-group">
-                    <label for="material">Material</label>
+                    <label for="material">جنس</label>
                     <input type="text" name="material" class="form-control" value="{{$product->material}}">
                 </div>
                 <div class="form-group">
-                    <label for="price">Price</label>
+                    <label for="price">قیمت</label>
                     <input type="text" name="price" class="form-control" value="{{$product->price}}">
                 </div>
                 <div class="form-group">
-                    <label for="discount">Discount (%)</label>
+                    <label for="discount">درصد تخفیف (%)</label>
                     <input type="text" name="discount" class="form-control" value="{{$product->discount}}">
                 </div>
                 <div class="form-group">
-                    <label for="stock">Stock</label>
+                    <label for="stock">موجودی</label>
                     <input type="text" name="stock" class="form-control" value="{{$product->stock}}">
                 </div>
 
   <hr/>
-                <label for="featured">Images</label>
+                <label for="featured">تصاویر</label>
                 <div class="form-group" >
                    
                     <label id="image-wraper" >  
@@ -74,7 +74,7 @@
                 </div>
  <hr/> 
                 <div class="form-group">
-                    <label for="category">Category</label>
+                    <label for="category">دسته بندی</label>
                     <select name="category_id" id="category" class="form-control" >
                         @foreach($categories as $category)
 
@@ -95,21 +95,21 @@
     <hr/>
 
                 <div class="form-group  ">
-                    <label >Other Specs</label>
+                    <label >ویژه‌گی های دیگر</label>
                         <div id="specs-wrapper" >
                 @foreach($specs as $spec)
                             <div class="spec-container row">
                                 <div class=" col-md-3 pr-1">
-                                    <div>Spec Name</div>
+                                    <div>عنوان ویژه‌گی</div>
                                     <input class="form-control" type="text" name="spec_key[]" value="{{$spec->key}}">
                                 </div>
                                 <div class="col-md-7 px-1">
-                                        <div> Spec Value</div>
+                                        <div> مقدار</div>
                                         <input class="form-control" type="text" name="spec_value[]" value="{{$spec->value}}">     
                                 </div>
                                 <div class="col-md-2 pl-1">
                                         <div >&nbsp</div>
-                                        <button  class="removeSpecBtn btn btn-danger">Remove</button>     
+                                        <button  class="removeSpecBtn btn btn-danger">حذف ویژه‌گی</button>     
                                 </div>
                             </div>
 
@@ -122,12 +122,12 @@
                     </div>
                 
                 </div> 
-                <button class="btn btn-primary" type="button" id="addSpecsBtn">Add New Spec</button>
+                <button class="btn btn-primary" type="button" id="addSpecsBtn">افزودن ویژه‌گی جدید</button>
 
     <hr/>
 
                 <div class="form-group">
-                <label for="tags">Select Tags</label>
+                <label for="tags">انتخاب برچسب</label>
                     @foreach($tags as $tag)
                         <div class="checkbox">
                             <label ><input class="px-2" type="checkbox" name="tags[]" value="{{ $tag->id}}"
@@ -149,17 +149,17 @@
 <hr/>
 
                 <div class="form-group">
-                    <label for="detail">Detail</label>
+                    <label for="detail">خللاصه جرئیات</label>
                    <textarea name="detail" id="detail" class="form-control">{{$product->detail}}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">ِDescription</label>
+                    <label for="description">شرح جزئیات</label>
                    <textarea name="description" id="description" class="form-control">{{$product->description}}</textarea>
                 </div>
 <hr/>
                 <div class="form-group">
-                   <button type="submit" class="btn btn-success btn-sm"> Save Product</button>
-                   <a href="{{route('admin.products')}}" class="btn btn-danger btn-sm"> Cancel</a> 
+                   <button type="submit" class="btn btn-success btn-sm"> ذخیره</button>
+                   <a href="{{route('admin.products')}}" class="btn btn-danger btn-sm"> انصراف</a> 
                 </div>
 
 
@@ -173,7 +173,7 @@
 @Section('scripts')
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 
-<script src={{asset('js/edit_products.js')}}></script>
+<script src='{{asset("js/edit_products.js")}}'></script>
 @stop
 
 @Section('styles')

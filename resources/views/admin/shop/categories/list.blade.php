@@ -1,6 +1,6 @@
 
 <div class="p-3">
-    <div class="panel-body">
+    <div class="panel-body rtl">
         <table class="table table-hover">
 
             <thead>

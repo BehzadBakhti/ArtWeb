@@ -67,7 +67,7 @@ Route::post('/blog/post/addComment/{id}', [
 
 
 Route::get('/search', [
-    'uses'=>'FrontEndController@search',
+    'uses'=>'SearchController@search',
     'as'=>'search'
 ]);
 
@@ -91,7 +91,22 @@ Route::post('/cart/removeFromCart', [
     'as'=>'cart.removeFromCart'
 ]);
 
+Route::post('/order/payment', [
+    'uses'=>'OrdersController@createOrder',
+    'as'=>'order.payment'
+]);
 
+
+Route::post('/order/recheck', [
+    'uses'=>'OrdersController@reCheck',
+    'as'=>'order.recheck'
+]);
+///
+Route::post('/address/addAddress', [
+    'middleware'=>'auth',
+    'uses'=>'AddressesController@store',
+    'as'=>'address.addAddress'
+]);
 
 /// Other Pages
 Route::get('/about-us', [

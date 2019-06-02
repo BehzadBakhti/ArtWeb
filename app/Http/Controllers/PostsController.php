@@ -14,16 +14,27 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($status)
     {
-        
-        return view('admin.blog.posts.index')->with( 'posts',Post::all());
+        if(auth()->user()->user_role=='admin'){
+            $posts=Post::where('posts.status',$status)->get()->paginate(20);
+        }else{
+            $posts=Post::where('user_id', auth()->user()->id)->where('posts.status',$status)->get()->paginate(20);
+        }
+    //    dd($posts);
+        return view('admin.blog.posts.index')->with( 'posts',$posts);
     }
 
 
     public function trashed()
     {
-        $posts= Post::onlyTrashed()->get();
+        dd(null);
+        if(auth()->user()->user_role=='admin'){
+            $posts= Post::onlyTrashed()->get();
+        }else{
+            $posts= Post::onlyTrashed()->where('user_id', auth()->user()->id)->get();
+        }
+      
         return view('admin.blog.posts.trashed')->with( 'posts',$posts);
     }
     /**
@@ -38,7 +49,7 @@ class PostsController extends Controller
         if($categories->count()==0){
 
             Session::flash('info', "You Need to Define a Category Before Saving Posts");
-            return redirect()->route('home');
+            return redirect()->back();
         }
        
         return view('admin.blog.posts.create')->with(['categories'=>$categories, 'posts'=>Post::all(),'tags'=>Tag::all()]);
@@ -58,6 +69,7 @@ class PostsController extends Controller
             'featured'=>'required|image',
             'body'=>'required' 
         ]); 
+        $status=auth()->user()->user_role=='admin'?$request->status:'draft';
          $featuredImage=$request->featured; 
          $featuredNewName=time().$featuredImage->getClientOriginalName();
          $featuredImage->move('uploads/posts', $featuredNewName);
@@ -65,10 +77,11 @@ class PostsController extends Controller
          $post= Post::create([
              'title'=>$request->title,
              'body'=>$request->body,
+             'user_id'=>auth()->user()->id,
              'featured'=>'uploads/posts/'.$featuredNewName,
              'category_id'=>$request->category_id,
              'slug'=>str_slug($request->title),
-             'is_published'=> 0,
+             'status'=> $status,
 
 
          ]);
@@ -97,6 +110,13 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->user_role!='admin'){
+            if(auth()->user()->id!=Post::find($id)->user_id){
+                Session::flash('info',"You only can edit your own posts");
+                return redirect()->back();
+            }
+        }   
+        
         $categories=Category::all();
         return view('admin.blog.posts.edit')->with(['categories'=>$categories, 'post'=> $this->show($id),'tags'=>Tag::all()]);
     }
@@ -117,7 +137,7 @@ class PostsController extends Controller
             
             'body'=>'required' 
         ]); 
-
+        $status=auth()->user()->user_role=='admin'?$request->status:'draft';
         $post= Post::find($id);
         if($request->hasFile('featured')){
 
@@ -133,14 +153,14 @@ class PostsController extends Controller
        $post->body=$request->body;
        $post->category_id=$request->category_id;
        $post->slug=str_slug($request->title);
-       $post->is_published=0;
+       $post->status= $request->status;
 
         
          
          $post->save();
          $post->tags()->sync($request->tags);
             Session::flash('success',"Post Updated Successfully");
-        return redirect()->route('posts');
+        return redirect()->route('posts', ['status'=>'draft']);//<a href="{{route('posts', ['status'=>'draft'])}}" class="btn btn-danger btn-sm"> Cancel</a> 
     }
 
     /**
@@ -150,12 +170,20 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+
     {
-        Post::find($id)->delete();
+        $post=Post::find($id);
+        if(auth()->user()->user_role!='admin'){
+            if(auth()->user()->id!=$post->user_id){
+                Session::flash('info',"You only can delete your own posts");
+                return redirect()->back();
+            }
+        }
+        $post->delete();
 
         Session::flash('success', "The Post Successfully Trashed");
 
-        return redirect()->route('posts');
+        return redirect()->route('posts', ['status'=>'draft']);
     }
 
 
@@ -178,6 +206,6 @@ class PostsController extends Controller
         $post->restore();
         Session::flash('success', "The Post Restored Successfully");
 
-        return redirect()->route('posts');
+        return redirect()->route('posts', ['status'=>'draft']);
     }
 }

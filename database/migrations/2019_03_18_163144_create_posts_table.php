@@ -22,9 +22,9 @@ class CreatePostsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('read_count');       
+            $table->integer('read_count')->default(0);       
             $table->string('featured');
-            $table->boolean('is_published');
+            $table->string('status')->default('draft');// published, draft< rejected
 
             $table->softDeletes();
             $table->timestamps();

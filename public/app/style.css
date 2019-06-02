@@ -3003,12 +3003,11 @@ float: right;
     overflow-x: auto;
 }
 .chart-item table{
-	border-right:1px solid #E1E1E1;
-	border-left:1px solid #E1E1E1;
-	border-bottom:1px solid #E1E1E1;
+	border:1px solid #E1E1E1;
 	width:100%;
 	text-align:center;
 	font-size:14px;
+	background-color: #fff;
 }
 .chart-item table a{
 	color:#696969;
@@ -3030,19 +3029,21 @@ float: right;
 	text-transform: capitalize;
 }
 .chart-item table .th-product{
-	width: 25%;
+	width: 15%;
+	min-width: 100px;
 }
 .chart-item table .th-details{
-	width: 25%;
+	width: 20%;
 }
-.chart-item table .th-edit{
-	width: 10%;
-}
+
 .chart-item table .th-qty{
-	width: 10%;
+	width: 15%;
 }
 .chart-item table .th-price{
-	width: 10%;
+	width: 20%;
+}
+.chart-item table .th-price .product-price{
+	font-size: 16px;
 }
 .chart-item table td {
   border-bottom: 1px solid #e1e1e1;
@@ -3053,8 +3054,8 @@ float: right;
 	font-size: 12px;
 	text-transform: uppercase;
 }
-.chart-item .th-delate a {
-  color:#EC4445;
+.chart-item .th-delate{
+  width: 5%;
 }
 .th-qty > input {
 	border: 1px solid #f2f2f2;
@@ -3063,40 +3064,15 @@ float: right;
 	text-align:center;
 	width:50px;
 }
-.shoping-cart-button{
-	padding: 20px;
-	overflow:hidden;
-	border-right:1px solid #E1E1E1;
-	border-left:1px solid #E1E1E1;
-	border-bottom:1px solid #E1E1E1;
-}
-.shoping-cart-button .cart-button-left{
-	float:left
-}
-.shoping-cart-button button{
-	background: #adadad none repeat scroll 0 0;
-	border-radius: 5px;
-	color: #fff;
-	font-size: 14px;
-	padding: 20px 25px;
-	transition:all 0.3s;
-}
-.shoping-cart-button button:hover{
-	background: #73BCF4 none repeat scroll 0 0;
-	color:#fff;
-}
-.shoping-cart-button .cart-button-right{
-	float:right;
-}
-.shoping-cart-button .cart-button-right button{
-	margin-left:20px;
-}
-.cart-shopping-area{
-	margin-top:40px;
-}
+
 .chart-all {
   border: 1px solid #e1e1e1;
-  padding: 15px;
+	padding: 25px;
+
+	background-color: #fff;
+	
+	width: 100%;
+	line-height: 2;
 }
 .chart-all h2{
 	border-bottom: 2px solid #898989;
@@ -3131,27 +3107,28 @@ float: right;
 	border: 1px solid #e8e8e9;
 	clear: both;
 	display: block;
-	padding: 7px 0 7px 7px;
+	padding: 7px ;
 	width: 98%;
 }
 .chart-all .shiping-cart-button{
 	border-top: 1px solid #f2f2f2;
 	clear: both;
-	margin: 20px 0 0;
+
 	padding: 8px 0 0;
-	text-align: right;
+
 }
 .chart-all button{
-	float: right;
-	margin-left: 10px;
-	border-radius: 5px;
-	padding: 12px;
+	
+	
+	border-radius: 1px;
+	padding: 10px;
 	background: #eeeeee none repeat scroll 0 0;
 	color: #7d7d7d;
+	width: 100%;
 	display: block;
 	font-family:"Vazir", Montserrat;
-	font-size: 10px;
-	font-weight: 700;
+	font-size: 13px;
+	font-weight: 400;
 	text-align: center;
 	text-transform: uppercase;
 	white-space: nowrap;
@@ -3161,32 +3138,30 @@ float: right;
 	background: #EEB742 none repeat scroll 0 0;
 	color: #fff;
 }
-.shopping-summary{}
-.shopping-cost-area{
-	padding:25px;
+.cart-shopping-area{
+		margin: 25px 0px;
+		
 }
+.shopping-summary{
+
+}
+
 .shopping-cost{
 	float:right;
-	margin-bottom:15px;
+	
 }
 .shopping-cost p{
-	margin-bottom:0;
+	margin-bottom:5px;
 }
 .shopping-cost-right{
-	float: right;
-	margin-left: 25px;
+	
+
 }
 .shopping-cost-left{
-	float:right;
+	
+	
 }
-.shopping-cost-area .shiping-cart-button{
-	border-top: 1px solid #4D4D4D;
-}
-.shopping-cost-area .shiping-cart-button button{
-	width:100%;
-	margin-top:10px;
-	font-size: 14px;
-}
+
 .shopping-cost-area a{
 	color: #ababab;
 	display:block;
@@ -4372,3 +4347,81 @@ float: left;
 	background-color: #EE4A42;
 	border: 1px #EE4A42 solid;
 	}
+
+	.Addresses{
+		margin: 25px 0;
+		font-size: 14px;
+		background-color: #fff;
+		border: 1px solid #e1e1e1;
+	}
+.address {
+	background-color: #eee;
+		float: right;
+		
+		width: 95%;
+		padding: 10px;
+		margin: 10px 20px 0 0;
+		
+	}
+	.address.active{
+		background-color: rgb(179, 186, 255);
+	}
+	.address label{
+		
+		float: right;
+		margin: 0 0 0 10px;
+		
+	}
+	.address .address-item{
+		border: 1px solid #e1e1e1;	
+		border-radius: 5px;
+	clear: both;
+	padding: 5px;
+	background-color: #fff;
+	margin: 5px 0;
+	}
+	.addressSelectBtn{
+		width: 100%;
+		height: 50px;
+		margin: 10px 0;
+		background-color: rgb(178, 196, 247) ;
+		color: #222 ;
+	}
+
+	.addressSelectBtn:hover{
+	
+		background-color: #3d79fa ;
+		color: #fff ;
+	}
+
+	.addressEditBtn{
+		width: 100%;
+		height: 50px;
+		margin: 10px 0;
+		background-color: rgb(154, 250, 229) ;
+		color: #222 ;
+	}
+
+	.addressEditBtn:hover{
+	
+		background-color: #15af7c ;
+		color: #fff ;
+	}
+
+	.address-title{
+		float: right;
+		font-size: 16px;
+		padding: 20px 1px 0 0;
+		margin: 0 20px;
+	}
+
+	.address form button{
+		margin: 0 20px;
+
+	}
+	/* .address .address-item p{
+	
+	margin: 0;
+	padding: 5px;
+		background-color: #fff;
+		} */

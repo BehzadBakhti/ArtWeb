@@ -1,12 +1,12 @@
-@extends('layouts.admin_shop')
+@extends('layouts.dashboard')
 
 
-@section ('content')
+@section ('dashboadr_subpage')
 
   @include('includes.error')
 
 
-<div class="card p-3">
+<div class="card p-3 rtl">
     <div class="card-header">
           Edit Category
     </div>

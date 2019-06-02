@@ -1,17 +1,17 @@
-@extends('layouts.admin_shop')
+@extends('layouts.dashboard')
 
 
-@section ('content')
+@section ('dashboadr_subpage')
 
  @include('includes.error')
 
 
 
 
-<div class="panel panel-default">
+<div class="panel panel-default rtl text-right">
 
 <div class="panel-heading">
-Product <a href="{{route('product.create')}}" class="btn btn-primary btn-sm my-2 mx-auto align-center">Add+</a>
+محصولات <a href="{{route('product.create')}}" class="btn btn-primary btn-sm my-2 mx-auto align-center">افزودن محصول جدید +</a>
 </div>
 
     <div class="panel-body">
@@ -19,17 +19,24 @@ Product <a href="{{route('product.create')}}" class="btn btn-primary btn-sm my-2
 
             <thead>
                 <th>
-                Title
+                عنوان
                 </th>
                 <th>
-                Category                
+                تامین کننده
                 </th>
                 <th>
-                Editing
+                برند
                 </th>
                 <th>
-                Deleting
+                دسته بندی                
                 </th>
+                <th>
+                وضعیت                
+                </th>
+                <th>
+                عملیات
+                </th>
+                
             </thead>
             <tbody>
             @foreach($products as $product)
@@ -38,21 +45,36 @@ Product <a href="{{route('product.create')}}" class="btn btn-primary btn-sm my-2
                     <td>
                     {{$product->name}}
                     </td>
+                    
+                    <td>
+
+                        {{$product->brand->user->vendor->name}}
+                         
+                    </td>
+                    <td>
+
+                        {{$product->brand->name}}
+                         
+                    </td>
                     <td>
                         {{$product->product_category->name}}
+                         
+                    </td>
+                    <td>
+
+                        نامشخص
                          
                     </td>
                     <td>
                          <a href="{{route('product.edit', ['id'=>$product->id]) }}" class="btn btn-primary btn-sm">
                             Edit
                          </a>
-                         
-                    </td>
-                    <td>
-                    <a href="{{route('product.delete', ['id'=>$product->id]) }}" class="btn btn-danger btn-sm">
+                         <a href="{{route('product.delete', ['id'=>$product->id]) }}" class="btn btn-danger btn-sm">
                             Delete
                          </a>
+                         
                     </td>
+                    
                 </tr>
 
             @endforeach

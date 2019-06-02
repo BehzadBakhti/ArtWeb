@@ -20,14 +20,23 @@ class FrontEndController extends Controller
         $categoryTree=ProductCategory::where('parent_id',0)->get();
         $cartContent=Cart::getContent();
         $imgAddress=Array();
+        $totalDiscount=0;
         foreach ($cartContent as $key => $value) {
             $name=Product::find($key)->images[0]->image_name;
            array_push($imgAddress,[$key,$name]);
+           $totalDiscount+= $value->price*$value->attributes->discount/100;
         }
+       
+        $total=Cart::getTotal();
+        
+//dd($totalDiscount);
         //dd($$cartContent[$imgAddress[$i][0]]->attributes->discount);
         return view('frontEnd.cart')->with('categoryTree', $categoryTree)
                                      ->with('cartContent', $cartContent)
-                                     ->with('imgAddress', $imgAddress);;
+                                     ->with('imgAddress', $imgAddress)
+                                     ->with('total', $total)
+                                     ->with('totalDiscount', $totalDiscount);
+
     }
 
     public function index(){
@@ -57,9 +66,9 @@ class FrontEndController extends Controller
 
         $categoryTree=ProductCategory::where('parent_id',0)->get();
         $cartContent=Cart::getContent();
-        $recentPosts=Post::orderBy('updated_at', "DESC")->get()->paginate(6);
-        $mostRead=Post::orderBy('read_count', "DESC")->get()->take(5);
-        $mostCommented=Post:: all()->sortByDesc(function($post)
+        $recentPosts=Post:: where('posts.status','published')->orderBy('updated_at', "DESC")->get()->paginate(6);
+        $mostRead=Post:: where('posts.status','published')->orderBy('read_count', "DESC")->get()->take(5);
+        $mostCommented=Post:: where('posts.status','published')->get()->sortByDesc(function($post)
         {
             return $post->comments()->where('qualified', true)->count();
         })->take(5);
@@ -77,8 +86,8 @@ class FrontEndController extends Controller
         $thisPost=Post::where('slug',$slug)->first();
        // dd($thisPost->user);
         $comments=$thisPost->comments()->where('qualified', true)->get();
-        $recentPosts=Post::orderBy('updated_at', "DESC")->get()->take(5);
-        $mostRead=Post::orderBy('read_count', "DESC")->get()->take(5);
+        $recentPosts=Post::where('posts.status','published')->orderBy('updated_at', "DESC")->get()->take(5);
+        $mostRead=Post::where('posts.status','published')->orderBy('read_count', "DESC")->get()->take(5);
 
         return view('frontEnd.singlePost')->with('categoryTree', $categoryTree)
                                             ->with('recentPosts', $recentPosts)
@@ -212,30 +221,6 @@ class FrontEndController extends Controller
                                              ->with('reviewStars', $reviewStars);
         
     }
-
-
-
-
-
-
-    public function search(Request $request){ 
-        $categoryTree=ProductCategory::where('parent_id',0)->get();
-        $cartContent=Cart::getContent();
-        $products=Product::search($request->phrase)->get();
-        $posts=Post::search($request->phrase)->get();
-        
-           return view('frontEnd.searchResults')->with('phrase', $request->phrase)
-                                                ->with('resultProducts', $products)
-                                                ->with('resultPosts', $posts)
-                                                ->with('categoryTree', $categoryTree)
-                                                ->with('cartContent', $cartContent);
-
-        
-    }
-
-
-
-
 
 
 

@@ -1,44 +1,44 @@
-@extends('layouts.admin_shop')
+@extends('layouts.dashboard')
 
 
-@section ('content')
+@section ('dashboadr_subpage')
 
 @include('includes.error')
 
-<div class="card card-default p-3">
+<div class="card card-default p-3 rtl">
     <div class="card-header">
-         Create a New Poroduct 
+         ایجاد محصول جدید
     </div>
     <div class="card-block">
         <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data" >
               {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="name">Product Name</label>
+                <label for="name">عنوان محصول</label>
                     <input type="text" name="name" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="dimension">Dimensions</label>
+                    <label for="dimension">ابعاد</label>
                     <input type="text" name="dimension" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="material">Material</label>
+                    <label for="material">جنس</label>
                     <input type="text" name="material" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="price">Price</label>
+                    <label for="price">قیمت</label>
                     <input type="text" name="price" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="discount">Discount (%)</label>
+                    <label for="discount">تخفیف (%)</label>
                     <input type="text" name="discount" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="stock">Stock</label>
+                    <label for="stock">موجودی</label>
                     <input type="text" name="stock" class="form-control">
                 </div>
-            <label for="featured">Images</label>
+            <label for="featured">تصاویر</label>
                 <div class="form-group" >
                    
                 <label id="image-wraper" >   
@@ -68,7 +68,7 @@
                 </div>
  <hr/>
                 <div class="form-group">
-                    <label for="category">Category</label>
+                    <label for="category">دسته بندی</label>
                     <select name="category_id" id="category" class="form-control">
                         @foreach($categories as $category)
 
@@ -80,7 +80,7 @@
                    
                 </div>
 <hr/>            
-                <label for="tags ">Select Tags</label>
+                <label for="tags ">انتخاب برچسب</label>
                 <div class="form-group row">
                     
                     @foreach($tags as $tag)
@@ -97,41 +97,41 @@
                
 
                 <div class="form-group  ">
-                    <label >Other Specs</label>
+                    <label >ویژه‌گی های دیگر</label>
                         <div id="specs-wrapper" >
                             <div class="spec-container row">
                                 <div class=" col-md-3 pr-1">
-                                    <div>Spec Name</div>
+                                    <div>عنوان ویژه‌گی</div>
                                     <input class="form-control" type="text" name="spec_key[]">
                                 </div>
                                 <div class="col-md-7 px-1">
-                                        <div> Spec Value</div>
+                                        <div> مقدار</div>
                                         <input class="form-control" type="text" name="spec_value[]">     
                                 </div>
                                 <div class="col-md-2 pl-1">
                                         <div >&nbsp</div>
-                                        <button  class="removeSpecBtn btn btn-danger">Remove</button>     
+                                        <button  class="removeSpecBtn btn btn-danger">حذف ویژه‌گی</button>     
                                 </div>
                             </div>
             
                     </div>
                    
                 </div> 
-                <button class="btn btn-primary" type="button" id="addSpecsBtn">Add New Spec</button>
+                <button class="btn btn-primary" type="button" id="addSpecsBtn">افزودن ویژه‌گی جدید</button>
 
 <hr/>
                 <div class="form-group">
-                    <label for="detail">Detail</label>
+                    <label for="detail">خلاصه جزئیات</label>
                    <textarea name="detail" id="detail" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">ِDescription</label>
+                    <label for="description">شرح جزئیات</label>
                    <textarea name="description" id="description" class="form-control"></textarea>
                 </div>
 <hr/>                
                 <div class="form-group">
-                   <button type="submit" class="btn btn-success btn-sm"> Save Product</button>
-                   <a href="{{route('admin.products')}}" class="btn btn-danger btn-sm"> Cancel</a> 
+                   <button type="submit" class="btn btn-success btn-sm"> ذخیره </button>
+                   <a href="{{route('admin.products')}}" class="btn btn-danger btn-sm"> انصراف</a> 
                 </div>
 
 
@@ -146,7 +146,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 
 
-<script src={{asset('js/create_products.js')}}></script>
+<script src="{{asset('js/create_products.js')}}"></script>
 @stop
 
 @Section('styles')

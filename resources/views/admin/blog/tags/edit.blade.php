@@ -1,7 +1,7 @@
-@extends('layouts.admin_blog')
+@extends('layouts.dashboard')
 
 
-@section ('content')
+@section ('dashboadr_subpage')
 
   @include('includes.error')
 

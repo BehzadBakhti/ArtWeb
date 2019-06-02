@@ -57,21 +57,19 @@
     @if(Auth::CHECK())
         <div class="col-lg-4">
             <ul class="list-group">
+               
                 <li class="list-group-item">
-                    <a href="{{route('home')}}"> Dashboard</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{route('posts')}}">Posts</a>
+                    <a href="{{route('posts')}}">پست ها</a>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="{{route('category.create')}}">Post Categories</a>
+                    <a href="{{route('category.create')}}">دسته بندی پست ها</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('tag.create')}}">Post Tags</a>
+                    <a href="{{route('tag.create')}}">برچسب پست ها</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('posts.trashed')}}"> Trashed Posts</a>
+                    <a href="{{route('posts.trashed')}}"> پست های حذف شده</a>
                 </li>
             </ul>
         </div>

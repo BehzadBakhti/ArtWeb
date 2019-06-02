@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function blog()
     {
-        return view('admin.blog.home');
+        return view('admin.blog.blog');
     }
 
     public function shop()

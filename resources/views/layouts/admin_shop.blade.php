@@ -61,21 +61,19 @@
                     <a href="{{route('shop')}}"> Dashboard</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('admin.products')}}">Products</a>
+                    <a href="{{route('admin.products')}}">محصولات</a>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="{{route('prod_cat.create')}}">Product Categories</a>
+                    <a href="{{route('prod_cat.create')}}">دسته بندی محصولات</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('prod_tag.create')}}">Product Tags</a>
+                    <a href="{{route('prod_tag.create')}}">برچسب محصولات</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{route('admin.events')}}"> Events</a>
+                    <a href="{{route('admin.events')}}"> رویدادها</a>
                 </li>
-                <li class="list-group-item">
-                    <a href="{{route('posts.trashed')}}"> Trashed Products</a>
-                </li>
+                
             </ul>
         </div>
     @endif

@@ -17,7 +17,7 @@ $factory->define(App\Model\Post::class, function (Faker $faker) {
         'body' =>$faker-> realText(2000,5),
         'read_count'=>$faker->numberBetween(0,20),
         'featured' =>'uploads/posts/'.$faker->image(public_path('/uploads/posts'),800,500, 'business', false),
-        'is_published'=>true,
+        'status'=>'draft',
         
     ];
 });

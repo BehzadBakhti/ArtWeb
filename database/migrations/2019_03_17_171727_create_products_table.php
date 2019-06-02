@@ -21,8 +21,11 @@ class CreateProductsTable extends Migration
             $table->string('dimension');
             $table->string('material');
             $table->bigInteger('product_category_id')->unsigned()->index();
-            $table->foreign('product_category_id')->references('id')->on('product_categories');
+            $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');
+            $table->bigInteger('brand_id')->unsigned()->index();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->bigInteger('defult_img_id')->nullable();
+            $table->string('status')->default('pending'); //
             $table->integer('stock');
             $table->double('price');
             $table->double('discount')->nullable();
