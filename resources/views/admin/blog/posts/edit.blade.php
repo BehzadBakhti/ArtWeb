@@ -7,17 +7,17 @@
 
 <div class="panel panel-default rtl">
     <div class="panel-heading">
-         Create a New Post 
+        ویرایش مطلب 
     </div>
     <div class="panel-body">
         <form action="{{ route('post.update', ['id'=>$post->id]) }}" method="post" enctype="multipart/form-data" >
               {{ csrf_field() }}
               <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">عنوان</label>
                     <input type="text" name="title" class="form-control" value="{{$post->title}}">
                 </div>
                 <div class="form-group">
-                    <label for="featured">Featured Image</label>
+                    <label for="featured">تصویر</label>
                     <div style="position:relative;">
                         <a class='btn btn-primary btn-sm' href='javascript:;'>
                             Choose File...
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="category">Category</label>
+                    <label for="category">دسته بندی</label>
                     <select name="category_id" id="category" class="form-control" >
                         @foreach($categories as $category)
 
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="form-group">
-                <label for="tags">Select Tags</label>
+                    <label for="tags">انتخاب تگ ها</label>
                     @foreach($tags as $tag)
                         <div class="checkbox">
                             <label ><input class="px-2" type="checkbox" name="tags[]" value="{{ $tag->id}}"
@@ -69,7 +69,7 @@
 
 
                 <div class="form-group">
-                    <label for="body">Body</label>
+                    <label for="body">متن</label>
                    <textarea name="body" id="body" class="form-control" >{{$post->body}}</textarea>
                 </div>
 
@@ -80,13 +80,84 @@
                     </select>
                 </div>
                 <div class="form-group">
-                   <button type="submit" class="btn btn-success btn-sm"> Save Post</button>
-                   <a href="{{route('posts', ['status'=>'draft'])}}" class="btn btn-danger btn-sm"> Cancel</a> 
+                   <button type="submit" class="btn btn-success btn-sm"> ذخیره مطلب</button>
+                   <a href="{{route('posts', ['status'=>'draft'])}}" class="btn btn-danger btn-sm"> بازگشت</a> 
                 </div>
 
 
 
         </form>
+        <hr>
+        <div>
+            نظرات کاربران:
+            <div>
+            <table class="table table-hover">
+
+                <thead>
+                    <th>کاربر  </th>
+                    <th>متن نظر  </th>
+                    <th>وضعیت</th>
+                    <th>عملیات </th>
+                </thead>
+                <tbody>
+                @foreach($post->comments as $comment)
+
+                    <tr>
+                        <td> {{$comment->user_name}} </td>
+                        
+                        <th>{{$comment->body}}</th>
+
+                    @if($comment->qualified==1 )
+                        <td>
+                            <span>تایید شده</span>
+                        </td>
+                        <td>
+                        <a  disabled class="btn btn-primary btn-sm">
+                                تایید
+                            </a>
+                        <a href="{{route('blog.post.rejectComment', ['id'=>$comment->id]) }}" class="btn btn-danger btn-sm">
+                                ریجکت
+                            </a>
+                        </td>
+                        
+                    @elseif($comment->qualified==2 )
+                        <td>
+                            <span>رد شده</span>
+                        </td>
+                        <td>
+                        <a href="{{route('blog.post.acceptComment', ['id'=>$comment->id]) }}" class="btn btn-primary btn-sm">
+                                تایید
+                            </a>
+                        <a disabled  class="btn btn-danger btn-sm">
+                                ریجکت
+                            </a>
+                        </td>
+
+                    @else
+                        <td>
+                            <span>جدید</span>
+                        </td>
+
+                        <td>
+                        <a href="{{route('blog.post.acceptComment', ['id'=>$comment->id]) }}" class="btn btn-primary btn-sm">
+                                تایید
+                            </a>
+                        <a href="{{route('blog.post.rejectComment', ['id'=>$comment->id]) }}" class="btn btn-danger btn-sm">
+                                ریجکت
+                            </a>
+                        </td>
+
+                    @endif
+                       
+                        
+                    </tr>
+
+                @endforeach
+                </tbody>
+
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

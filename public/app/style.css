@@ -4419,6 +4419,24 @@ float: left;
 		margin: 0 20px;
 
 	}
+
+
+	.single-blog a.blog-category-btn{
+		background-color: #76008d;
+		color: white;
+		border-radius: 0;
+		padding: 2px;
+
+
+	}
+	.blog-page-header{
+		font-size: 24px;
+		text-align: right;
+		padding: 10px 20px;
+		border-bottom: 1px solid #eee;
+
+
+	}
 	/* .address .address-item p{
 	
 	margin: 0;

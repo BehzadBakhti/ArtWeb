@@ -165,6 +165,80 @@
 
 
         </form>
+
+        <hr>
+        <div>
+            نظرات کاربران:
+            <div>
+            <table class="table table-hover">
+
+                <thead>
+                    <th>عنوان  </th>
+                    <th>کاربر  </th>
+                    <th>متن نظر  </th>
+                    <th>وضعیت</th>
+                    <th>عملیات </th>
+                </thead>
+                <tbody>
+                @foreach($product->reviews as $review)
+
+                    <tr>
+                        <td> {{$review->title}} </td>
+                        <td> {{$review->user->name}} </td>
+                        
+                        <th style='width: 50%'>{{$review->review}}</th>
+
+                    @if($review->qualified==1 )
+                        <td>
+                            <span>تایید شده</span>
+                        </td>
+                        <td>
+                        <a  disabled class="btn btn-primary btn-sm">
+                                تایید
+                            </a>
+                        <a href="{{route('shop.product.rejectReview', ['id'=>$review->id]) }}" class="btn btn-danger btn-sm">
+                                ریجکت
+                            </a>
+                        </td>
+                        
+                    @elseif($review->qualified==2 )
+                        <td>
+                            <span>رد شده</span>
+                        </td>
+                        <td>
+                        <a href="{{route('shop.product.acceptReview', ['id'=>$review->id]) }}" class="btn btn-primary btn-sm">
+                                تایید
+                            </a>
+                        <a disabled  class="btn btn-danger btn-sm">
+                                ریجکت
+                            </a>
+                        </td>
+
+                    @else
+                        <td>
+                            <span>جدید</span>
+                        </td>
+
+                        <td>
+                        <a href="{{route('shop.product.acceptReview', ['id'=>$review->id]) }}" class="btn btn-primary btn-sm">
+                                تایید
+                            </a>
+                        <a href="{{route('shop.product.rejectReview', ['id'=>$review->id]) }}" class="btn btn-danger btn-sm">
+                                ریجکت
+                            </a>
+                        </td>
+
+                    @endif
+                       
+                        
+                    </tr>
+
+                @endforeach
+                </tbody>
+
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

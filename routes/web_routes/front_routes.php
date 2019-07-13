@@ -26,6 +26,17 @@ Route::post('/shop/product/addReview/{id}', [
 'uses'=>'ReviewsController@store',
 'as'=>'shop.product.addReview'
 ]);
+
+Route::get('/shop/product/acceptReview/{id}',[
+    'uses'=>'ReviewsController@accept',
+    'as'=>'shop.product.acceptReview'
+]);
+
+Route::get('/shop/product/rejectReview/{id}',[
+    'uses'=>'ReviewsController@reject',
+    'as'=>'shop.product.rejectReview'
+]);
+
 // AJAX CALLS ********************************************************** */
 Route::get('/shop/ajax/{sortBy}', [
     'uses'=>'AjaxFrontEndController@ajaxShop',
@@ -57,14 +68,26 @@ Route::get('/blog/{slog}', [
     'as'=>'blog.post'
 ]);
 
+Route::get('/blog/category/{id}',[
+    'uses'=>'FrontEndController@blogByCategory',
+    'as'=>'blog.category'
+]);
+
 Route::post('/blog/post/addComment/{id}', [
 
 'uses'=>'CommentsController@store',
 'as'=>'blog.post.addComment'
 ]);
 
+Route::get('blog/post/acceptComment/{id}',[
+    'uses'=>'CommentsController@accept',
+    'as'=>'blog.post.acceptComment'
+]);
 
-
+Route::get('blog/post/rejectComment/{id}',[
+    'uses'=>'CommentsController@reject',
+    'as'=>'blog.post.rejectComment'
+]);
 
 Route::get('/search', [
     'uses'=>'SearchController@search',

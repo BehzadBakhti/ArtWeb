@@ -28,7 +28,7 @@ class PostsController extends Controller
 
     public function trashed()
     {
-        dd(null);
+        //dd(null);
         if(auth()->user()->user_role=='admin'){
             $posts= Post::onlyTrashed()->get();
         }else{

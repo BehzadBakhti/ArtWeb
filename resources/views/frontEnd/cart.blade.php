@@ -72,7 +72,7 @@
 						</div><!-- End Cart Item -->
 
 							<!-- Addresses -->
-						<div id="addressArea" class='Addresses  floatright'>
+						<div id="addressArea" class='Addresses  floatright col-md-12'>
 						@if(auth()->check())
 						<div class="address-title">آدرس های شما</div>
 														
@@ -98,7 +98,7 @@
 											<label class="">:آدرس پستی</label>	{{ $address->sub_address}} 
 										</div>
 										<div class="address-item ">
-											<label class="">:کد پستی</label>	ثبت کد پستی در دیتا بیس 
+											<label class="">:کد پستی</label>	{{ $address->postal_code}} 
 										</div>
 									</div>
 								</div>
@@ -128,7 +128,7 @@
 											</div>
 									</form>
 								</div>
-							<button type="button" id="newAddressBtn" class="btn btn-danger" style="clear:both;margin:5px 20px; width:90%; float:left" >افزودن آدرس جدید ؟؟؟</button>
+							<button type="button" id="newAddressBtn" class="btn btn-danger " style="clear:both;margin:5px 20px; width:90%; float:left" >افزودن آدرس جدید ؟؟؟</button>
 							@else
 								<p>برای ادامه فرایند خرید به حساب کاربری خود وارد شوید</p>
 

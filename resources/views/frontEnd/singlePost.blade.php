@@ -28,6 +28,10 @@
 								<div class="entry-content">
 									<p>{{$thisPost->body}}</p>
 								</div>
+								<div>
+								دسته بندی:
+								<a class="blog-category-btn" href="{{route('blog.category', ['id'=>$thisPost->category_id])}}">{{$thisPost->category->name}}</a>
+								</div>
 								<div class="social-sharing">
 									<h3>Share this post</h3>
 									<div class="sharing-icon">

@@ -9,11 +9,18 @@
 		</div><!-- End Breadcurb Area -->
 		<!-- Blog Post Area -->
 		<div class="main-blog-page blog-post-area shop-product-area">
-			<div class="container-fluid">
+			<div class="container-fluid rtl">
 				<div class="row">
+				
 					<div class="col-md-9 floatright">
+						
 						<!-- Blog Post Item Area -->
 						<div class="blog-post-item-area">
+							<div class="blog-page-header" >
+								@isset($category)
+									{{$category->name}}
+								@endisset
+							</div>
 							<div class="blog-post-inner-item">
                                 @foreach($recentPosts as $post)
 								<!-- Blog Post Single Item -->

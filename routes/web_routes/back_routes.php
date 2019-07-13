@@ -60,16 +60,16 @@ Route::group(["prefix"=>'dashboard', 'middleware'=>'special'], function(){
         ]);
 
 
-
-        Route::get('/posts/trashed', [
+ 
+        Route::get('/post/trashed', [
             'uses'=>'PostsController@trashed',
             'as'=>'posts.trashed'
         ]);
-        Route::get('/posts/trashed/delete/{id}', [
+        Route::get('/post/trashed/delete/{id}', [
             'uses'=>'PostsController@kill',
             'as'=>'posts.trashed.delete'
         ]);
-        Route::get('/posts/trashed/restore/{id}', [
+        Route::get('/post/trashed/restore/{id}', [
             'uses'=>'PostsController@restore',
             'as'=>'posts.trashed.restore'
         ]);

@@ -178,7 +178,6 @@ class ProductsController extends Controller
     //    dd($request->image_names);
         $this->validate($request,[
             'name'=>'required|max:255',
-
             'dimension'=>'required|max:255',
             'material'=>'required|max:255',
             'price'=>'required|numeric',

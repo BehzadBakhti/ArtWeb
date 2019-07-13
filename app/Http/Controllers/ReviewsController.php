@@ -42,6 +42,16 @@ class ReviewsController extends Controller
         return redirect()->back();
     }
 
+
+    public function accept($id){
+        $review= Review::find($id)->update(['qualified'=> 1]);
+        return redirect()->back();
+    }
+
+    public function reject($id){
+        $review= Review::find($id)->update(['qualified'=> 2]);
+        return redirect()->back();
+    }
     /**
      * Display the specified resource.
      *

@@ -7,7 +7,7 @@
 
 <div class="panel panel-default rtl">
     <div class="panel-heading">
-         Create a New Post 
+         ایجاد مطلب جدید 
     </div>
     <div class="panel-body">
         <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data" >
@@ -66,9 +66,8 @@
                    <a href="{{route('posts', ['status'=>'draft'])}}" class="btn btn-danger btn-sm"> Cancel</a> 
                 </div>
 
-
-
         </form>
+        
     </div>
 </div>
 

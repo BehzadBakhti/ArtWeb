@@ -7,6 +7,7 @@ use App\Model\Product;
 use App\Model\Post;
 use App\Model\Event;
 use App\Model\ProductCategory;
+use App\Model\Category;
 use Morilog\Jalali\jalalian;
 use Cart;
 use MPCO\EnglishPersianNumber\Numbers;
@@ -43,7 +44,7 @@ class FrontEndController extends Controller
 
         $categoryTree=ProductCategory::where('parent_id',0)->get();
         $cartContent=Cart::getContent();
-        $postChunks=Post::all()->chunk(4);
+        $postChunks=Post:: where('posts.status','published')->orderBy('updated_at', "DESC")->take(8)->get()->chunk(4);
         $events=Event::all();
         $secondaryEvents=Event::where('is_main','<>' ,  1)->get();
        //dd($secondaryEvents);
@@ -80,10 +81,38 @@ class FrontEndController extends Controller
 
     }
 
+
+    public function blogByCategory($id){
+
+        $categoryTree=ProductCategory::where('parent_id',0)->get();
+        $cartContent=Cart::getContent();
+        $recentPosts=Post:: where('posts.status','published')->where('posts.category_id',$id)->orderBy('updated_at', "DESC")->get()->paginate(6);
+        $mostRead=Post:: where('posts.status','published')->orderBy('read_count', "DESC")->get()->take(5);
+        $category=Category::find($id);
+        $mostCommented=Post:: where('posts.status','published')->get()->sortByDesc(function($post)
+        {
+            return $post->comments()->where('qualified', true)->count();
+        })->take(5);
+        return view('frontEnd.blog')->with('categoryTree', $categoryTree)
+                                    ->with('recentPosts', $recentPosts)
+                                    ->with('mostRead', $mostRead)
+                                    ->with('mostCommented', $mostCommented)
+                                    ->with('cartContent', $cartContent)
+                                    ->with('category', $category);;
+
+    }
+
+
+
+
     public function singlePost($slug){
         $categoryTree=ProductCategory::where('parent_id',0)->get();
         $cartContent=Cart::getContent();
         $thisPost=Post::where('slug',$slug)->first();
+        $thisPost->read_count++;
+        $thisPost->save();
+
+
        // dd($thisPost->user);
         $comments=$thisPost->comments()->where('qualified', true)->get();
         $recentPosts=Post::where('posts.status','published')->orderBy('updated_at', "DESC")->get()->take(5);
